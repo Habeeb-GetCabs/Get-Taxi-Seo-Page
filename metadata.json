@@ -1,0 +1,6 @@
+{
+  "name": "Get Taxi Kovai - Premier Coimbatore Cabs",
+  "description": "Get Taxi Kovai - Lowest fare taxi service in Coimbatore. Local cabs at ₹80 base & ₹28/km, one-way drop at ₹26/km, outstation round trips at ₹15/km, and airport transfers at ₹100 base & ₹30/km. Call or WhatsApp 9043743777.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
