@@ -1,4 +1,4 @@
-export type TripType = 'one-way' | 'round-trip' | 'local' | 'airport' | 'tour';
+export type TripType = 'one-way' | 'round-trip' | 'local-ride' | 'local' | 'airport' | 'tour';
 
 export interface LocationOption {
   id: string;

@@ -72,7 +72,9 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
   const autocompleteRef = useRef<any>(null);
   const debounceTimerRef = useRef<any>(null);
 
-  const olaApiKey = (import.meta as any).env?.VITE_OLA_MAPS_API_KEY;
+  const olaApiKey =
+    (import.meta as any).env?.VITE_OLA_MAPS_API_KEY ||
+    'oEXDV2OnmdjglIpk594yrqdC7WGGrNPsxUqrwYvG';
 
   // Sync internal state with external value
   useEffect(() => {
@@ -207,8 +209,8 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
     <div className="space-y-1.5 relative">
       {/* Header Label + Toggle Mode */}
       <div className="flex items-center justify-between">
-        <label className="text-xs font-bold text-blue-300 flex items-center gap-1.5 uppercase tracking-wide">
-          <MapPin className={`w-3.5 h-3.5 ${isPickup ? 'text-blue-400' : 'text-emerald-400'}`} />
+        <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wide">
+          <MapPin className={`w-3.5 h-3.5 ${isPickup ? 'text-amber-500' : 'text-emerald-600'}`} />
           {label}
         </label>
         <button
@@ -217,17 +219,17 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
             setMode(mode === 'autocomplete' ? 'dropdown' : 'autocomplete');
             setShowSuggestions(false);
           }}
-          className="text-[11px] font-semibold text-slate-300 hover:text-white flex items-center gap-1 bg-slate-900 border border-slate-800 px-2 py-0.5 rounded-md transition"
+          className="text-[11px] font-bold text-slate-600 hover:text-slate-950 flex items-center gap-1 bg-slate-100 hover:bg-slate-200 border border-slate-300 px-2 py-0.5 rounded-lg transition cursor-pointer"
         >
           {mode === 'autocomplete' ? (
             <>
-              <List className="w-3 h-3 text-blue-400" />
-              <span>Select List</span>
+              <List className="w-3 h-3 text-slate-700" />
+              <span>Select from List</span>
             </>
           ) : (
             <>
-              <Edit3 className="w-3 h-3 text-emerald-400" />
-              <span>Type Any Address</span>
+              <Edit3 className="w-3 h-3 text-emerald-600" />
+              <span>Type Custom Address</span>
             </>
           )}
         </button>
@@ -241,7 +243,7 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
             onChange(e.target.value);
             setInputVal(e.target.value);
           }}
-          className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-blue-500 shadow-inner"
+          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-900 focus:outline-none focus:border-amber-400 focus:bg-white transition"
         >
           <option value="">-- Select {label} --</option>
           {isPickup ? (
@@ -292,7 +294,7 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
                 }
               }}
               placeholder={placeholder}
-              className="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-8 py-2.5 text-sm font-medium text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 transition shadow-inner"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-8 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:bg-white transition"
             />
             <Search className="w-4 h-4 text-slate-400 absolute left-3 pointer-events-none" />
 
@@ -304,7 +306,7 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
                   onChange('');
                   setShowSuggestions(false);
                 }}
-                className="absolute right-2.5 text-slate-400 hover:text-white text-xs font-bold bg-slate-800 rounded-full w-4 h-4 flex items-center justify-center"
+                className="absolute right-2.5 text-slate-400 hover:text-slate-900 text-xs font-bold bg-slate-200 hover:bg-slate-300 rounded-full w-4 h-4 flex items-center justify-center cursor-pointer"
               >
                 ✕
               </button>
@@ -313,38 +315,38 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
 
           {/* Autocomplete Suggestions Popup */}
           {showSuggestions && suggestions.length > 0 && (
-            <div className="absolute z-50 left-0 right-0 top-full mt-1 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl max-h-60 overflow-y-auto divide-y divide-slate-800">
-              <div className="p-2 bg-slate-950/90 text-[10px] font-bold text-blue-300 flex items-center justify-between">
+            <div className="absolute z-50 left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-2xl shadow-2xl max-h-60 overflow-y-auto divide-y divide-slate-100">
+              <div className="p-2.5 bg-slate-50 text-[10px] font-black text-slate-700 flex items-center justify-between uppercase tracking-wider">
                 <span>{isOlaMapsActive ? 'OLA MAPS SUGGESTIONS:' : 'SUGGESTED LOCATIONS:'}</span>
-                <span className="text-slate-400 font-normal">Type custom address anytime</span>
+                <span className="text-slate-400 font-medium normal-case">Type custom address anytime</span>
               </div>
               {suggestions.map((item, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => handleSelectSuggestion(item)}
-                  className="w-full text-left px-3 py-2 text-xs text-slate-200 hover:bg-blue-900/40 hover:text-blue-300 flex items-center justify-between transition"
+                  className="w-full text-left px-3.5 py-2.5 text-xs text-slate-800 hover:bg-amber-50/80 hover:text-slate-950 flex items-center justify-between transition cursor-pointer font-medium"
                 >
-                  <span className="flex items-center gap-1.5 truncate">
-                    <Navigation className="w-3 h-3 text-blue-400 shrink-0" />
+                  <span className="flex items-center gap-2 truncate">
+                    <Navigation className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                     <span className="truncate">{item}</span>
                   </span>
-                  <span className="text-[10px] text-slate-400 shrink-0">Select</span>
+                  <span className="text-[10px] text-slate-400 font-semibold shrink-0">Select</span>
                 </button>
               ))}
             </div>
           )}
 
           {/* Indicator notice */}
-          <div className="mt-1 flex items-center justify-between text-[10px] text-slate-400 px-0.5">
-            <span>✨ Type any custom doorstep, street, or hotel address</span>
+          <div className="mt-1.5 flex items-center justify-between text-[11px] text-slate-500 px-0.5">
+            <span>✨ Type any custom doorstep, street, or hotel</span>
             {isOlaMapsActive ? (
-              <span className="text-blue-400 font-bold flex items-center gap-0.5">
-                <Sparkles className="w-3 h-3" /> Ola Maps Live
+              <span className="text-emerald-700 font-bold flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-emerald-600" /> Ola Maps Live
               </span>
             ) : isGmapsLoaded ? (
-              <span className="text-emerald-400 font-bold flex items-center gap-0.5">
-                <Sparkles className="w-3 h-3" /> Google Maps Live
+              <span className="text-emerald-700 font-bold flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-emerald-600" /> Google Maps Live
               </span>
             ) : null}
           </div>

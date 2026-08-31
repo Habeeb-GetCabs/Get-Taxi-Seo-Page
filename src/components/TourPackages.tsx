@@ -160,10 +160,10 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
               <div className="p-6 pt-0">
                 <button
                   onClick={() => handleOpenTourDetails(tour)}
-                  className="w-full bg-slate-950 hover:bg-slate-900 text-white font-black py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition duration-200 cursor-pointer text-xs sm:text-sm shadow-md"
+                  className="w-full taxi-yellow-btn text-slate-950 font-black py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition duration-200 cursor-pointer text-xs sm:text-sm shadow-sm border border-amber-400 font-syne uppercase tracking-wider"
                 >
                   <span>View Itinerary & Book</span>
-                  <ChevronRight className="w-4 h-4 text-amber-400" />
+                  <ChevronRight className="w-4 h-4 text-slate-950" />
                 </button>
               </div>
             </div>
@@ -173,8 +173,8 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
 
       {/* Tour Detail Modal */}
       {activeTourModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-3xl w-full shadow-2xl overflow-hidden my-8 text-white max-h-[90vh] flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-white border border-slate-200 rounded-3xl max-w-3xl w-full shadow-2xl overflow-hidden my-8 text-slate-900 max-h-[90vh] flex flex-col">
             {/* Modal Header */}
             <div className="relative h-48 sm:h-64 shrink-0">
               <img
@@ -187,40 +187,40 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
                 }}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-black/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-black/60" />
 
               <button
                 onClick={() => setActiveTourModal(null)}
-                className="absolute top-4 right-4 bg-slate-950/80 hover:bg-slate-950 text-white p-2 rounded-full border border-slate-700 transition"
+                className="absolute top-4 right-4 bg-slate-900/80 hover:bg-slate-950 text-white p-2 rounded-full border border-slate-700 transition cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
 
               <div className="absolute bottom-4 left-6 right-6">
-                <span className="bg-amber-400 text-slate-950 font-extrabold text-xs px-2.5 py-1 rounded">
+                <span className="bg-amber-400 text-slate-950 font-extrabold text-xs px-2.5 py-1 rounded-full shadow">
                   {activeTourModal.durationDays} Days / {activeTourModal.durationNights} Night Package
                 </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-white mt-1">
+                <h3 className="text-xl sm:text-2xl font-black text-white mt-2">
                   {activeTourModal.title}
                 </h3>
-                <p className="text-xs text-slate-300 mt-1">{activeTourModal.subtitle}</p>
+                <p className="text-xs text-slate-200 mt-1 font-medium">{activeTourModal.subtitle}</p>
               </div>
             </div>
 
             {/* Modal Body Scrollable */}
             <div className="p-6 overflow-y-auto space-y-6 flex-1 text-xs sm:text-sm">
               {/* Pickup & Destinations */}
-              <div className="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
-                <div className="flex items-center gap-2 text-amber-400 font-bold">
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
+                <div className="flex items-center gap-2 text-amber-700 font-extrabold">
                   <MapPin className="w-4 h-4" />
                   <span>Pickup Location: {activeTourModal.pickupLocation}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 font-semibold block mb-1">Places Covered:</span>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-slate-200">
+                  <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] block mb-1">Places Covered:</span>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-slate-800">
                     {activeTourModal.destinationsCovered.map((d, i) => (
-                      <li key={i} className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <li key={i} className="flex items-center gap-1.5 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                         <span>{d}</span>
                       </li>
                     ))}
@@ -230,23 +230,23 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
 
               {/* Daywise Itinerary */}
               <div>
-                <h4 className="font-extrabold text-base text-white mb-3 flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-amber-400" />
+                <h4 className="font-black text-base text-slate-950 mb-3 flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-amber-600" />
                   Day-Wise Tour Itinerary
                 </h4>
                 <div className="space-y-3">
                   {activeTourModal.itinerary.map((day) => (
-                    <div key={day.day} className="bg-slate-950/80 border border-slate-800 rounded-xl p-4">
+                    <div key={day.day} className="bg-slate-50 border border-slate-200 rounded-2xl p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded text-xs font-bold">
+                        <span className="bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-0.5 rounded-full text-xs font-bold">
                           Day {day.day}
                         </span>
-                        <h5 className="font-bold text-white text-sm">{day.title}</h5>
+                        <h5 className="font-bold text-slate-950 text-sm">{day.title}</h5>
                       </div>
-                      <ul className="space-y-1.5 text-slate-300 pl-2">
+                      <ul className="space-y-1.5 text-slate-600 pl-2">
                         {day.activities.map((act, actIdx) => (
                           <li key={actIdx} className="flex items-start gap-2">
-                            <span className="text-amber-400 font-bold">•</span>
+                            <span className="text-amber-500 font-bold">•</span>
                             <span>{act}</span>
                           </li>
                         ))}
@@ -258,8 +258,8 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
 
               {/* Vehicle Pricing Selection */}
               <div>
-                <h4 className="font-extrabold text-base text-white mb-3 flex items-center gap-2">
-                  <Car className="w-4 h-4 text-amber-400" />
+                <h4 className="font-black text-base text-slate-950 mb-3 flex items-center gap-2">
+                  <Car className="w-4 h-4 text-amber-600" />
                   Select Vehicle Category & Total Tour Fare
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -269,19 +269,19 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
                       <div
                         key={vp.vehicleId}
                         onClick={() => setSelectedVehicleForTour(vp.vehicleId)}
-                        className={`cursor-pointer border rounded-xl p-3 flex justify-between items-center transition ${
+                        className={`cursor-pointer border rounded-2xl p-3.5 flex justify-between items-center transition ${
                           isSelected
-                            ? 'bg-amber-500/15 border-amber-400 ring-2 ring-amber-400/40'
-                            : 'bg-slate-950 border-slate-800 hover:border-slate-700'
+                            ? 'bg-amber-50 border-amber-500 ring-2 ring-amber-400/40 shadow-sm'
+                            : 'bg-white border-slate-200 hover:border-slate-300'
                         }`}
                       >
                         <div>
-                          <span className="font-bold text-white block text-xs sm:text-sm">
+                          <span className="font-bold text-slate-950 block text-xs sm:text-sm">
                             {vp.vehicleName}
                           </span>
-                          <span className="text-[11px] text-slate-400">Fixed Tour Fare</span>
+                          <span className="text-[11px] text-slate-500 font-medium">Fixed Tour Fare</span>
                         </div>
-                        <span className="font-extrabold text-amber-400 text-sm sm:text-base">
+                        <span className="font-black text-slate-950 text-sm sm:text-base">
                           ₹{vp.totalPrice.toLocaleString('en-IN')}
                         </span>
                       </div>
@@ -292,28 +292,28 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
 
               {/* Inclusions & Exclusions */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="bg-slate-950 border border-slate-800 rounded-xl p-3">
-                  <span className="font-bold text-emerald-400 block mb-2 text-xs uppercase tracking-wider">
+                <div className="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-3.5">
+                  <span className="font-bold text-emerald-800 block mb-2 text-xs uppercase tracking-wider">
                     ✓ Package Inclusions
                   </span>
-                  <ul className="space-y-1 text-slate-300 text-xs">
+                  <ul className="space-y-1 text-slate-700 text-xs font-medium">
                     {activeTourModal.inclusions.map((inc, i) => (
                       <li key={i} className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                         <span>{inc}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="bg-slate-950 border border-slate-800 rounded-xl p-3">
-                  <span className="font-bold text-rose-400 block mb-2 text-xs uppercase tracking-wider">
+                <div className="bg-rose-50/60 border border-rose-200 rounded-2xl p-3.5">
+                  <span className="font-bold text-rose-800 block mb-2 text-xs uppercase tracking-wider">
                     ✕ Exclusions
                   </span>
-                  <ul className="space-y-1 text-slate-400 text-xs">
+                  <ul className="space-y-1 text-slate-600 text-xs font-medium">
                     {activeTourModal.exclusions.map((exc, i) => (
                       <li key={i} className="flex items-center gap-1.5">
-                        <XCircle className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                        <XCircle className="w-3.5 h-3.5 text-rose-500 shrink-0" />
                         <span>{exc}</span>
                       </li>
                     ))}
@@ -323,10 +323,10 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
             </div>
 
             {/* Modal Footer CTA */}
-            <div className="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between shrink-0">
+            <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex items-center justify-between shrink-0">
               <div>
-                <span className="text-slate-400 block text-xs">Selected Package Price</span>
-                <span className="text-xl font-extrabold text-amber-400">
+                <span className="text-slate-500 block text-xs font-medium">Selected Package Price</span>
+                <span className="text-xl font-black text-slate-950">
                   ₹
                   {activeTourModal.vehiclePrices
                     .find((p) => p.vehicleId === selectedVehicleForTour)
@@ -336,7 +336,7 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
 
               <button
                 onClick={handleBookSelectedTour}
-                className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold px-6 py-3 rounded-xl shadow-lg shadow-amber-500/20 text-sm flex items-center gap-2 transition cursor-pointer"
+                className="taxi-yellow-btn text-slate-950 font-black px-6 py-3.5 rounded-xl shadow-md text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer border border-amber-400 font-syne uppercase tracking-wider"
               >
                 <span>Book This Tour Package</span>
                 <ArrowRight className="w-4 h-4" />

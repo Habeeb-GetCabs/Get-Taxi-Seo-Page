@@ -73,44 +73,44 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({ isOpen, onCl
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden text-white flex flex-col h-[550px]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+      <div className="bg-white border border-slate-200 rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden text-slate-900 flex flex-col h-[550px]">
         {/* Header */}
-        <div className="bg-slate-950 px-6 py-4 border-b border-slate-800 flex justify-between items-center shrink-0">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
-              <Sparkles className="w-5 h-5 text-amber-300" />
+        <div className="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-amber-400 rounded-xl flex items-center justify-center text-slate-950 font-bold shadow-sm">
+              <Sparkles className="w-5 h-5 text-slate-950" />
             </div>
             <div>
-              <h3 className="font-extrabold text-base text-white">Covai Taxi AI Trip Planner</h3>
-              <p className="text-[11px] text-indigo-300">Ask about fares, destinations & routes</p>
+              <h3 className="font-black text-base text-slate-950">Kovai Taxi AI Trip Planner</h3>
+              <p className="text-[11px] text-slate-500 font-medium">Ask about fares, destinations & routes</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800"
+            className="text-slate-400 hover:text-slate-950 p-1 rounded-lg hover:bg-slate-200 transition cursor-pointer"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Message History */}
-        <div className="flex-1 p-4 overflow-y-auto space-y-3 text-xs sm:text-sm">
+        <div className="flex-1 p-4 sm:p-5 overflow-y-auto space-y-3 text-xs sm:text-sm bg-white">
           {messages.map((m, idx) => (
             <div
               key={idx}
               className={`flex gap-2.5 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               {m.sender === 'ai' && (
-                <div className="w-7 h-7 bg-indigo-900 border border-indigo-700 rounded-full flex items-center justify-center text-indigo-300 shrink-0 mt-0.5">
+                <div className="w-7 h-7 bg-amber-100 border border-amber-300 rounded-full flex items-center justify-center text-amber-800 shrink-0 mt-0.5 shadow-sm">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
               <div
-                className={`max-w-[80%] rounded-2xl p-3 leading-relaxed ${
+                className={`max-w-[80%] rounded-2xl p-3.5 leading-relaxed shadow-sm ${
                   m.sender === 'user'
-                    ? 'bg-amber-400 text-slate-950 font-medium rounded-tr-none'
-                    : 'bg-slate-950 border border-slate-800 text-slate-200 rounded-tl-none'
+                    ? 'bg-amber-400 text-slate-950 font-bold rounded-tr-none'
+                    : 'bg-slate-50 border border-slate-200 text-slate-800 font-medium rounded-tl-none'
                 }`}
               >
                 {m.text}
@@ -119,50 +119,50 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({ isOpen, onCl
           ))}
 
           {loading && (
-            <div className="flex justify-start gap-2.5 items-center text-xs text-slate-400">
-              <div className="w-7 h-7 bg-indigo-900 rounded-full flex items-center justify-center text-indigo-300 shrink-0">
+            <div className="flex justify-start gap-2.5 items-center text-xs text-slate-500 font-medium">
+              <div className="w-7 h-7 bg-amber-100 rounded-full flex items-center justify-center text-amber-800 shrink-0">
                 <Loader2 className="w-4 h-4 animate-spin" />
               </div>
-              <span>Covai Taxi AI is analyzing fares...</span>
+              <span>Kovai Taxi AI is calculating best rates...</span>
             </div>
           )}
         </div>
 
         {/* Quick Prompts */}
-        <div className="px-4 py-2 bg-slate-950/60 border-t border-slate-800/80 flex gap-1.5 overflow-x-auto text-[11px]">
+        <div className="px-4 py-2 bg-slate-50 border-t border-slate-200 flex gap-1.5 overflow-x-auto text-[11px]">
           <button
             onClick={() => handleQuickPrompt('How much for cab to Ooty?')}
-            className="bg-slate-800 hover:bg-slate-700 text-amber-300 px-2.5 py-1 rounded-full shrink-0 border border-slate-700"
+            className="bg-white hover:bg-amber-100 text-slate-800 hover:text-amber-900 px-3 py-1 rounded-full shrink-0 border border-slate-300 font-semibold transition"
           >
             💡 Fare to Ooty?
           </button>
           <button
             onClick={() => handleQuickPrompt('How much to Isha Adiyogi?')}
-            className="bg-slate-800 hover:bg-slate-700 text-amber-300 px-2.5 py-1 rounded-full shrink-0 border border-slate-700"
+            className="bg-white hover:bg-amber-100 text-slate-800 hover:text-amber-900 px-3 py-1 rounded-full shrink-0 border border-slate-300 font-semibold transition"
           >
             💡 Isha Yoga drop?
           </button>
           <button
             onClick={() => handleQuickPrompt('Best vehicle for Valparai?')}
-            className="bg-slate-800 hover:bg-slate-700 text-amber-300 px-2.5 py-1 rounded-full shrink-0 border border-slate-700"
+            className="bg-white hover:bg-amber-100 text-slate-800 hover:text-amber-900 px-3 py-1 rounded-full shrink-0 border border-slate-300 font-semibold transition"
           >
             💡 Valparai trip advice?
           </button>
         </div>
 
         {/* Input Footer */}
-        <form onSubmit={handleSend} className="p-3 bg-slate-950 border-t border-slate-800 flex gap-2 shrink-0">
+        <form onSubmit={handleSend} className="p-3 bg-slate-50 border-t border-slate-200 flex gap-2 shrink-0">
           <input
             type="text"
             placeholder="Type your trip question..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-amber-400"
+            className="flex-1 bg-white border border-slate-300 rounded-xl px-4 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-amber-400 transition"
           />
           <button
             type="submit"
             disabled={loading}
-            className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center justify-center transition cursor-pointer"
+            className="taxi-yellow-btn text-slate-950 font-black px-4 py-2 rounded-xl text-xs flex items-center justify-center transition cursor-pointer border border-amber-400 shadow-sm"
           >
             <Send className="w-4 h-4" />
           </button>

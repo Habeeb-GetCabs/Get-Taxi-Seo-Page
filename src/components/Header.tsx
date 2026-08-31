@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Phone, MessageSquare, Car, MapPin, Clock, Search, Sparkles, Menu, X, BookOpen } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Phone, MessageSquare, Car, MapPin, Clock, Search, Sparkles, Menu, X, BookOpen, ShieldCheck } from 'lucide-react';
 
 interface HeaderProps {
   onOpenTrackBooking: () => void;
@@ -13,226 +13,248 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectTab,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (id: string) => {
     onSelectTab(id);
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offset = 90;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 text-slate-900 shadow-md border-b border-slate-200/80 backdrop-blur-xl relative overflow-hidden">
-      {/* Top 24/7 Hotline Bar */}
-      <div className="bg-slate-950 text-slate-100 px-4 py-1.5 text-xs sm:text-sm font-medium border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-4 flex-wrap">
-            <span className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-amber-400 text-[11px] sm:text-xs">
-              <Clock className="w-3.5 h-3.5 text-amber-400" /> 24/7 Doorstep Taxi Dispatch in 5 Mins
-            </span>
-            <span className="hidden md:inline text-slate-700">|</span>
-            <span className="hidden md:flex items-center gap-1 text-slate-300 text-xs">
-              <MapPin className="w-3.5 h-3.5 text-slate-400" /> Coimbatore • Ooty • Kodaikanal • Isha Yoga • Valparai
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3 text-xs">
-            <a
-              href="tel:+919043743777"
-              className="flex items-center gap-1.5 hover:text-amber-300 font-bold text-white transition tracking-tight"
-            >
-              <Phone className="w-3.5 h-3.5 fill-amber-400 text-amber-400" /> Call: 9043743777
-            </a>
-            <span className="text-slate-700">|</span>
-            <a
-              href="https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border border-emerald-700/60 px-2.5 py-0.5 rounded-full text-[11px] font-bold transition shadow-sm"
-            >
-              <MessageSquare className="w-3 h-3 text-emerald-400 fill-emerald-400/20" /> WhatsApp: 9043743777
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Header */}
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <div 
-          onClick={() => handleNavClick('hero')} 
-          className="flex items-center gap-3 cursor-pointer group"
-        >
-          <div className="w-11 h-11 bg-slate-950 text-white rounded-xl flex items-center justify-center shadow-md shadow-slate-900/10 border border-slate-800 group-hover:bg-blue-950 transition-colors duration-300">
-            <Car className="w-6 h-6 stroke-[2.2] text-amber-400" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-black text-xl tracking-tight text-slate-950 group-hover:text-blue-900 transition">
-                GET TAXI KOVAI
-              </span>
-              <span className="bg-amber-100 text-amber-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-amber-300 tracking-wider">
-                VERIFIED
-              </span>
+    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-3 sm:px-6 ${isScrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-5'}`}>
+      {/* Floating Semi-Transparent Pill Bar */}
+      <div className={`max-w-7xl mx-auto transition-all duration-300 rounded-[1.5rem] sm:rounded-[2rem] px-4 sm:px-6 border ${
+        isScrolled
+          ? 'glass bg-white/85 shadow-xl shadow-slate-950/5 border-slate-200/90 py-2 sm:py-2.5'
+          : 'glass bg-white/80 shadow-lg shadow-slate-900/5 border-slate-200/70 py-3 sm:py-3.5'
+      }`}>
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
+          {/* Logo & Brand */}
+          <div 
+            onClick={() => handleNavClick('estimator')} 
+            className="flex items-center gap-3 cursor-pointer group shrink-0"
+          >
+            <div className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-950 text-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md shadow-slate-900/10 border border-slate-800 group-hover:bg-blue-950 transition-all duration-300">
+              <Car className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2] text-amber-400" />
             </div>
-            <p className="text-xs text-slate-500 font-medium tracking-wide">
-              Coimbatore&apos;s Premier Lowest Fare Taxi
-            </p>
+            <div>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-black text-base sm:text-lg tracking-tight text-slate-950 font-syne group-hover:text-blue-900 transition">
+                  GET TAXI KOVAI
+                </span>
+                <span className="hidden xs:inline-flex items-center gap-1 bg-amber-100/90 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full border border-amber-300 tracking-wider">
+                  <ShieldCheck className="w-3 h-3 text-amber-700" /> VERIFIED
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-500 font-medium tracking-wide hidden sm:block">
+                Lowest Fare Taxi & Hill Tours
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-700">
-          <button
-            onClick={() => handleNavClick('estimator')}
-            className="hover:text-blue-900 transition cursor-pointer"
-          >
-            Fare Estimator
-          </button>
-          <button
-            onClick={() => handleNavClick('tours')}
-            className="hover:text-blue-950 transition cursor-pointer flex items-center gap-1 text-slate-900 font-bold"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" /> Tour Packages
-          </button>
-          <button
-            onClick={() => handleNavClick('tariffs')}
-            className="hover:text-blue-900 transition cursor-pointer"
-          >
-            Rate Card
-          </button>
-          <button
-            onClick={() => handleNavClick('fleet')}
-            className="hover:text-blue-900 transition cursor-pointer"
-          >
-            Our Fleet
-          </button>
-          <button
-            onClick={() => handleNavClick('distance-matrix')}
-            className="hover:text-blue-900 transition cursor-pointer text-slate-900 font-extrabold"
-          >
-            Distance Matrix
-          </button>
-          <button
-            onClick={() => handleNavClick('blog')}
-            className="hover:text-blue-900 transition cursor-pointer flex items-center gap-1 text-slate-800 font-semibold"
-          >
-            <BookOpen className="w-3.5 h-3.5 text-slate-600" /> Travel Blog
-          </button>
-          <button
-            onClick={() => handleNavClick('reviews')}
-            className="hover:text-blue-900 transition cursor-pointer"
-          >
-            Reviews
-          </button>
-        </nav>
-
-        {/* Actions */}
-        <div className="hidden sm:flex items-center gap-3">
-          <button
-            onClick={onOpenAiAssistant}
-            className="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer shadow-sm"
-            title="Ask AI Trip Assistant"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            AI Assistant
-          </button>
-
-          <button
-            onClick={onOpenTrackBooking}
-            className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1.5 cursor-pointer shadow-sm"
-          >
-            <Search className="w-3.5 h-3.5 text-slate-500" /> Track
-          </button>
-
-          <a
-            href="tel:+919043743777"
-            className="bg-slate-950 hover:bg-slate-900 text-white font-extrabold text-xs px-4 py-2 rounded-xl shadow-md transition flex items-center gap-1.5 cursor-pointer border border-slate-800"
-          >
-            <Phone className="w-3.5 h-3.5 fill-amber-400 text-amber-400" /> Call 9043743777
-          </a>
-        </div>
-
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 text-slate-700 hover:text-slate-950 cursor-pointer"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Dropdown Nav */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-200 px-4 py-4 space-y-3 shadow-xl">
-          <div className="flex flex-col space-y-2 text-sm font-bold">
+          {/* Desktop Nav Pills */}
+          <nav className="hidden xl:flex items-center gap-1 bg-slate-100/70 p-1.5 rounded-2xl border border-slate-200/60 text-xs font-bold text-slate-700 backdrop-blur-md">
             <button
               onClick={() => handleNavClick('estimator')}
-              className="text-left py-2 px-3 text-slate-800 hover:bg-slate-100 rounded-xl font-semibold"
+              className="px-3.5 py-1.5 rounded-xl hover:text-slate-950 hover:bg-white transition cursor-pointer font-extrabold text-slate-900 shadow-sm"
             >
-              🚖 Fare Estimator & Book
+              Estimator
             </button>
             <button
               onClick={() => handleNavClick('tours')}
-              className="text-left py-2 px-3 text-slate-900 hover:bg-slate-100 rounded-xl font-bold"
+              className="px-3.5 py-1.5 rounded-xl hover:text-slate-950 hover:bg-white transition cursor-pointer flex items-center gap-1"
             >
-              🏔️ Tour Packages (Ooty, Kodai, Isha)
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" /> Tour Packages
             </button>
             <button
               onClick={() => handleNavClick('tariffs')}
-              className="text-left py-2 px-3 text-slate-800 hover:bg-slate-100 rounded-xl font-semibold"
+              className="px-3.5 py-1.5 rounded-xl hover:text-slate-950 hover:bg-white transition cursor-pointer"
             >
-              📊 Rate Card & Tariffs
+              Rate Card
             </button>
             <button
               onClick={() => handleNavClick('distance-matrix')}
-              className="text-left py-2 px-3 text-slate-900 hover:bg-slate-100 rounded-xl font-extrabold"
+              className="px-3.5 py-1.5 rounded-xl hover:text-slate-950 hover:bg-white transition cursor-pointer"
             >
-              🗺️ Distance Matrix
-            </button>
-            <button
-              onClick={() => handleNavClick('blog')}
-              className="text-left py-2 px-3 text-slate-800 hover:bg-slate-100 rounded-xl font-semibold flex items-center gap-2"
-            >
-              📚 Travel Guide & History Blog
+              Distances
             </button>
             <button
               onClick={() => handleNavClick('fleet')}
-              className="text-left py-2 px-3 text-slate-800 hover:bg-slate-100 rounded-xl font-semibold"
+              className="px-3.5 py-1.5 rounded-xl hover:text-slate-950 hover:bg-white transition cursor-pointer"
             >
-              🚗 Fleet Overview
+              Fleet
+            </button>
+            <button
+              onClick={() => handleNavClick('blog')}
+              className="px-3.5 py-1.5 rounded-xl hover:text-slate-950 hover:bg-white transition cursor-pointer flex items-center gap-1"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-slate-500" /> Guides
             </button>
             <button
               onClick={() => handleNavClick('reviews')}
-              className="text-left py-2 px-3 text-slate-800 hover:bg-slate-100 rounded-xl font-semibold"
+              className="px-3.5 py-1.5 rounded-xl hover:text-slate-950 hover:bg-white transition cursor-pointer"
             >
-              ⭐ Customer Reviews
+              Reviews
             </button>
-          </div>
+          </nav>
 
-          <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
+          {/* Action Buttons */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* AI Assistant Pill */}
+            <button
+              onClick={onOpenAiAssistant}
+              className="hidden md:flex items-center gap-1.5 bg-slate-100 hover:bg-white border border-slate-200 text-slate-800 px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer shadow-sm hover:shadow"
+              title="Ask AI Trip Assistant"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span className="hidden lg:inline">AI Planner</span>
+            </button>
+
+            {/* Track Booking */}
+            <button
+              onClick={onOpenTrackBooking}
+              className="hidden sm:flex items-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs px-3 py-1.5 rounded-xl font-bold transition cursor-pointer shadow-sm hover:shadow"
+            >
+              <Search className="w-3.5 h-3.5 text-slate-500" /> Track
+            </button>
+
+            {/* WhatsApp Direct */}
             <a
               href="https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-emerald-700 text-white py-2.5 rounded-xl text-sm font-bold shadow-md"
+              className="hidden md:flex items-center justify-center w-9 h-9 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 rounded-xl transition cursor-pointer shadow-sm"
+              title="WhatsApp Dispatch"
             >
-              <MessageSquare className="w-4 h-4" />
-              WhatsApp Us: 9043743777
+              <MessageSquare className="w-4 h-4 fill-emerald-600/20 text-emerald-700" />
             </a>
+
+            {/* Call Button */}
             <a
               href="tel:+919043743777"
-              className="w-full flex items-center justify-center gap-2 bg-slate-950 text-white py-2.5 rounded-xl text-sm font-black shadow-md border border-slate-800"
+              className="taxi-yellow-btn font-black text-xs px-3.5 sm:px-4 py-2 sm:py-2 rounded-xl sm:rounded-2xl shadow-md flex items-center gap-1.5 cursor-pointer border border-amber-400 font-syne uppercase tracking-wider transition hover:scale-105"
             >
-              <Phone className="w-4 h-4 fill-amber-400 text-amber-400" />
-              Call Now: 9043743777
+              <Phone className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
+              <span>9043743777</span>
             </a>
+
+            {/* Mobile Menu Toggle Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="xl:hidden p-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl transition cursor-pointer border border-slate-200"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
-      )}
-    </header>
+
+        {/* Mobile Dropdown Drawer */}
+        {mobileMenuOpen && (
+          <div className="xl:hidden pt-4 mt-3 border-t border-slate-200/80 space-y-3">
+            <div className="grid grid-cols-2 gap-2 text-xs font-bold">
+              <button
+                onClick={() => handleNavClick('estimator')}
+                className="text-left py-2.5 px-3 text-slate-900 bg-slate-100/80 hover:bg-white rounded-xl font-bold border border-slate-200/60"
+              >
+                🚖 Fare Estimator
+              </button>
+              <button
+                onClick={() => handleNavClick('tours')}
+                className="text-left py-2.5 px-3 text-slate-900 bg-slate-100/80 hover:bg-white rounded-xl font-bold border border-slate-200/60"
+              >
+                🏔️ Tour Packages
+              </button>
+              <button
+                onClick={() => handleNavClick('tariffs')}
+                className="text-left py-2.5 px-3 text-slate-800 bg-slate-100/80 hover:bg-white rounded-xl font-semibold border border-slate-200/60"
+              >
+                📊 Rate Cards
+              </button>
+              <button
+                onClick={() => handleNavClick('distance-matrix')}
+                className="text-left py-2.5 px-3 text-slate-900 bg-slate-100/80 hover:bg-white rounded-xl font-bold border border-slate-200/60"
+              >
+                🗺️ Distances
+              </button>
+              <button
+                onClick={() => handleNavClick('fleet')}
+                className="text-left py-2.5 px-3 text-slate-800 bg-slate-100/80 hover:bg-white rounded-xl font-semibold border border-slate-200/60"
+              >
+                🚗 Fleet Cars
+              </button>
+              <button
+                onClick={() => handleNavClick('blog')}
+                className="text-left py-2.5 px-3 text-slate-800 bg-slate-100/80 hover:bg-white rounded-xl font-semibold border border-slate-200/60"
+              >
+                📚 Travel Guides
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenAiAssistant();
+                }}
+                className="flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 py-2.5 rounded-xl text-xs font-bold border border-slate-200"
+              >
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                AI Trip Planner
+              </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenTrackBooking();
+                }}
+                className="flex items-center justify-center gap-1.5 bg-white hover:bg-slate-50 text-slate-800 py-2.5 rounded-xl text-xs font-bold border border-slate-200 shadow-sm"
+              >
+                <Search className="w-4 h-4 text-slate-500" />
+                Track Booking
+              </button>
+            </div>
+
+            <div className="pt-2 flex flex-col gap-2">
+              <a
+                href="https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-xs font-bold shadow-md"
+              >
+                <MessageSquare className="w-4 h-4" />
+                WhatsApp: 9043743777
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
