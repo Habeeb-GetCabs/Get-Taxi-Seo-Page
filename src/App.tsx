@@ -174,7 +174,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white font-sans antialiased selection:bg-amber-400 selection:text-zinc-950">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-slate-950 selection:text-white">
       {/* Navigation Header */}
       <Header
         onOpenTrackBooking={() => setTrackBookingOpen(true)}
@@ -194,36 +194,36 @@ export default function App() {
           href="https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab."
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3.5 rounded-2xl font-black text-xs flex items-center justify-center gap-1.5 shadow-2xl shadow-emerald-500/30 border border-emerald-400/30"
+          className="flex-1 bg-emerald-700 text-white py-3.5 rounded-2xl font-black text-xs flex items-center justify-center gap-1.5 shadow-2xl border border-emerald-600"
         >
           <MessageSquare className="w-4 h-4 fill-white/20" /> WhatsApp 9043743777
         </a>
         <a
           href="tel:+919043743777"
-          className="flex-1 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-zinc-950 py-3.5 rounded-2xl font-black text-xs flex items-center justify-center gap-1.5 shadow-2xl shadow-amber-500/30"
+          className="flex-1 bg-slate-950 text-white py-3.5 rounded-2xl font-black text-xs flex items-center justify-center gap-1.5 shadow-2xl border border-slate-800"
         >
-          <Phone className="w-4 h-4 fill-zinc-950" /> Call 9043743777
+          <Phone className="w-4 h-4 fill-amber-400 text-amber-400" /> Call 9043743777
         </a>
       </div>
 
       {/* Trust Stats Bar */}
-      <section className="bg-zinc-900/90 border-y border-zinc-800/90 py-10">
+      <section className="bg-white border-y border-slate-200 py-10 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className="bg-zinc-950/60 p-4 rounded-2xl border border-zinc-800/80">
-            <span className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-400 block mb-1">50,000+</span>
-            <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider">Outstation Rides Completed</span>
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <span className="text-2xl sm:text-4xl font-black text-slate-950 block mb-1">50,000+</span>
+            <span className="text-xs text-slate-600 font-bold uppercase tracking-wider">Outstation Rides Completed</span>
           </div>
-          <div className="bg-zinc-950/60 p-4 rounded-2xl border border-zinc-800/80">
-            <span className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-400 block mb-1">5 Mins</span>
-            <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider">Avg Doorstep Dispatch Time</span>
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <span className="text-2xl sm:text-4xl font-black text-slate-950 block mb-1">5 Mins</span>
+            <span className="text-xs text-slate-600 font-bold uppercase tracking-wider">Avg Doorstep Dispatch Time</span>
           </div>
-          <div className="bg-zinc-950/60 p-4 rounded-2xl border border-zinc-800/80">
-            <span className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-400 block mb-1">Best Fares</span>
-            <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider">Guaranteed Best Local & Airport Rates</span>
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <span className="text-2xl sm:text-4xl font-black text-slate-950 block mb-1">Best Fares</span>
+            <span className="text-xs text-slate-600 font-bold uppercase tracking-wider">Guaranteed Best Local & Airport Rates</span>
           </div>
-          <div className="bg-zinc-950/60 p-4 rounded-2xl border border-zinc-800/80">
-            <span className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-400 block mb-1">4.9 ★</span>
-            <span className="text-xs text-zinc-400 font-bold uppercase tracking-wider">Verified Customer Rating</span>
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <span className="text-2xl sm:text-4xl font-black text-slate-950 block mb-1">4.9 ★</span>
+            <span className="text-xs text-slate-600 font-bold uppercase tracking-wider">Verified Customer Rating</span>
           </div>
         </div>
       </section>
@@ -247,13 +247,13 @@ export default function App() {
       <Reviews />
 
       {/* FAQs Section */}
-      <section id="faqs" className="py-16 bg-zinc-950 text-white border-t border-zinc-800 relative">
+      <section id="faqs" className="py-16 bg-white text-slate-900 border-t border-slate-200 relative">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-1.5 bg-amber-400/10 text-amber-300 border border-amber-400/30 px-3.5 py-1.5 rounded-full text-xs font-black mb-3">
-              <HelpCircle className="w-3.5 h-3.5 text-amber-400" /> Frequently Asked Questions
+            <div className="inline-flex items-center gap-1.5 bg-amber-100 text-amber-900 border border-amber-300 px-3.5 py-1.5 rounded-full text-xs font-bold mb-3 shadow-sm">
+              <HelpCircle className="w-3.5 h-3.5 text-amber-600" /> Frequently Asked Questions
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950">
               Everything You Need to Know About Get Taxi Kovai
             </h2>
           </div>
@@ -264,22 +264,22 @@ export default function App() {
               return (
                 <div
                   key={idx}
-                  className="bg-zinc-900/80 border border-zinc-800/90 rounded-2xl overflow-hidden transition-all duration-300 hover:border-amber-400/40"
+                  className="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 hover:border-slate-300 shadow-sm"
                 >
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full text-left p-5 flex items-center justify-between gap-4 font-black text-sm sm:text-base text-white hover:text-amber-300 transition cursor-pointer"
+                    className="w-full text-left p-5 flex items-center justify-between gap-4 font-black text-sm sm:text-base text-slate-950 hover:text-blue-950 transition cursor-pointer"
                   >
                     <span>{faq.question}</span>
                     {isOpen ? (
-                      <ChevronUp className="w-5 h-5 text-amber-400 shrink-0" />
+                      <ChevronUp className="w-5 h-5 text-amber-600 shrink-0" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-zinc-400 shrink-0" />
+                      <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
                     )}
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-zinc-800/80 pt-3.5 font-medium">
+                    <div className="px-5 pb-5 text-xs sm:text-sm text-slate-700 leading-relaxed border-t border-slate-200 pt-3.5 font-medium">
                       {faq.answer}
                     </div>
                   )}

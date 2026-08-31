@@ -34,18 +34,18 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
   };
 
   return (
-    <section id="tours" className="py-16 bg-slate-900 text-white">
+    <section id="tours" className="py-16 bg-slate-50 text-slate-900 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-xs font-semibold mb-3">
-              <Sparkles className="w-3.5 h-3.5" /> Curated South Indian Tour Packages
+            <div className="inline-flex items-center gap-1.5 bg-amber-100 text-amber-900 border border-amber-300 px-3.5 py-1.5 rounded-full text-xs font-bold mb-3 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" /> Curated South Indian Tour Packages
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950">
               Explore Ooty, Kodaikanal & Isha Foundation
             </h2>
-            <p className="text-slate-400 text-sm mt-2 max-w-2xl">
+            <p className="text-slate-600 text-sm mt-2 max-w-2xl font-medium leading-relaxed">
               Hassle-free hill station holidays & temple pilgrimage packages starting from Coimbatore. Complete with expert ghat road drivers, fuel, driver bata & parking.
             </p>
           </div>
@@ -54,40 +54,40 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
           <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                 selectedCategory === 'all'
-                  ? 'bg-amber-400 text-slate-950'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  ? 'bg-slate-950 text-white'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
               }`}
             >
               All Tours ({TOUR_PACKAGES.length})
             </button>
             <button
               onClick={() => setSelectedCategory('hill-station')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                 selectedCategory === 'hill-station'
-                  ? 'bg-amber-400 text-slate-950'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  ? 'bg-slate-950 text-white'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
               }`}
             >
               ⛰️ Hill Stations
             </button>
             <button
               onClick={() => setSelectedCategory('pilgrimage')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                 selectedCategory === 'pilgrimage'
-                  ? 'bg-amber-400 text-slate-950'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  ? 'bg-slate-950 text-white'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
               }`}
             >
               🛕 Temple Pilgrimage
             </button>
             <button
               onClick={() => setSelectedCategory('wildlife')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                 selectedCategory === 'wildlife'
-                  ? 'bg-amber-400 text-slate-950'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  ? 'bg-slate-950 text-white'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
               }`}
             >
               🐅 Wildlife & Nature
@@ -100,7 +100,7 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
           {filteredTours.map((tour) => (
             <div
               key={tour.id}
-              className="bg-slate-950 border border-slate-800 hover:border-amber-400/50 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group transition duration-300 hover:-translate-y-1"
+              className="bg-white border border-slate-200/90 hover:border-amber-400 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between group transition duration-300 hover:-translate-y-1"
             >
               <div>
                 {/* Image & Badge Header */}
@@ -115,39 +115,39 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
                     }}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
 
-                  <span className="absolute top-3 left-3 bg-amber-400 text-slate-950 text-[11px] font-extrabold px-2.5 py-1 rounded-md shadow">
+                  <span className="absolute top-3 left-3 bg-amber-400 text-slate-950 text-[11px] font-black px-3 py-1 rounded-full shadow">
                     {tour.durationDays} {tour.durationDays === 1 ? 'Day Tour' : 'Days Tour'}
                   </span>
 
-                  <span className="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-amber-300 border border-amber-400/30 text-xs font-bold px-2.5 py-1 rounded-md">
+                  <span className="absolute top-3 right-3 bg-white/95 backdrop-blur-md text-slate-950 border border-slate-200 text-xs font-extrabold px-3 py-1 rounded-full shadow-sm">
                     From ₹{tour.startingPrice.toLocaleString('en-IN')}
                   </span>
                 </div>
 
                 {/* Card Body */}
-                <div className="p-5 space-y-3">
-                  <h3 className="font-extrabold text-lg text-white group-hover:text-amber-400 transition">
+                <div className="p-6 space-y-3">
+                  <h3 className="font-black text-xl text-slate-950 group-hover:text-blue-950 transition">
                     {tour.title}
                   </h3>
-                  <p className="text-xs text-slate-400 line-clamp-2">{tour.subtitle}</p>
+                  <p className="text-xs text-slate-600 line-clamp-2 font-medium">{tour.subtitle}</p>
 
                   <div className="space-y-1.5 pt-2">
-                    <span className="text-[11px] font-semibold text-amber-400 uppercase tracking-wider block">
+                    <span className="text-[11px] font-bold text-slate-900 uppercase tracking-wider block">
                       Destinations Covered:
                     </span>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-1.5">
                       {tour.destinationsCovered.slice(0, 3).map((dest, i) => (
                         <span
                           key={i}
-                          className="bg-slate-900 text-slate-300 text-[10px] px-2 py-0.5 rounded border border-slate-800"
+                          className="bg-slate-100 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-lg border border-slate-200"
                         >
                           {dest}
                         </span>
                       ))}
                       {tour.destinationsCovered.length > 3 && (
-                        <span className="bg-slate-900 text-amber-400 text-[10px] px-1.5 py-0.5 rounded">
+                        <span className="bg-amber-100 text-amber-900 text-[10px] font-bold px-2.5 py-1 rounded-lg border border-amber-300">
                           +{tour.destinationsCovered.length - 3} more
                         </span>
                       )}
@@ -157,13 +157,13 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
               </div>
 
               {/* Card Footer Button */}
-              <div className="p-5 pt-0">
+              <div className="p-6 pt-0">
                 <button
                   onClick={() => handleOpenTourDetails(tour)}
-                  className="w-full bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-amber-400 font-bold py-2.5 px-4 rounded-xl border border-amber-400/30 flex items-center justify-center gap-2 transition duration-200 cursor-pointer text-xs sm:text-sm"
+                  className="w-full bg-slate-950 hover:bg-slate-900 text-white font-black py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition duration-200 cursor-pointer text-xs sm:text-sm shadow-md"
                 >
                   <span>View Itinerary & Book</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4 text-amber-400" />
                 </button>
               </div>
             </div>
