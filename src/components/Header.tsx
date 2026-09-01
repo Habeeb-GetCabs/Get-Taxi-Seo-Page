@@ -158,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Call Button */}
             <a
               href="tel:+919043743777"
-              className="taxi-yellow-btn font-black text-xs px-3.5 sm:px-4 py-2 sm:py-2 rounded-xl sm:rounded-2xl shadow-md flex items-center gap-1.5 cursor-pointer border border-amber-400 font-syne uppercase tracking-wider transition hover:scale-105"
+              className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl shadow-md flex items-center gap-1.5 cursor-pointer border border-amber-400 transition hover:scale-105"
             >
               <Phone className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
               <span>9043743777</span>

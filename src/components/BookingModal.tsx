@@ -99,11 +99,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       `*Phone:* ${b.passengerPhone}\n` +
       `*Trip Type:* ${b.tripType.toUpperCase()}\n` +
       `*Route:* ${b.pickupLocation} ➔ ${b.dropLocation}\n` +
-      `*Distance:* ${b.distanceKm} KM\n` +
       `*Vehicle:* ${b.vehicleName}\n` +
       `*Pickup Date & Time:* ${b.pickupDate} at ${b.pickupTime}\n` +
       `*Pickup Address:* ${b.pickupAddress}\n` +
-      `*Est Total Fare:* ₹${b.totalFare.toLocaleString('en-IN')}\n\n` +
+      (b.totalFare > 0 ? `*Total Fare Quote:* ₹${b.totalFare.toLocaleString('en-IN')}\n\n` : `*Fare Quote:* Best Rate on Confirmation\n\n`) +
       `Please confirm my driver & cab dispatch details!`;
 
     return `https://wa.me/919043743777?text=${encodeURIComponent(text)}`;
@@ -187,20 +186,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="pt-2 border-t border-slate-200 text-xs">
                 <span className="text-slate-500 block text-[10px] uppercase font-bold">Route</span>
                 <span className="font-black text-slate-950">
-                  {confirmedBooking.pickupLocation} ➔ {confirmedBooking.dropLocation} ({confirmedBooking.distanceKm} KM)
+                  {confirmedBooking.pickupLocation} ➔ {confirmedBooking.dropLocation}
                 </span>
-                <span className="text-slate-500 block text-[10px] uppercase font-bold mt-1">Pickup Address</span>
+                <span className="text-slate-500 block text-[10px] uppercase font-bold mt-2">Pickup Address</span>
                 <span className="text-slate-800 font-medium">{confirmedBooking.pickupAddress}</span>
               </div>
 
-              <div className="pt-2 border-t border-slate-200 flex justify-between items-center text-sm">
-                <span className="font-bold text-slate-700">Estimated Total Fare</span>
-                <span className="font-black text-slate-950 text-xl">
-                  {confirmedBooking.totalFare > 0
-                    ? `₹${confirmedBooking.totalFare.toLocaleString('en-IN')}`
-                    : 'Best Price on Call'}
-                </span>
-              </div>
+              {confirmedBooking.totalFare > 0 && (
+                <div className="pt-2 border-t border-slate-200 flex justify-between items-center text-sm">
+                  <span className="font-bold text-slate-700">Estimated Total Fare</span>
+                  <span className="font-black text-slate-950 text-xl">
+                    ₹{confirmedBooking.totalFare.toLocaleString('en-IN')}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Actions */}

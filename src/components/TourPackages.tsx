@@ -160,10 +160,10 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
               <div className="p-6 pt-0">
                 <button
                   onClick={() => handleOpenTourDetails(tour)}
-                  className="w-full taxi-yellow-btn text-slate-950 font-black py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition duration-200 cursor-pointer text-xs sm:text-sm shadow-sm border border-amber-400 font-syne uppercase tracking-wider"
+                  className="w-full bg-slate-950 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition duration-200 cursor-pointer text-sm shadow-md"
                 >
-                  <span>View Itinerary & Book</span>
-                  <ChevronRight className="w-4 h-4 text-slate-950" />
+                  <span>View More Details</span>
+                  <ChevronRight className="w-4 h-4 text-amber-400" />
                 </button>
               </div>
             </div>
@@ -336,7 +336,7 @@ export const TourPackages: React.FC<TourPackagesProps> = ({ onSelectTourBooking 
 
               <button
                 onClick={handleBookSelectedTour}
-                className="taxi-yellow-btn text-slate-950 font-black px-6 py-3.5 rounded-xl shadow-md text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer border border-amber-400 font-syne uppercase tracking-wider"
+                className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-6 py-3.5 rounded-xl shadow-md text-sm flex items-center gap-2 transition cursor-pointer"
               >
                 <span>Book This Tour Package</span>
                 <ArrowRight className="w-4 h-4" />

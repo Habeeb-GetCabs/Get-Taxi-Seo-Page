@@ -191,10 +191,8 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
         setSuggestions(filtered);
         setShowSuggestions(true);
       }
-    } else if (text.trim().length === 0) {
-      setSuggestions(DETAILED_KOVAI_AREAS.slice(0, 8));
-      setShowSuggestions(true);
     } else {
+      setSuggestions([]);
       setShowSuggestions(false);
     }
   };
@@ -209,9 +207,9 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
     <div className="space-y-1.5 relative">
       {/* Header Label + Toggle Mode */}
       <div className="flex items-center justify-between">
-        <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wide">
-          <MapPin className={`w-3.5 h-3.5 ${isPickup ? 'text-amber-500' : 'text-emerald-600'}`} />
-          {label}
+        <label className="text-xs font-black text-slate-100 flex items-center gap-1.5 uppercase tracking-wide">
+          <MapPin className={`w-4 h-4 ${isPickup ? 'text-amber-400' : 'text-emerald-400'}`} />
+          <span>{label}</span>
         </label>
         <button
           type="button"
@@ -219,16 +217,16 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
             setMode(mode === 'autocomplete' ? 'dropdown' : 'autocomplete');
             setShowSuggestions(false);
           }}
-          className="text-[11px] font-bold text-slate-600 hover:text-slate-950 flex items-center gap-1 bg-slate-100 hover:bg-slate-200 border border-slate-300 px-2 py-0.5 rounded-lg transition cursor-pointer"
+          className="text-[11px] font-extrabold text-amber-300 hover:text-white flex items-center gap-1 bg-slate-900 hover:bg-slate-800 border border-slate-700/80 px-2.5 py-1 rounded-lg transition cursor-pointer shadow-sm"
         >
           {mode === 'autocomplete' ? (
             <>
-              <List className="w-3 h-3 text-slate-700" />
+              <List className="w-3.5 h-3.5 text-amber-400" />
               <span>Select from List</span>
             </>
           ) : (
             <>
-              <Edit3 className="w-3 h-3 text-emerald-600" />
+              <Edit3 className="w-3.5 h-3.5 text-emerald-400" />
               <span>Type Custom Address</span>
             </>
           )}
@@ -288,10 +286,7 @@ export const LocationAutocompleteInput: React.FC<LocationAutocompleteInputProps>
               value={inputVal}
               onChange={handleInputChange}
               onFocus={() => {
-                if (!isGmapsLoaded && !olaApiKey && !inputVal) {
-                  setSuggestions(DETAILED_KOVAI_AREAS.slice(0, 8));
-                  setShowSuggestions(true);
-                }
+                // Do not preload locations on empty focus
               }}
               placeholder={placeholder}
               className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-8 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:bg-white transition"

@@ -26,14 +26,14 @@ export const Footer: React.FC<FooterProps> = ({
                 <span className="font-extrabold text-lg text-white block leading-tight">
                   GET TAXI KOVAI
                 </span>
-                <span className="text-xs text-amber-400 font-medium">
-                  Coimbatore&apos;s Lowest Fare Taxi
+                <span className="text-xs text-amber-400 font-bold">
+                  Your Best Choice Call Taxi in Coimbatore
                 </span>
               </div>
             </div>
 
             <p className="text-slate-400 text-xs leading-relaxed">
-              Coimbatore&apos;s premier taxi service. Local cabs at ₹80 base & ₹28/km, One-way drop at flat ₹26/km (+ ₹300 batta), Outstation round trips at ₹15/km (+ ₹400 batta), and Airport transfers at Base ₹100 & ₹30/km.
+              Your top choice call taxi in Coimbatore. Local cabs, one-way drop taxi to Chennai & Bangalore, outstation round trips to Ooty & Kodaikanal, and 24/7 airport transfers with zero hidden fees.
             </p>
 
             <div className="space-y-2 text-xs">
