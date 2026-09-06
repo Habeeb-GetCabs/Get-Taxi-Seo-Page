@@ -88,14 +88,14 @@ export const TariffTable: React.FC = () => {
             {FIXED_ROUTE_CARDS.map((item) => (
               <div
                 key={item.id}
-                className="bg-white text-slate-900 border border-slate-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-amber-400/80 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 group relative overflow-hidden"
+                className="bg-white text-slate-900 border border-slate-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-amber-400 transition-all duration-300 shadow-2xl hover:shadow-amber-400/10 hover:-translate-y-1 group relative overflow-hidden"
               >
                 <div>
                   {/* Top Badge: Distance + Price */}
                   <div className="flex items-start justify-between gap-2 mb-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0">
-                        <MapPin className="w-4 h-4 text-slate-900" />
+                      <div className="w-8 h-8 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
+                        <MapPin className="w-4 h-4 text-amber-600" />
                       </div>
                       <h3 className="font-bold text-base text-slate-950 group-hover:text-amber-600 transition-colors leading-tight">
                         {item.route}
@@ -110,7 +110,7 @@ export const TariffTable: React.FC = () => {
                       <span>{item.distance}</span>
                     </div>
                     <div className="text-right">
-                      <span className="text-[10px] text-slate-400 block font-medium leading-none mb-0.5">Fixed Fare</span>
+                      <span className="text-[10px] text-slate-500 block font-medium leading-none mb-0.5">Fixed Fare</span>
                       <span className="text-base font-black text-slate-950">
                         ₹{item.fare.toLocaleString('en-IN')}
                       </span>
@@ -125,14 +125,14 @@ export const TariffTable: React.FC = () => {
                   {/* Key Attractions Pills */}
                   {item.attractions && item.attractions.length > 0 && (
                     <div className="mb-4">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
                         Key Attractions:
                       </span>
                       <div className="flex flex-wrap gap-1">
                         {item.attractions.map((attr, idx) => (
                           <span
                             key={idx}
-                            className="bg-slate-50 text-slate-700 border border-slate-200/70 text-[10px] font-medium px-2 py-0.5 rounded-md"
+                            className="bg-slate-100 text-slate-700 border border-slate-200 text-[10px] font-medium px-2 py-0.5 rounded-md"
                           >
                             • {attr}
                           </span>
@@ -161,9 +161,9 @@ export const TariffTable: React.FC = () => {
                       )}%20(${encodeURIComponent(item.distance)}%20-%20%E2%82%B9${item.fare}).%20Please%20confirm%20booking.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs py-2.5 px-2 rounded-xl flex items-center justify-center gap-1.5 transition shadow-sm"
+                      className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs py-2.5 px-2 rounded-xl flex items-center justify-center gap-1.5 transition shadow-sm"
                     >
-                      <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                      <MessageSquare className="w-3.5 h-3.5 text-slate-950" />
                       <span>WhatsApp</span>
                     </a>
                   </div>
@@ -318,7 +318,7 @@ export const TariffTable: React.FC = () => {
           {TARIFF_POLICIES.map((policy, idx) => (
             <div
               key={idx}
-              className="bg-white text-slate-900 border border-slate-200/90 rounded-2xl p-6 space-y-3 shadow-xl hover:shadow-2xl hover:border-amber-400/80 transition-all duration-300"
+              className="bg-white text-slate-900 border border-slate-200/90 rounded-2xl p-6 space-y-3 shadow-xl hover:shadow-2xl hover:border-amber-400 transition-all duration-300"
             >
               <h4 className="font-bold text-sm text-slate-950 flex items-center gap-2">
                 <FileText className="w-4 h-4 text-amber-600" />

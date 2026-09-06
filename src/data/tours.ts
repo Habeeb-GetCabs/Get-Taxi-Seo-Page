@@ -10,7 +10,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     durationNights: 0,
     startingPrice: 1499,
     recommendedVehicle: 'Sedan (Dzire/Etios)',
-    coverImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Adiyogi_Shiva_statue%2C_Coimbatore.jpg/800px-Adiyogi_Shiva_statue%2C_Coimbatore.jpg',
+    coverImage: '/images/tours/tour-isha-adiyogi.webp',
     fallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Adiyogi_Shiva_statue%2C_Coimbatore.jpg/800px-Adiyogi_Shiva_statue%2C_Coimbatore.jpg',
     pickupLocation: 'Anywhere in Coimbatore City / Airport / Railway Station',
     destinationsCovered: [
@@ -70,7 +70,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     durationNights: 1,
     startingPrice: 4499,
     recommendedVehicle: 'Executive Sedan / Ertiga SUV',
-    coverImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Ooty_Lake%2C_Tamil_Nadu.jpg/800px-Ooty_Lake%2C_Tamil_Nadu.jpg',
+    coverImage: '/images/tours/tour-ooty-lake.webp',
     fallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Ooty_Lake%2C_Tamil_Nadu.jpg/800px-Ooty_Lake%2C_Tamil_Nadu.jpg',
     pickupLocation: 'Coimbatore Airport / Railway Station / Hotel',
     destinationsCovered: [
@@ -140,7 +140,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     durationNights: 2,
     startingPrice: 7999,
     recommendedVehicle: 'Executive Sedan / Innova Crysta',
-    coverImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Kodaikanal_Lake_view.jpg/800px-Kodaikanal_Lake_view.jpg',
+    coverImage: '/images/tours/tour-kodaikanal-lake.webp',
     fallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Kodaikanal_Lake_view.jpg/800px-Kodaikanal_Lake_view.jpg',
     pickupLocation: 'Coimbatore City / Airport / Station',
     destinationsCovered: [
@@ -215,7 +215,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     durationNights: 1,
     startingPrice: 5299,
     recommendedVehicle: 'Ertiga SUV / Innova Crysta',
-    coverImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Valparai_tea_estates.jpg/800px-Valparai_tea_estates.jpg',
+    coverImage: '/images/tours/tour-valparai-tea.webp',
     fallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Valparai_tea_estates.jpg/800px-Valparai_tea_estates.jpg',
     pickupLocation: 'Coimbatore Pickups',
     destinationsCovered: [
@@ -283,7 +283,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     durationNights: 2,
     startingPrice: 8499,
     recommendedVehicle: 'Innova Crysta / Swift Dzire',
-    coverImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Munnar_tea_plantations_Kerala.jpg/800px-Munnar_tea_plantations_Kerala.jpg',
+    coverImage: '/images/tours/tour-munnar-plantations.webp',
     fallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Munnar_tea_plantations_Kerala.jpg/800px-Munnar_tea_plantations_Kerala.jpg',
     pickupLocation: 'Coimbatore Airport / Railway Station / Hotel',
     destinationsCovered: [
@@ -356,7 +356,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     durationNights: 0,
     startingPrice: 2499,
     recommendedVehicle: 'Sedan / Ertiga SUV',
-    coverImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Palani_Murugan_Temple_Hill.jpg/800px-Palani_Murugan_Temple_Hill.jpg',
+    coverImage: '/images/tours/tour-palani-murugan-temple.webp',
     fallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Palani_Murugan_Temple_Hill.jpg/800px-Palani_Murugan_Temple_Hill.jpg',
     pickupLocation: 'Coimbatore Doorstep Pickup',
     destinationsCovered: [
@@ -409,7 +409,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     durationNights: 0,
     startingPrice: 4899,
     recommendedVehicle: 'Executive Sedan / Ertiga SUV',
-    coverImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Brihadeeswarar_Temple_Thanjavur_2019.jpg/800px-Brihadeeswarar_Temple_Thanjavur_2019.jpg',
+    coverImage: '/images/tours/tour-thanjavur-big-temple.webp',
     fallbackImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Thanjavur_Brihadeeswarar_Temple_at_dusk.jpg/800px-Thanjavur_Brihadeeswarar_Temple_at_dusk.jpg',
     pickupLocation: 'Coimbatore Residence / Airport / Railway Station',
     destinationsCovered: [

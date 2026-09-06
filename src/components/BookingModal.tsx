@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { TripType, VehicleCategory, BookingDetails } from '../types';
-import { X, CheckCircle2, MessageSquare, Phone, Printer, Calendar, Clock, MapPin, User, Car, Sparkles, AlertCircle } from 'lucide-react';
+import { X, CheckCircle2, MessageSquare, Phone, Printer, Calendar, Clock, MapPin, User, Car, ShieldCheck, AlertCircle } from 'lucide-react';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -40,14 +40,42 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [pickupTime, setPickupTime] = useState('07:00');
   const [specialNotes, setSpecialNotes] = useState('');
 
+  // Inline validation state (replaces native browser alert)
+  const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [confirmedBooking, setConfirmedBooking] = useState<BookingDetails | null>(null);
 
   if (!isOpen || !bookingData) return null;
 
+  const validateForm = () => {
+    const errors: { [key: string]: string } = {};
+
+    if (!passengerName.trim()) {
+      errors.passengerName = 'Full Name is required.';
+    } else if (passengerName.trim().length < 2) {
+      errors.passengerName = 'Name must be at least 2 characters.';
+    }
+
+    const cleanPhone = passengerPhone.replace(/\D/g, '');
+    if (!passengerPhone.trim()) {
+      errors.passengerPhone = 'Mobile phone number is required.';
+    } else if (cleanPhone.length < 10) {
+      errors.passengerPhone = 'Please enter a valid 10-digit mobile number.';
+    }
+
+    if (!pickupAddress.trim()) {
+      errors.pickupAddress = 'Doorstep pickup address is required.';
+    } else if (pickupAddress.trim().length < 5) {
+      errors.pickupAddress = 'Please provide detailed pickup landmark or address.';
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleConfirm = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!passengerName || !passengerPhone || !pickupAddress) {
-      alert('Please fill in your name, mobile phone number, and pickup address.');
+    
+    if (!validateForm()) {
       return;
     }
 
@@ -57,18 +85,18 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     const newBooking: BookingDetails = {
       id: bookingId,
       tripType: bookingData.tripType,
-      pickupLocation: bookingData.pickupLocation,
-      dropLocation: bookingData.dropLocation,
+      pickupLocation: bookingData.pickupLocation || 'Coimbatore',
+      dropLocation: bookingData.dropLocation || 'As Requested',
       distanceKm: bookingData.distanceKm,
       vehicleId: bookingData.vehicle.id,
       vehicleName: bookingData.vehicle.name,
       pickupDate,
       pickupTime,
-      passengerName,
-      passengerPhone,
-      passengerEmail,
-      pickupAddress,
-      specialNotes,
+      passengerName: passengerName.trim(),
+      passengerPhone: passengerPhone.trim(),
+      passengerEmail: passengerEmail.trim(),
+      pickupAddress: pickupAddress.trim(),
+      specialNotes: specialNotes.trim(),
       baseFare: bookingData.baseFare,
       driverBata: bookingData.driverBata,
       estimatedTolls: bookingData.estimatedTolls,
@@ -79,6 +107,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
     onSaveBooking(newBooking);
     setConfirmedBooking(newBooking);
+    setFormErrors({});
 
     // Confetti celebration
     try {
@@ -103,7 +132,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       `*Pickup Date & Time:* ${b.pickupDate} at ${b.pickupTime}\n` +
       `*Pickup Address:* ${b.pickupAddress}\n` +
       (b.totalFare > 0 ? `*Total Fare Quote:* ₹${b.totalFare.toLocaleString('en-IN')}\n\n` : `*Fare Quote:* Best Rate on Confirmation\n\n`) +
-      `Please confirm my driver & cab dispatch details!`;
+      `*Terms:* Zero Advance • Pay Cash/UPI After Ride • 10 Mins Pickup Guarantee\n\n` +
+      `Please confirm driver & vehicle registration details!`;
 
     return `https://wa.me/919043743777?text=${encodeURIComponent(text)}`;
   };
@@ -114,6 +144,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   const handleModalClose = () => {
     setConfirmedBooking(null);
+    setFormErrors({});
     onClose();
   };
 
@@ -131,13 +162,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 {confirmedBooking ? 'Booking Confirmed!' : 'Complete Your Cab Booking'}
               </h3>
               <p className="text-xs text-slate-500 font-medium">
-                {confirmedBooking ? `Booking Reference: ${confirmedBooking.id}` : 'Fast 1-minute doorstep dispatch'}
+                {confirmedBooking ? `Booking Reference: ${confirmedBooking.id}` : 'Fast 1-minute doorstep dispatch in Coimbatore'}
               </p>
             </div>
           </div>
           <button
             onClick={handleModalClose}
-            className="text-slate-400 hover:text-slate-950 p-1 rounded-lg hover:bg-slate-200 transition cursor-pointer"
+            className="text-slate-400 hover:text-slate-950 p-1.5 rounded-lg hover:bg-slate-200 transition cursor-pointer"
+            aria-label="Close"
           >
             <X className="w-6 h-6" />
           </button>
@@ -151,9 +183,25 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bold text-emerald-900 text-sm">Cab Booking Reserved Successfully!</h4>
-                <p className="text-xs text-emerald-800 mt-1 font-medium">
-                  Your reference ID is <span className="font-mono font-bold text-slate-950 bg-emerald-100 px-1 rounded">{confirmedBooking.id}</span>. Our Coimbatore 24/7 dispatch desk will call or SMS your vehicle details 30 minutes before departure.
+                <p className="text-xs text-emerald-800 mt-1 font-medium leading-relaxed">
+                  Your reference ID is <span className="font-mono font-bold text-slate-950 bg-emerald-100 px-1.5 py-0.5 rounded">{confirmedBooking.id}</span>. Our Coimbatore dispatch team (+91 9043743777) will send your chauffeur contact and vehicle number.
                 </p>
+              </div>
+            </div>
+
+            {/* Micro-Trust Badges */}
+            <div className="grid grid-cols-3 gap-2 bg-slate-50 p-3 rounded-xl border border-slate-200 text-center text-[11px] font-bold text-slate-700">
+              <div className="flex flex-col items-center gap-1">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Zero Advance</span>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Pay After Ride</span>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Free Cancellation</span>
               </div>
             </div>
 
@@ -208,6 +256,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 href={generateWhatsAppMessage(confirmedBooking)}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-conversion-intent="whatsapp"
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-md cursor-pointer text-sm"
               >
                 <MessageSquare className="w-5 h-5" />
@@ -224,23 +273,39 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </button>
                 <a
                   href="tel:+919043743777"
+                  data-conversion-intent="call"
                   className="bg-slate-950 hover:bg-slate-900 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition"
                 >
                   <Phone className="w-4 h-4 text-amber-400" />
-                  <span>Call 9043743777</span>
+                  <span>Call +91 9043743777</span>
                 </a>
               </div>
             </div>
           </div>
         ) : (
           /* Form Input View */
-          <form onSubmit={handleConfirm} className="p-6 sm:p-8 space-y-5">
+          <form onSubmit={handleConfirm} noValidate className="p-6 sm:p-8 space-y-5">
+            {/* Inline validation error summary if form submitted with errors */}
+            {Object.keys(formErrors).length > 0 && (
+              <div className="bg-rose-50 border border-rose-300 rounded-2xl p-4 flex items-start gap-3 text-rose-900">
+                <AlertCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+                <div>
+                  <h5 className="font-bold text-xs uppercase tracking-wide">Please complete all required fields</h5>
+                  <ul className="text-xs list-disc pl-4 mt-1 space-y-0.5 text-rose-800">
+                    {Object.values(formErrors).map((msg, i) => (
+                      <li key={i}>{msg}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
             {/* Selected Trip Overview Card */}
             <div className="bg-amber-50/70 border border-amber-300 rounded-2xl p-4 flex flex-wrap justify-between items-center gap-2 text-xs">
               <div>
                 <span className="text-slate-600 block font-medium">Selected Route</span>
                 <span className="font-black text-slate-950 text-sm">
-                  {bookingData.pickupLocation} ➔ {bookingData.dropLocation}
+                  {bookingData.pickupLocation || 'Coimbatore'} ➔ {bookingData.dropLocation || 'Destination'}
                 </span>
               </div>
 
@@ -268,35 +333,73 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-bold text-slate-900 block mb-1">
-                    Your Full Name *
-                  </label>
+                  <div className="flex justify-between items-center mb-1">
+                    <label className="text-xs font-bold text-slate-900">
+                      Your Full Name <span className="text-rose-600">*</span>
+                    </label>
+                    {formErrors.passengerName && (
+                      <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">
+                        {formErrors.passengerName}
+                      </span>
+                    )}
+                  </div>
                   <div className="relative">
                     <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                     <input
                       type="text"
-                      required
                       placeholder="e.g. Senthil Kumar"
                       value={passengerName}
-                      onChange={(e) => setPassengerName(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-amber-400 focus:bg-white transition"
+                      onChange={(e) => {
+                        setPassengerName(e.target.value);
+                        if (formErrors.passengerName) {
+                          setFormErrors((prev) => {
+                            const updated = { ...prev };
+                            delete updated.passengerName;
+                            return updated;
+                          });
+                        }
+                      }}
+                      className={`w-full bg-slate-50 border rounded-xl pl-9 pr-3 py-2 text-sm text-slate-900 focus:outline-none transition ${
+                        formErrors.passengerName
+                          ? 'border-rose-400 bg-rose-50/20 focus:border-rose-500'
+                          : 'border-slate-300 focus:border-amber-400 focus:bg-white'
+                      }`}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold text-slate-900 block mb-1">
-                    Mobile Phone Number *
-                  </label>
+                  <div className="flex justify-between items-center mb-1">
+                    <label className="text-xs font-bold text-slate-900">
+                      Mobile Phone Number <span className="text-rose-600">*</span>
+                    </label>
+                    {formErrors.passengerPhone && (
+                      <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">
+                        {formErrors.passengerPhone}
+                      </span>
+                    )}
+                  </div>
                   <div className="relative">
                     <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                     <input
                       type="tel"
-                      required
                       placeholder="e.g. 9043743777"
                       value={passengerPhone}
-                      onChange={(e) => setPassengerPhone(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-amber-400 focus:bg-white transition"
+                      onChange={(e) => {
+                        setPassengerPhone(e.target.value);
+                        if (formErrors.passengerPhone) {
+                          setFormErrors((prev) => {
+                            const updated = { ...prev };
+                            delete updated.passengerPhone;
+                            return updated;
+                          });
+                        }
+                      }}
+                      className={`w-full bg-slate-50 border rounded-xl pl-9 pr-3 py-2 text-sm text-slate-900 focus:outline-none transition ${
+                        formErrors.passengerPhone
+                          ? 'border-rose-400 bg-rose-50/20 focus:border-rose-500'
+                          : 'border-slate-300 focus:border-amber-400 focus:bg-white'
+                      }`}
                     />
                   </div>
                 </div>
@@ -305,7 +408,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-bold text-slate-900 block mb-1">
-                    Pickup Date *
+                    Pickup Date <span className="text-rose-600">*</span>
                   </label>
                   <div className="relative">
                     <Calendar className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
@@ -321,7 +424,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
                 <div>
                   <label className="text-xs font-bold text-slate-900 block mb-1">
-                    Pickup Time *
+                    Pickup Time <span className="text-rose-600">*</span>
                   </label>
                   <div className="relative">
                     <Clock className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
@@ -337,18 +440,37 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </div>
 
               <div>
-                <label className="text-xs font-bold text-slate-900 block mb-1">
-                  Full Doorstep Pickup Address in Coimbatore *
-                </label>
+                <div className="flex justify-between items-center mb-1">
+                  <label className="text-xs font-bold text-slate-900">
+                    Full Doorstep Pickup Address in Coimbatore <span className="text-rose-600">*</span>
+                  </label>
+                  {formErrors.pickupAddress && (
+                    <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">
+                      {formErrors.pickupAddress}
+                    </span>
+                  )}
+                </div>
                 <div className="relative">
                   <MapPin className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                   <textarea
-                    required
                     rows={2}
                     placeholder="Door No, Street Name, Landmark (e.g. Near PSG Tech, Peelamedu)"
                     value={pickupAddress}
-                    onChange={(e) => setPickupAddress(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-amber-400 focus:bg-white transition"
+                    onChange={(e) => {
+                      setPickupAddress(e.target.value);
+                      if (formErrors.pickupAddress) {
+                        setFormErrors((prev) => {
+                          const updated = { ...prev };
+                          delete updated.pickupAddress;
+                          return updated;
+                        });
+                      }
+                    }}
+                    className={`w-full bg-slate-50 border rounded-xl pl-9 pr-3 py-2 text-sm text-slate-900 focus:outline-none transition ${
+                      formErrors.pickupAddress
+                        ? 'border-rose-400 bg-rose-50/20 focus:border-rose-500'
+                        : 'border-slate-300 focus:border-amber-400 focus:bg-white'
+                    }`}
                   />
                 </div>
               </div>
@@ -359,7 +481,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Flight 6E-241 arrival at 10:15 AM, extra luggage roof carrier"
+                  placeholder="e.g. Flight 6E-241 arrival at 10:15 AM, luggage carrier needed"
                   value={specialNotes}
                   onChange={(e) => setSpecialNotes(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-amber-400 focus:bg-white transition"
@@ -367,16 +489,29 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </div>
             </div>
 
+            {/* Micro-Trust Badges */}
+            <div className="flex flex-wrap items-center justify-between gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 font-semibold">
+              <span className="flex items-center gap-1 text-emerald-700">
+                <CheckCircle2 className="w-4 h-4" /> Zero Advance Required
+              </span>
+              <span className="flex items-center gap-1 text-emerald-700">
+                <CheckCircle2 className="w-4 h-4" /> Pay After Ride (Cash/UPI)
+              </span>
+              <span className="flex items-center gap-1 text-emerald-700">
+                <CheckCircle2 className="w-4 h-4" /> Free Cancellation Anytime
+              </span>
+            </div>
+
             {/* Submit CTA */}
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full taxi-yellow-btn text-slate-950 font-black py-3.5 px-4 rounded-2xl text-sm shadow-md transition cursor-pointer border border-amber-400 font-syne uppercase tracking-wider"
+                className="w-full py-3.5 px-4 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm shadow-md transition cursor-pointer border border-amber-500 uppercase tracking-wider"
               >
                 Confirm Cab Booking Now
               </button>
               <p className="text-[11px] text-center text-slate-500 font-medium mt-2">
-                🔒 Zero cancellation fees. Pay cash or UPI directly to driver after trip.
+                🔒 Transparent pricing. *10 Mins Pickup Guarantee within Coimbatore Corporation limits.
               </p>
             </div>
           </form>

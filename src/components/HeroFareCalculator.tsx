@@ -23,25 +23,22 @@ interface HeroFareCalculatorProps {
 }
 
 // Helper function for local package pricing rule:
-// ₹375/hr for first 2 hours + ₹350/hr for additional hours
+// ₹350/hr with 10 km free per hour
 export const calculateLocalPackageFare = (hours: number): number => {
-  if (hours <= 2) {
-    return hours * 375;
-  }
-  return (2 * 375) + ((hours - 2) * 350);
+  return hours * 350;
 };
 
 export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
   onSelectBooking,
   onExploreTours,
 }) => {
-  const [tripType, setTripType] = useState<TripType>('one-way');
+  const [tripType, setTripType] = useState<TripType>('local-ride');
   const [pickupAddress, setPickupAddress] = useState<string>('');
   const [dropAddress, setDropAddress] = useState<string>('');
   const [customKm, setCustomKm] = useState<string>('');
   const [useCustomKm, setUseCustomKm] = useState<boolean>(false);
   const [tripDays, setTripDays] = useState<number>(2);
-  const [localHours, setLocalHours] = useState<number>(8);
+  const [localHours, setLocalHours] = useState<number>(4);
   const [selectedVehicleId, setSelectedVehicleId] = useState<string>('sedan');
 
   // Ensure valid vehicle selected when switching to hourly rentals
@@ -307,22 +304,21 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
         };
       }
 
-      // 3. General One-Way calculation
-      const chargedKm = Math.max(calculatedDistanceKm, v.minKmOneWay);
-      const baseFare = chargedKm * 26;
-      const driverBata = 300;
-      const estimatedTolls = Math.round(calculatedDistanceKm * 1.2);
-      const total = baseFare + driverBata + estimatedTolls + hillCharges;
+      // 3. General One-Way calculation: ₹15 per km, minimum 130 km coverage, driver batta ₹500
+      const chargedKm = Math.max(calculatedDistanceKm, 130);
+      const baseFare = chargedKm * 15;
+      const driverBata = 500;
+      const total = baseFare + driverBata + hillCharges;
 
       return {
         chargedKm,
-        ratePerKm: 26,
+        ratePerKm: 15,
         baseFare,
         driverBata: driverBata + hillCharges,
-        estimatedTolls,
+        estimatedTolls: 0,
         totalFare: total,
         isCustomQuote: false,
-        notes: `Guaranteed One-Way Drop to ${dropAddress || 'Destination'} with zero return charges.`,
+        notes: `Guaranteed One-Way Drop to ${dropAddress || 'Destination'} (₹15/km, min 130 km coverage, ₹500 batta).`,
       };
     }
 
@@ -407,39 +403,23 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
             </span>
           </h1>
 
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal max-w-2xl mx-auto">
+          <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-semibold max-w-3xl mx-auto mb-2 bg-slate-900/80 border border-slate-800 p-3 rounded-2xl">
+            <span className="text-amber-400">Round-Trip from ₹13–15/km</span>
+            <span className="text-slate-500 mx-2">|</span>
+            <span className="text-amber-400">One-Way Drop from ₹14–26/km</span>
+            <span className="text-slate-500 mx-2">|</span>
+            <span className="text-amber-400">Hourly Rentals at ₹350/hr</span>
+          </p>
+          <p className="text-slate-400 text-xs sm:text-sm leading-relaxed font-normal max-w-2xl mx-auto">
             Experience Kovai&apos;s premier taxi service with transparent per-km billing. Verified drivers, luxury cabs for outstation drops, Ooty tours &amp; 24/7 airport pick up.
+            <span className="block text-[11px] text-slate-500 mt-1">*10 Mins Pickup Guarantee: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.</span>
           </p>
         </div>
 
         {/* Main Interactive Calculator Console Card */}
         <div className="bg-[#0d1627]/95 backdrop-blur-2xl border border-slate-800 rounded-3xl shadow-2xl p-4 sm:p-8">
-          {/* Trip Type Selector Tabs */}
+          {/* Trip Type Selector Tabs: 1. Local Ride, 2. Hourly Rental, 3. One-Way, 4. Outstation */}
           <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 bg-slate-950/90 p-2 rounded-2xl border border-slate-800/90 mb-6">
-            <button
-              onClick={() => setTripType('one-way')}
-              className={`flex flex-col sm:flex-row items-center justify-center gap-1.5 py-2.5 px-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer ${
-                tripType === 'one-way'
-                  ? 'bg-amber-400 text-slate-950 font-black shadow-lg shadow-amber-400/20'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-900'
-              }`}
-            >
-              <Navigation className={`w-4 h-4 ${tripType === 'one-way' ? 'text-slate-950' : 'text-amber-400'}`} />
-              <span>One-Way Drop</span>
-            </button>
-
-            <button
-              onClick={() => setTripType('round-trip')}
-              className={`flex flex-col sm:flex-row items-center justify-center gap-1.5 py-2.5 px-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
-                tripType === 'round-trip'
-                  ? 'bg-amber-400 text-slate-950 font-black shadow-lg shadow-amber-400/20'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-900'
-              }`}
-            >
-              <Car className={`w-4 h-4 ${tripType === 'round-trip' ? 'text-slate-950' : 'text-amber-400'}`} />
-              <span>Round Trip</span>
-            </button>
-
             <button
               onClick={() => setTripType('local-ride')}
               className={`flex flex-col sm:flex-row items-center justify-center gap-1.5 py-2.5 px-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
@@ -449,7 +429,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
               }`}
             >
               <MapPin className={`w-4 h-4 ${tripType === 'local-ride' ? 'text-slate-950' : 'text-amber-400'}`} />
-              <span>Local Rides</span>
+              <span>Local Ride</span>
             </button>
 
             <button
@@ -461,7 +441,31 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
               }`}
             >
               <Clock className={`w-4 h-4 ${tripType === 'local' ? 'text-slate-950' : 'text-amber-400'}`} />
-              <span>Hourly Rentals</span>
+              <span>Hourly Rental</span>
+            </button>
+
+            <button
+              onClick={() => setTripType('one-way')}
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1.5 py-2.5 px-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer ${
+                tripType === 'one-way'
+                  ? 'bg-amber-400 text-slate-950 font-black shadow-lg shadow-amber-400/20'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <Navigation className={`w-4 h-4 ${tripType === 'one-way' ? 'text-slate-950' : 'text-amber-400'}`} />
+              <span>One-Way</span>
+            </button>
+
+            <button
+              onClick={() => setTripType('round-trip')}
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1.5 py-2.5 px-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
+                tripType === 'round-trip'
+                  ? 'bg-amber-400 text-slate-950 font-black shadow-lg shadow-amber-400/20'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <Car className={`w-4 h-4 ${tripType === 'round-trip' ? 'text-slate-950' : 'text-amber-400'}`} />
+              <span>Outstation</span>
             </button>
 
             <button
@@ -488,13 +492,17 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
           {/* Form Controls Row */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end mb-6">
             {/* Pickup Location */}
-            <div className="md:col-span-4">
-              <LocationAutocompleteInput
-                label={tripType === 'local-ride' ? 'Pickup Area / Landmark' : 'Pickup Location'}
+            <div className="md:col-span-4 space-y-1.5">
+              <label className="text-xs font-bold text-slate-200 flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                <span>{tripType === 'local-ride' ? 'Pickup Area / Landmark' : 'Pickup Location'}</span>
+              </label>
+              <input
+                type="text"
                 value={pickupAddress}
-                onChange={setPickupAddress}
+                onChange={(e) => setPickupAddress(e.target.value)}
                 placeholder="Type doorstep, area or hotel address..."
-                isPickup={true}
+                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
               />
             </div>
 
@@ -505,8 +513,8 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5 text-amber-400" /> Hourly Rental Package
                   </span>
-                  <span className="text-[11px] text-slate-400 font-medium">
-                    ₹375 (1st 2 hrs) + ₹350/hr
+                  <span className="text-[11px] text-amber-400 font-semibold">
+                    ₹350/hr (10 KM free / hr)
                   </span>
                 </label>
                 <div className="grid grid-cols-4 gap-1.5">
@@ -518,10 +526,10 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                       className={`py-2 px-1 rounded-xl text-xs font-bold border transition text-center cursor-pointer ${
                         localHours === h
                           ? 'bg-amber-400 text-slate-950 border-amber-400 shadow-md font-black'
-                          : 'bg-slate-900/80 border-slate-700 text-slate-300 hover:bg-slate-800'
+                          : 'bg-slate-900/80 text-slate-300 border-slate-700 hover:border-amber-400/50'
                       }`}
                     >
-                      {h} Hrs (₹{calculateLocalPackageFare(h)})
+                      {h} Hrs ({h * 10}km)
                     </button>
                   ))}
                 </div>
@@ -569,13 +577,19 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                     </div>
                   </div>
                 ) : (
-                  <LocationAutocompleteInput
-                    label={tripType === 'local-ride' ? 'Local Drop Area / Street' : 'Destination / Drop Location'}
-                    value={dropAddress}
-                    onChange={setDropAddress}
-                    placeholder={tripType === 'local-ride' ? 'Type local drop area (e.g., RS Puram, Saravanampatti)...' : 'Type any city, town or destination...'}
-                    isPickup={false}
-                  />
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-200 flex items-center gap-1">
+                      <Navigation className="w-3.5 h-3.5 text-amber-400" />
+                      <span>{tripType === 'local-ride' ? 'Local Drop Area / Street' : 'Destination / Drop Location'}</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={dropAddress}
+                      onChange={(e) => setDropAddress(e.target.value)}
+                      placeholder={tripType === 'local-ride' ? 'Type local drop area (e.g., RS Puram, Saravanampatti)...' : 'Type any city, town or destination...'}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                    />
+                  </div>
                 )}
               </div>
             )}
@@ -764,11 +778,12 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                 )}
               </div>
 
-              {/* Action Button */}
+              {/* Action Buttons */}
               {tripType === 'local' && (selectedVehicleId === 'suv' || selectedVehicleId === 'crysta') ? (
                 <div className="shrink-0 flex flex-col sm:flex-row lg:flex-col gap-2">
                   <a
                     href="tel:+919043743777"
+                    data-conversion-intent="call"
                     className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-base px-8 py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 transition cursor-pointer"
                   >
                     <Phone className="w-5 h-5 fill-slate-950" />
@@ -778,6 +793,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                     href={`https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20please%20quote%20hourly%20rental%20tariff%20for%20${encodeURIComponent(selectedVehicleId === 'suv' ? '6-Seater Family SUV' : 'Premium Innova Crysta')}%20for%20${localHours}%20Hours%20in%20Coimbatore.`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-conversion-intent="whatsapp"
                     className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 transition text-center"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
@@ -793,32 +809,81 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                     <span>Book {tripType === 'local' && selectedVehicleId === 'sedan' ? 'Hatchback / Sedan' : selectedVehicle.name} Now</span>
                     <ArrowRight className="w-5 h-5" />
                   </button>
+
+                  <a
+                    href={`https://wa.me/919043743777?text=${encodeURIComponent(
+                      `Hi Get Taxi Kovai, I want to book a cab in Coimbatore. Route: ${pickupAddress || 'Coimbatore'} to ${dropAddress || 'Destination'} (${selectedVehicle.name}). ` +
+                      (fareBreakdown.totalFare > 0 ? `Estimated Fare: ₹${fareBreakdown.totalFare}. ` : '') +
+                      `Please confirm driver & cab details!`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-conversion-intent="whatsapp"
+                    className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2 px-4 rounded-xl flex items-center justify-center gap-1.5 transition text-center"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5" />
+                    <span>Book Instantly via WhatsApp</span>
+                  </a>
+
                   <p className="text-[11px] text-center text-slate-400">
-                    ⚡ Pay zero advance. 5 Mins doorstep dispatch!
+                    ⚡ Zero advance required • Pay after ride (Cash/UPI)
                   </p>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Key Value Props Bar */}
+          {/* Key Value Props Bar with explicit trust badges */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4 border-t border-slate-800 text-xs text-slate-300 font-semibold">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>No Hidden Charges Guarantee</span>
+              <span>Zero Advance Required</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Clean Sanitized AC Vehicles</span>
+              <span>Pay After Ride (Cash/UPI)</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Expert Nilgiri Hill Drivers</span>
+              <span>Free Cancellation Anytime</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>5 Mins Doorstep Dispatch</span>
+              <span>10 Mins Pickup Guarantee*</span>
             </div>
+          </div>
+        </div>
+
+        {/* Local Landing Area Chips for Popular Hubs */}
+        <div className="mt-8 text-center">
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+            Popular Coimbatore Pickup Hubs & Drop Points:
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {[
+              { label: 'Gandhipuram Bus Stand', address: 'Gandhipuram Central Bus Stand, Coimbatore' },
+              { label: 'CJB Airport', address: 'Coimbatore International Airport (CJB), Peelamedu' },
+              { label: 'Coimbatore Jn Railway Station', address: 'Coimbatore Junction Railway Station (CBE)' },
+              { label: 'RS Puram', address: 'RS Puram, DB Road, Coimbatore' },
+              { label: 'Peelamedu', address: 'Peelamedu, Avinashi Road, Coimbatore' },
+              { label: 'Saravanampatti', address: 'Saravanampatti IT Corridor, Coimbatore' },
+            ].map((hub) => (
+              <button
+                key={hub.label}
+                type="button"
+                onClick={() => {
+                  if (!pickupAddress) {
+                    setPickupAddress(hub.address);
+                  } else {
+                    setDropAddress(hub.address);
+                  }
+                }}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 hover:bg-amber-400 hover:text-slate-950 text-slate-300 border border-slate-700/80 hover:border-amber-400 text-xs font-semibold transition-all duration-200 shadow-sm cursor-pointer group"
+              >
+                <MapPin className="w-3 h-3 text-amber-400 group-hover:text-slate-950 transition" />
+                <span>{hub.label}</span>
+              </button>
+            ))}
           </div>
         </div>
       </div>

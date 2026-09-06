@@ -48,7 +48,7 @@ export const VEHICLES: VehicleCategory[] = [
     minKmRoundTripPerDay: 250,
     driverBataPerDay: 300,
     nightCharges: 200,
-    image: '/hatchback.png',
+    image: '/images/vehicles/hatchback.webp',
     fallbackImage: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80',
     popularFor: 'Quick city drops, local rides (Base ₹80 + ₹28/km) & budget travel',
     localPackageRates: {
@@ -73,7 +73,7 @@ export const VEHICLES: VehicleCategory[] = [
     minKmRoundTripPerDay: 250,
     driverBataPerDay: 300,
     nightCharges: 200,
-    image: '/sedan.png',
+    image: '/images/vehicles/sedan.webp',
     fallbackImage: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=600&q=80',
     popularFor: 'Ooty & Isha Yoga trips, comfortable outstation drop',
     localPackageRates: {
@@ -98,7 +98,7 @@ export const VEHICLES: VehicleCategory[] = [
     minKmRoundTripPerDay: 250,
     driverBataPerDay: 400,
     nightCharges: 250,
-    image: '/suv.png',
+    image: '/images/vehicles/suv.webp',
     fallbackImage: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80',
     popularFor: 'Hill station climbs (Ooty/Valparai), family holiday tours',
     localPackageRates: {
@@ -123,7 +123,7 @@ export const VEHICLES: VehicleCategory[] = [
     minKmRoundTripPerDay: 250,
     driverBataPerDay: 400,
     nightCharges: 300,
-    image: '/crysta.png',
+    image: '/images/vehicles/innova-crysta.webp',
     fallbackImage: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80',
     popularFor: 'VIP travel, long distance Kerala & Karnataka tours, wedding transport',
     localPackageRates: {
@@ -148,7 +148,7 @@ export const VEHICLES: VehicleCategory[] = [
     minKmRoundTripPerDay: 300,
     driverBataPerDay: 500,
     nightCharges: 350,
-    image: '/tempo.png',
+    image: '/images/vehicles/tempo-traveller.webp',
     fallbackImage: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=600&q=80',
     popularFor: 'Large family reunions, corporate outings, pilgrimage groups',
     localPackageRates: {
