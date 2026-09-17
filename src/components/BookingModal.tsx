@@ -132,7 +132,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       `*Pickup Date & Time:* ${b.pickupDate} at ${b.pickupTime}\n` +
       `*Pickup Address:* ${b.pickupAddress}\n` +
       (b.totalFare > 0 ? `*Total Fare Quote:* ₹${b.totalFare.toLocaleString('en-IN')}\n\n` : `*Fare Quote:* Best Rate on Confirmation\n\n`) +
-      `*Terms:* Zero Advance • Pay Cash/UPI After Ride • 10 Mins Pickup Guarantee\n\n` +
+      `*Terms:* Zero Advance • Pay Cash/UPI After Ride • Fast 10-Min Doorstep Pickup\n\n` +
       `Please confirm driver & vehicle registration details!`;
 
     return `https://wa.me/919043743777?text=${encodeURIComponent(text)}`;
@@ -511,7 +511,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 Confirm Cab Booking Now
               </button>
               <p className="text-[11px] text-center text-slate-500 font-medium mt-2">
-                🔒 Transparent pricing. *10 Mins Pickup Guarantee within Coimbatore Corporation limits.
+                🔒 Transparent pricing. *Prompt 10-min doorstep pickup within Coimbatore Corporation limits.
               </p>
             </div>
           </form>

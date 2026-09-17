@@ -215,10 +215,10 @@ export default function App() {
           </div>
           <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
             <span className="text-2xl sm:text-4xl font-black text-slate-950 block mb-1">10 Mins</span>
-            <span className="text-xs text-slate-600 font-bold uppercase tracking-wider">Pickup Guarantee Across Coimbatore</span>
+            <span className="text-xs text-slate-600 font-bold uppercase tracking-wider">Doorstep Pickup Across Coimbatore</span>
           </div>
           <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
-            <span className="text-2xl sm:text-4xl font-black text-slate-950 block mb-1">Best Fares</span>
+            <span className="text-2xl sm:text-4xl font-black text-slate-950 block mb-1">Affordable Fares</span>
             <span className="text-xs text-slate-600 font-bold uppercase tracking-wider">Call Taxi In Coimbatore</span>
           </div>
           <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">

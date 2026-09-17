@@ -237,7 +237,7 @@ export const FAQS = [
   },
   {
     question: 'How do I book or call Get Taxi Kovai?',
-    answer: 'You can instantly book by calling or sending a WhatsApp message to 9043743777. Our dispatch desk operates 24/7 with a 15-minute doorstep pickup guarantee in Coimbatore.',
+    answer: 'You can instantly book by calling or sending a WhatsApp message to 9043743777. Our dispatch desk operates 24/7 with prompt 15-minute doorstep pickups in Coimbatore.',
   },
   {
     question: 'Are there any hidden hill station charges for Ooty or Valparai?',

@@ -145,7 +145,7 @@ export const TariffTable: React.FC = () => {
                 {/* Bottom CTA Actions */}
                 <div className="pt-3 border-t border-slate-100 space-y-2">
                   <div className="text-[11px] font-semibold text-slate-700 text-center bg-slate-50 border border-slate-200/70 rounded-lg py-1">
-                    Guaranteed Rate Card Price
+                    Official Rate Card Price
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     <a
@@ -282,7 +282,7 @@ export const TariffTable: React.FC = () => {
 
                         {activeTab === 'one-way' && (
                           <>
-                            <td className="p-4 font-bold text-slate-950">Guaranteed Lowest Rate</td>
+                            <td className="p-4 font-bold text-slate-950">Fixed Distance Rate</td>
                             <td className="p-4 font-medium text-slate-700">{v.minKmOneWay} KM</td>
                             <td className="p-4 font-medium text-slate-600">Included in Quote</td>
                           </>

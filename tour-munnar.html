@@ -35,39 +35,11 @@
     <meta property="og:image" content="https://gettaxikovai.in/images/brand/og-banner.webp" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              taxi: {
-                50: '#fefce8',
-                100: '#fef9c3',
-                200: '#fef08a',
-                300: '#fde047',
-                400: '#facc15',
-                500: '#eab308',
-                600: '#ca8a04',
-                700: '#a16207',
-                800: '#854d0e',
-                900: '#713f12',
-                950: '#422006',
-              }
-            },
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-              display: ['"Outfit"', 'sans-serif'],
-            }
-          }
-        }
-      }
-    </script>
+    <!-- Pre-compiled Minified Tailwind CSS -->
+    <link rel="stylesheet" href="/styles.css" />
     <style>
       body { font-family: 'Plus Jakarta Sans', sans-serif; }
       h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; }
@@ -240,6 +212,47 @@
   }
 ]
     </script>
+    <!-- Google Places Autocomplete Styling -->
+    <style>
+      .pac-container {
+        z-index: 99999 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2) !important;
+        border: 1px solid #e2e8f0 !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        margin-top: 4px !important;
+      }
+      .pac-item {
+        padding: 9px 14px !important;
+        font-size: 13px !important;
+        cursor: pointer !important;
+      }
+      .pac-item:hover {
+        background-color: #fef3c7 !important;
+      }
+      .pac-item-query {
+        font-weight: 700 !important;
+        color: #0f172a !important;
+      }
+    </style>
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        function loadGmaps() {
+          if (document.getElementById('gmaps-script')) return;
+          var s = document.createElement('script');
+          s.id = 'gmaps-script';
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyASup0KDFTmah7YA-NF8e9Xm0u-95Qpg3w&libraries=places';
+          s.async = true;
+          s.defer = true;
+          document.head.appendChild(s);
+        }
+        var pickup = document.getElementById('calc-pickup') || document.getElementById('calc-pickup-input');
+        var drop = document.getElementById('calc-drop') || document.getElementById('calc-drop-input');
+        if (pickup) pickup.addEventListener('focus', loadGmaps, { once: true });
+        if (drop) drop.addEventListener('focus', loadGmaps, { once: true });
+        loadGmaps();
+      });
+    </script>
     
   </head>
   <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950">
@@ -251,7 +264,7 @@
         <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-[11px] font-semibold">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> 24/7 Live Cab Dispatch
         </span>
-        <span class="hidden sm:inline text-slate-400">#1 Call Taxi In Coimbatore • Guaranteed On-Time</span>
+        <span class="hidden sm:inline text-slate-400">Trusted Call Taxi In Coimbatore • Punctual 24/7 Pickup</span>
       </div>
       <div class="flex items-center gap-4 text-xs">
         <a href="tel:+919043743777" data-conversion-intent="call" class="flex items-center gap-1.5 text-amber-400 font-bold hover:text-amber-300 transition">
@@ -259,7 +272,7 @@
           +91 9043743777
         </a>
         <span class="text-slate-700 hidden sm:inline">|</span>
-        <span class="hidden sm:inline text-slate-400">10 Mins Pickup Guarantee* <span class="text-[10px] text-slate-500">(*Corp. Limits)</span></span>
+        <span class="hidden sm:inline text-slate-400">Fast 10-Min Doorstep Pickup* <span class="text-[10px] text-slate-500">(*Corp. Limits)</span></span>
       </div>
     </div>
   </div>
@@ -619,7 +632,7 @@
             Coimbatore’s most trusted call taxi and outstation cab network. Serving local city rides, CJB Airport drops, Nilgiri hill station tours, and inter-district one-way drops with transparent fares.
           </p>
           <p class="text-[11px] text-amber-400/90 leading-relaxed font-semibold mb-6 bg-amber-400/10 p-2.5 rounded-lg border border-amber-400/20">
-            *Transparent Fare Guarantee: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
+            *Transparent Tariff Schedule: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
           </p>
           <div class="flex items-center gap-3 text-white font-semibold">
             <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-amber-400 text-xs">⭐ 4.9 / 5.0</span>
@@ -689,7 +702,7 @@
       <div class="py-6 border-t border-slate-900 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-500">
         <div>
           <p class="text-slate-400 font-medium leading-relaxed">
-            * 10 Mins Pickup Guarantee: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.
+            * Fast 10-Min Doorstep Pickup: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.
           </p>
           <p class="text-slate-400 font-medium leading-relaxed mt-1">
             Tariff Rate Card: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
@@ -700,9 +713,7 @@
           <span>•</span>
           <a href="terms.html" class="hover:text-amber-400 transition">Terms & Conditions</a>
           <span>•</span>
-          <a href="cancellation-refund.html" class="hover:text-amber-400 transition">Cancellation & Refund</a>
-          <span>•</span>
-          <a href="sitemap.xml" class="hover:text-amber-400 transition">XML Sitemap</a>
+          <a href="cancellation-refund.html" class="hover:text-amber-400 transition">Cancellation & Refund Policy</a>
         </div>
       </div>
 

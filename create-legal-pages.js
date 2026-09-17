@@ -167,9 +167,9 @@ export function generateTermsPage() {
       </div>
 
       <div>
-        <h2 class="text-xl font-bold text-slate-950 mb-3">3. 10 Mins Pickup Guarantee Disclosure</h2>
+        <h2 class="text-xl font-bold text-slate-950 mb-3">3. Fast 10-Min Doorstep Pickup Terms</h2>
         <p class="text-slate-700 bg-amber-50/70 border border-amber-300/80 p-4 rounded-xl text-xs sm:text-sm">
-          <strong>* Disclaimer:</strong> Our "10 Mins Pickup Guarantee" applies to immediate on-demand local dispatch within the <strong>Coimbatore Municipal Corporation boundaries</strong> (Gandhipuram, RS Puram, Town Hall, Peelamedu, Singanallur, Ramanathapuram, Saibaba Colony, etc.), subject to peak traffic congestion, severe monsoon downpours, and live vehicle availability in the sector. For airport departures or early morning trains, we recommend reserving 30 to 60 minutes in advance.
+          <strong>* Disclaimer:</strong> Our "Fast 10-Min Doorstep Pickup" service applies to immediate on-demand local dispatch within the <strong>Coimbatore Municipal Corporation boundaries</strong> (Gandhipuram, RS Puram, Town Hall, Peelamedu, Singanallur, Ramanathapuram, Saibaba Colony, etc.), subject to peak traffic congestion, severe monsoon downpours, and live vehicle availability in the sector. For airport departures or early morning trains, we recommend reserving 30 to 60 minutes in advance.
         </p>
       </div>
 
@@ -208,7 +208,7 @@ export function generateTermsPage() {
 
   return generateHtmlPage({
     title: 'Terms & Conditions | Get Taxi Kovai - Coimbatore Call Taxi',
-    description: 'Terms and Conditions for Get Taxi Kovai (gettaxikovai.in). Read our fair passenger terms, transparent tariff rate card rules, hill driving norms, and pickup guarantee conditions.',
+    description: 'Terms and Conditions for Get Taxi Kovai (gettaxikovai.in). Read our fair passenger terms, transparent tariff rate card rules, hill driving norms, and pickup dispatch conditions.',
     keywords: 'terms and conditions get taxi kovai, cab rental terms coimbatore, taxi pricing rules tamil nadu, gettaxikovai.in',
     canonicalUrl: `${SITE_URL}/terms.html`,
     activeNav: '',
@@ -271,7 +271,7 @@ export function generateCancellationRefundPage() {
       </div>
 
       <div>
-        <h2 class="text-xl font-bold text-slate-950 mb-3">3. Service Interruptions & Vehicle Breakdown Guarantee</h2>
+        <h2 class="text-xl font-bold text-slate-950 mb-3">3. Service Interruptions & Vehicle Replacement Policy</h2>
         <p class="text-slate-700 mb-3">
           In the rare circumstance of a mechanical vehicle breakdown, tire puncture, or highway obstruction during your journey:
         </p>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Call Taxi In Coimbatore | Get Taxi Kovai 9043743777 | 10 Mins Pickup</title>
-    <meta name="description" content="Book Call Taxi In Coimbatore with Get Taxi Kovai. 10 mins pickup guarantee across Coimbatore, 6,000+ satisfied customers, Hourly rentals at ₹350/hr with 10km free, and One-Way drops at ₹15/km. Call 9043743777!" />
+    <title>Call Taxi In Coimbatore | Get Taxi Kovai 9043743777 | Fast Pickup</title>
+    <meta name="description" content="Book Call Taxi In Coimbatore with Get Taxi Kovai. Prompt doorstep pickup across Coimbatore, 6,000+ satisfied customers, Hourly rentals at ₹350/hr with 10km free, and One-Way drops at ₹15/km. Call 9043743777!" />
     <meta name="keywords" content="Call Taxi In Coimbatore, Get Taxi Kovai, taxi in Coimbatore, Coimbatore airport cab, Ooty drop taxi, outstation cabs Coimbatore, hourly rental cab Coimbatore, Kovai call taxi 9043743777" />
     <link rel="canonical" href="https://gettaxikovai.in/" />
     
@@ -27,47 +27,19 @@
     <meta name="theme-color" content="#FACC15" />
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Call Taxi In Coimbatore | Get Taxi Kovai 9043743777 | 10 Mins Pickup" />
-    <meta property="og:description" content="Book Call Taxi In Coimbatore with Get Taxi Kovai. 10 mins pickup guarantee across Coimbatore, 6,000+ satisfied customers, Hourly rentals at ₹350/hr with 10km free, and One-Way drops at ₹15/km. Call 9043743777!" />
+    <meta property="og:title" content="Call Taxi In Coimbatore | Get Taxi Kovai 9043743777 | Fast Pickup" />
+    <meta property="og:description" content="Book Call Taxi In Coimbatore with Get Taxi Kovai. Prompt doorstep pickup across Coimbatore, 6,000+ satisfied customers, Hourly rentals at ₹350/hr with 10km free, and One-Way drops at ₹15/km. Call 9043743777!" />
     <meta property="og:url" content="https://gettaxikovai.in/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Get Taxi Kovai" />
     <meta property="og:image" content="https://gettaxikovai.in/images/brand/og-banner.webp" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              taxi: {
-                50: '#fefce8',
-                100: '#fef9c3',
-                200: '#fef08a',
-                300: '#fde047',
-                400: '#facc15',
-                500: '#eab308',
-                600: '#ca8a04',
-                700: '#a16207',
-                800: '#854d0e',
-                900: '#713f12',
-                950: '#422006',
-              }
-            },
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-              display: ['"Outfit"', 'sans-serif'],
-            }
-          }
-        }
-      }
-    </script>
+    <!-- Pre-compiled Minified Tailwind CSS -->
+    <link rel="stylesheet" href="/styles.css" />
     <style>
       body { font-family: 'Plus Jakarta Sans', sans-serif; }
       h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; }
@@ -209,6 +181,47 @@
   }
 ]
     </script>
+    <!-- Google Places Autocomplete Styling -->
+    <style>
+      .pac-container {
+        z-index: 99999 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2) !important;
+        border: 1px solid #e2e8f0 !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        margin-top: 4px !important;
+      }
+      .pac-item {
+        padding: 9px 14px !important;
+        font-size: 13px !important;
+        cursor: pointer !important;
+      }
+      .pac-item:hover {
+        background-color: #fef3c7 !important;
+      }
+      .pac-item-query {
+        font-weight: 700 !important;
+        color: #0f172a !important;
+      }
+    </style>
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        function loadGmaps() {
+          if (document.getElementById('gmaps-script')) return;
+          var s = document.createElement('script');
+          s.id = 'gmaps-script';
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyASup0KDFTmah7YA-NF8e9Xm0u-95Qpg3w&libraries=places';
+          s.async = true;
+          s.defer = true;
+          document.head.appendChild(s);
+        }
+        var pickup = document.getElementById('calc-pickup') || document.getElementById('calc-pickup-input');
+        var drop = document.getElementById('calc-drop') || document.getElementById('calc-drop-input');
+        if (pickup) pickup.addEventListener('focus', loadGmaps, { once: true });
+        if (drop) drop.addEventListener('focus', loadGmaps, { once: true });
+        loadGmaps();
+      });
+    </script>
     
   </head>
   <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950">
@@ -220,7 +233,7 @@
         <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-[11px] font-semibold">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> 24/7 Live Cab Dispatch
         </span>
-        <span class="hidden sm:inline text-slate-400">#1 Call Taxi In Coimbatore • Guaranteed On-Time</span>
+        <span class="hidden sm:inline text-slate-400">Trusted Call Taxi In Coimbatore • Punctual 24/7 Pickup</span>
       </div>
       <div class="flex items-center gap-4 text-xs">
         <a href="tel:+919043743777" data-conversion-intent="call" class="flex items-center gap-1.5 text-amber-400 font-bold hover:text-amber-300 transition">
@@ -228,7 +241,7 @@
           +91 9043743777
         </a>
         <span class="text-slate-700 hidden sm:inline">|</span>
-        <span class="hidden sm:inline text-slate-400">10 Mins Pickup Guarantee* <span class="text-[10px] text-slate-500">(*Corp. Limits)</span></span>
+        <span class="hidden sm:inline text-slate-400">Fast 10-Min Doorstep Pickup* <span class="text-[10px] text-slate-500">(*Corp. Limits)</span></span>
       </div>
     </div>
   </div>
@@ -312,12 +325,12 @@
         <!-- Hero Text & USPs -->
         <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-wide uppercase">
-            <span>✨ #1 Call Taxi In Coimbatore • 24/7 Service</span>
+            <span>✨ Trusted Call Taxi In Coimbatore • 24/7 Service</span>
           </div>
           
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
             Call Taxi In Coimbatore <br class="hidden sm:inline" />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">10 Mins Pickup Guarantee*</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">Fast 10-Min Doorstep Pickup*</span>
           </h1>
 
           <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
@@ -353,7 +366,7 @@
             </div>
             <div class="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
               <p class="text-amber-400 font-extrabold text-sm">10 Mins</p>
-              <p class="text-xs text-slate-400">Pickup Guarantee*</p>
+              <p class="text-xs text-slate-400">Doorstep Pickup*</p>
             </div>
           </div>
         </div>
@@ -364,7 +377,7 @@
             <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
               <div>
                 <h3 class="text-lg font-black text-slate-900 tracking-tight">Call Taxi In Coimbatore Booking</h3>
-                <p class="text-xs text-slate-500">10 mins pickup guarantee across Coimbatore</p>
+                <p class="text-xs text-slate-500">Fast 10-minute doorstep pickup across Coimbatore</p>
               </div>
               <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">24/7 Live</span>
             </div>
@@ -434,14 +447,14 @@
                 <div class="flex justify-between items-center">
                   <div>
                     <span class="text-xs text-slate-600 block" id="calc-dist-label">Trip Details</span>
-                    <span class="text-sm font-extrabold text-slate-900" id="calc-dist-display">10 Mins Pickup Guarantee</span>
+                    <span class="text-sm font-extrabold text-slate-900" id="calc-dist-display">Awaiting Location</span>
                   </div>
                   <div class="text-right">
                     <span class="text-xs text-slate-600 block">Calculated Total Fare</span>
-                    <span class="text-2xl font-black text-amber-600" id="calc-fare-display">Auto-Calculated*</span>
+                    <span class="text-2xl font-black text-amber-600" id="calc-fare-display">—</span>
                   </div>
                 </div>
-                <p class="text-[11px] text-slate-500 mt-1.5" id="calc-fare-breakdown">*10 mins doorstep pickup guarantee • Zero surge • 100% AC cabs</p>
+                <p class="text-[11px] text-slate-500 mt-1.5" id="calc-fare-breakdown">*Enter pickup & drop locations above to view live fare</p>
               </div>
 
               <!-- Quick Book Trigger -->
@@ -926,7 +939,7 @@
           ⭐⭐⭐⭐⭐ 4.9 / 5.0 Star Rating
         </div>
         <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Trusted by 6,000+ Satisfied Customers</h2>
-        <p class="text-base text-slate-600 mt-2">See why Coimbatore chooses Get Taxi Kovai for 10 mins pickup guarantee, transparent fares, and professional chauffeurs.</p>
+        <p class="text-base text-slate-600 mt-2">See why Coimbatore chooses Get Taxi Kovai for prompt doorstep pickups, transparent fares, and professional chauffeurs.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1029,7 +1042,7 @@
             <span class="faq-icon text-amber-500 font-extrabold text-xl ml-4">+</span>
           </button>
           <div class="faq-content p-5 pt-0 text-sm text-slate-600 leading-relaxed border-t border-slate-100 hidden">
-            You can instantly book by calling or sending a WhatsApp message to 9043743777. Our dispatch desk operates 24/7 with a 15-minute doorstep pickup guarantee in Coimbatore.
+            You can instantly book by calling or sending a WhatsApp message to 9043743777. Our dispatch desk operates 24/7 with prompt 15-minute doorstep pickups in Coimbatore.
           </div>
         </div>
         
@@ -1051,7 +1064,7 @@
   <section class="py-16 bg-slate-950 text-white text-center relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
       <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to Ride? Book Your Cab in 60 Seconds</h2>
-      <p class="text-slate-300 text-base max-w-2xl mx-auto">Call or WhatsApp our 24/7 booking desk at <strong>9043743777</strong> for guaranteed on-time doorstep dispatch anywhere in Coimbatore.</p>
+      <p class="text-slate-300 text-base max-w-2xl mx-auto">Call or WhatsApp our 24/7 booking desk at <strong>9043743777</strong> for prompt 24/7 doorstep dispatch anywhere in Coimbatore.</p>
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
         <a href="tel:9043743777" class="px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg transition">
           📞 Call 9043743777
@@ -1185,36 +1198,92 @@
 
         if (activeRideType === 'local') {
           distLabel.textContent = 'Trip Coverage';
+          if (!pickupText || !dropText) {
+            distDisp.textContent = !pickupText && !dropText ? 'Awaiting Location' : (!pickupText ? 'Enter Pickup' : 'Enter Drop');
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Type pickup & drop address using Google autocomplete to calculate exact fare';
+            const msg = encodeURIComponent(
+              'Hello Get Taxi Kovai, I want to book a local cab in Coimbatore:\n\n' +
+              '• Trip: Local Ride\n' +
+              (pickupText ? '• Pickup: ' + pickupText + '\n' : '') +
+              (dropText ? '• Drop: ' + dropText + '\n' : '') +
+              '• Vehicle: ' + vehName + '\n\n' +
+              'Please confirm booking & 10 mins pickup.'
+            );
+            whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;
+            return;
+          }
           const km = getEstimatedKm(dropText || pickupText, 10);
           estimatedFare = Math.round(80 + (km * 26));
-          distText = dropText ? '~' + km + ' KM Local' : '10 Mins Pickup';
-          breakdownText = '*10 mins pickup guarantee across Coimbatore • Zero surge • 100% AC';
-          bookingSummary = 'Local Ride ' + (pickupText ? 'from ' + pickupText : '') + (dropText ? ' to ' + dropText : '');
+          distText = '~' + km + ' KM Local';
+          breakdownText = '*Prompt doorstep pickup across Coimbatore • Zero surge • 100% AC';
+          bookingSummary = 'Local Ride from ' + pickupText + ' to ' + dropText;
         } else if (activeRideType === 'hourly') {
           distLabel.textContent = 'Rental Package';
           const hours = parseInt(hourlyPkgSelect.value, 10) || 4;
           const freeKm = hours * 10;
+          if (!pickupText) {
+            distDisp.textContent = hours + ' Hours (' + freeKm + ' KM Free)';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Enter your pickup location in Coimbatore to view calculated package fare';
+            const msg = encodeURIComponent(
+              'Hello Get Taxi Kovai, I want to book an hourly rental cab (' + hours + ' Hours / ' + freeKm + ' KM Free) in Coimbatore.\n' +
+              '• Vehicle: ' + vehName + '\n\n' +
+              'Please confirm driver availability.'
+            );
+            whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;
+            return;
+          }
           estimatedFare = hours * 350;
           distText = hours + ' Hours (' + freeKm + ' KM Free)';
           breakdownText = '*₹350/hr with 10 KM free per hour included • Dedicated AC cab at your service';
-          bookingSummary = 'Hourly Rental Package (' + hours + ' Hours / ' + freeKm + ' KM Free)' + (pickupText ? ' from ' + pickupText : '');
+          bookingSummary = 'Hourly Rental Package (' + hours + ' Hours / ' + freeKm + ' KM Free) from ' + pickupText;
         } else if (activeRideType === 'oneway') {
           distLabel.textContent = 'One-Way Distance';
+          if (!dropText || !pickupText) {
+            distDisp.textContent = !dropText ? 'Enter Destination City' : 'Enter Pickup Location';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Enter pickup location and destination city to calculate one-way fare';
+            const msg = encodeURIComponent(
+              'Hello Get Taxi Kovai, I want to book a one-way drop cab:\n\n' +
+              (pickupText ? '• Pickup: ' + pickupText + '\n' : '') +
+              (dropText ? '• Destination: ' + dropText + '\n' : '') +
+              '• Vehicle: ' + vehName + '\n\n' +
+              'Please provide one-way fare quote and confirm.'
+            );
+            whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;
+            return;
+          }
           const km = getEstimatedKm(dropText, 130);
           const chargedKm = Math.max(km, 130);
           estimatedFare = (chargedKm * 15) + 500;
           distText = chargedKm + ' KM Coverage';
           breakdownText = '*One-way tariff: ₹15/km (min 130 km coverage) + ₹500 driver batta • Zero return charges';
-          bookingSummary = 'One-Way Drop ' + (dropText ? 'to ' + dropText : '') + (pickupText ? ' from ' + pickupText : '');
+          bookingSummary = 'One-Way Drop to ' + dropText + ' from ' + pickupText;
         } else if (activeRideType === 'outstation') {
           distLabel.textContent = 'Round Trip Total';
-          const km = getEstimatedKm(dropText, 130);
           const days = parseInt(daysSelect.value, 10) || 2;
+          if (!dropText || !pickupText) {
+            distDisp.textContent = !dropText ? 'Enter Destination' : 'Enter Pickup Location';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Enter pickup location and outstation destination to calculate round trip fare';
+            const msg = encodeURIComponent(
+              'Hello Get Taxi Kovai, I want to book an outstation round trip:\n\n' +
+              '• Trip: Outstation Round Trip (' + days + ' Days)\n' +
+              (pickupText ? '• Pickup: ' + pickupText + '\n' : '') +
+              (dropText ? '• Destination: ' + dropText + '\n' : '') +
+              '• Vehicle: ' + vehName + '\n\n' +
+              'Please provide round trip fare quote and confirm.'
+            );
+            whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;
+            return;
+          }
+          const km = getEstimatedKm(dropText, 130);
           const totalKm = Math.max(km * 2, days * 250);
           estimatedFare = Math.round((totalKm * 15) + (days * 500));
           distText = totalKm + ' KM (' + days + ' Days)';
           breakdownText = '*Includes ' + days + ' days round trip travel • Professional chauffeur included';
-          bookingSummary = 'Outstation Round Trip ' + (dropText ? 'to ' + dropText : '') + ' (' + days + ' Days)' + (pickupText ? ' from ' + pickupText : '');
+          bookingSummary = 'Outstation Round Trip to ' + dropText + ' (' + days + ' Days) from ' + pickupText;
         }
 
         distDisp.textContent = distText;
@@ -1228,7 +1297,7 @@
           '• Drop: ' + (dropText || 'As requested') + '\n' +
           '• Vehicle: ' + vehName + '\n' +
           '• Estimated Fare: ₹' + estimatedFare.toLocaleString('en-IN') + '\n\n' +
-          'Please confirm driver availability with 10 mins pickup guarantee.'
+          'Please confirm driver availability and prompt doorstep pickup.'
         );
         whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;
       }
@@ -1257,6 +1326,40 @@
         });
       });
 
+      // Initialize Google Places Autocomplete if API Key is configured
+      function initGooglePlaces() {
+        if (window.google && window.google.maps && window.google.maps.places) {
+          try {
+            const pAuto = new google.maps.places.Autocomplete(pickupInput, {
+              componentRestrictions: { country: 'in' },
+              fields: ['formatted_address', 'name', 'geometry']
+            });
+            pAuto.addListener('place_changed', () => {
+              const p = pAuto.getPlace();
+              if (p && (p.formatted_address || p.name)) {
+                pickupInput.value = p.formatted_address || p.name;
+                updateCalculation();
+              }
+            });
+
+            const dAuto = new google.maps.places.Autocomplete(dropInput, {
+              componentRestrictions: { country: 'in' },
+              fields: ['formatted_address', 'name', 'geometry']
+            });
+            dAuto.addListener('place_changed', () => {
+              const p = dAuto.getPlace();
+              if (p && (p.formatted_address || p.name)) {
+                dropInput.value = p.formatted_address || p.name;
+                updateCalculation();
+              }
+            });
+          } catch(e) { console.log('Places Autocomplete ready'); }
+        } else {
+          setTimeout(initGooglePlaces, 300);
+        }
+      }
+      initGooglePlaces();
+
       // Initial run
       switchTab('local');
     });
@@ -1283,7 +1386,7 @@
             Coimbatore’s most trusted call taxi and outstation cab network. Serving local city rides, CJB Airport drops, Nilgiri hill station tours, and inter-district one-way drops with transparent fares.
           </p>
           <p class="text-[11px] text-amber-400/90 leading-relaxed font-semibold mb-6 bg-amber-400/10 p-2.5 rounded-lg border border-amber-400/20">
-            *Transparent Fare Guarantee: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
+            *Transparent Tariff Schedule: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
           </p>
           <div class="flex items-center gap-3 text-white font-semibold">
             <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-amber-400 text-xs">⭐ 4.9 / 5.0</span>
@@ -1353,7 +1456,7 @@
       <div class="py-6 border-t border-slate-900 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-500">
         <div>
           <p class="text-slate-400 font-medium leading-relaxed">
-            * 10 Mins Pickup Guarantee: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.
+            * Fast 10-Min Doorstep Pickup: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.
           </p>
           <p class="text-slate-400 font-medium leading-relaxed mt-1">
             Tariff Rate Card: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
@@ -1364,9 +1467,7 @@
           <span>•</span>
           <a href="terms.html" class="hover:text-amber-400 transition">Terms & Conditions</a>
           <span>•</span>
-          <a href="cancellation-refund.html" class="hover:text-amber-400 transition">Cancellation & Refund</a>
-          <span>•</span>
-          <a href="sitemap.xml" class="hover:text-amber-400 transition">XML Sitemap</a>
+          <a href="cancellation-refund.html" class="hover:text-amber-400 transition">Cancellation & Refund Policy</a>
         </div>
       </div>
 

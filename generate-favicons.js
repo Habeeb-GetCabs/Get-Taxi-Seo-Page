@@ -130,7 +130,7 @@ async function buildAllFavicons() {
   const manifest = {
     "name": "Get Taxi Kovai - Coimbatore Call Taxi",
     "short_name": "GetTaxiKovai",
-    "description": "Premier 24/7 Call Taxi and Outstation Cab Service in Coimbatore with 10 Mins Pickup Guarantee.",
+    "description": "Premier 24/7 Call Taxi and Outstation Cab Service in Coimbatore with prompt doorstep pickup.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#0a1124",

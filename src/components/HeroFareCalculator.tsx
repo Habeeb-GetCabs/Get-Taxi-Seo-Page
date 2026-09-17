@@ -104,10 +104,11 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
   }, [selectedVehicleId]);
 
   const hasSelectedDestination = useMemo(() => {
-    if (tripType === 'local') return true;
+    if (tripType === 'local') return !!pickupAddress.trim();
+    if (tripType === 'local-ride') return !!pickupAddress.trim() && !!dropAddress.trim();
     if (useCustomKm) return !!customKm && parseFloat(customKm) > 0;
-    return !!dropAddress.trim();
-  }, [tripType, useCustomKm, customKm, dropAddress]);
+    return !!dropAddress.trim() && !!pickupAddress.trim();
+  }, [tripType, useCustomKm, customKm, dropAddress, pickupAddress]);
 
   // Vehicle categories displayed based on trip type
   const availableVehicles = useMemo(() => {
@@ -172,7 +173,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
     const v = selectedVehicle;
 
     if (tripType === 'local-ride') {
-      if (!dropAddress.trim() && !pickupAddress.trim()) {
+      if (!dropAddress.trim() || !pickupAddress.trim()) {
         return {
           chargedKm: 0,
           ratePerKm: 0,
@@ -181,7 +182,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
           estimatedTolls: 0,
           totalFare: 0,
           isCustomQuote: false,
-          notes: 'Enter pickup and drop locations to get your instant fare.',
+          notes: 'Enter both pickup and drop locations to get your instant fare calculation.',
         };
       }
       const dist = Math.max(1, calculatedDistanceKm);
@@ -200,8 +201,22 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
 
     if (tripType === 'local') {
       const isSuvOrCrysta = selectedVehicleId === 'suv' || selectedVehicleId === 'crysta';
-      const hours = localHours || 8;
+      const hours = localHours || 4;
       const distanceCap = hours * 10;
+
+      if (!pickupAddress.trim()) {
+        return {
+          chargedKm: distanceCap,
+          ratePerKm: 0,
+          baseFare: 0,
+          driverBata: 0,
+          estimatedTolls: 0,
+          totalFare: 0,
+          isCustomQuote: isSuvOrCrysta,
+          notes: `Enter your pickup location in Coimbatore for ${hours}-Hour Rental package.`,
+          packageHours: hours,
+        };
+      }
 
       if (isSuvOrCrysta) {
         return {
@@ -232,6 +247,18 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
     }
 
     if (tripType === 'airport') {
+      if (!pickupAddress.trim() && !dropAddress.trim()) {
+        return {
+          chargedKm: 0,
+          ratePerKm: 0,
+          baseFare: 0,
+          driverBata: 0,
+          estimatedTolls: 0,
+          totalFare: 0,
+          isCustomQuote: false,
+          notes: `Enter your doorstep address or flight details for Coimbatore Airport transfer.`,
+        };
+      }
       return {
         chargedKm: calculatedDistanceKm || 20,
         ratePerKm: 0,
@@ -240,7 +267,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
         estimatedTolls: 0,
         totalFare: 0,
         isCustomQuote: false,
-        notes: `Coimbatore Airport Transfer — Guaranteed Doorstep Pickup across Coimbatore.`,
+        notes: `Coimbatore Airport Transfer — Prompt Doorstep Pickup across Coimbatore.`,
       };
     }
 
@@ -253,7 +280,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
         estimatedTolls: 0,
         totalFare: 0,
         isCustomQuote: false,
-        notes: 'Enter your destination location above to view fare quote.',
+        notes: 'Enter pickup address and destination location above to calculate fare.',
       };
     }
 
@@ -300,7 +327,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
           estimatedTolls: 0,
           totalFare,
           isCustomQuote: false,
-          notes: `Official Tariff Card Fare: Guaranteed fixed rate for ${matchedCard.route}.`,
+          notes: `Official Tariff Card Fare: Fixed tariff rate for ${matchedCard.route}.`,
         };
       }
 
@@ -318,7 +345,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
         estimatedTolls: 0,
         totalFare: total,
         isCustomQuote: false,
-        notes: `Guaranteed One-Way Drop to ${dropAddress || 'Destination'} (₹15/km, min 130 km coverage, ₹500 batta).`,
+        notes: `Confirmed One-Way Drop to ${dropAddress || 'Destination'} (₹15/km, min 130 km coverage, ₹500 batta).`,
       };
     }
 
@@ -412,7 +439,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
           </p>
           <p className="text-slate-400 text-xs sm:text-sm leading-relaxed font-normal max-w-2xl mx-auto">
             Experience Kovai&apos;s premier taxi service with transparent per-km billing. Verified drivers, luxury cabs for outstation drops, Ooty tours &amp; 24/7 airport pick up.
-            <span className="block text-[11px] text-slate-500 mt-1">*10 Mins Pickup Guarantee: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.</span>
+            <span className="block text-[11px] text-slate-500 mt-1">*Fast 10-Min Doorstep Pickup: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.</span>
           </p>
         </div>
 
@@ -492,17 +519,13 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
           {/* Form Controls Row */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end mb-6">
             {/* Pickup Location */}
-            <div className="md:col-span-4 space-y-1.5">
-              <label className="text-xs font-bold text-slate-200 flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                <span>{tripType === 'local-ride' ? 'Pickup Area / Landmark' : 'Pickup Location'}</span>
-              </label>
-              <input
-                type="text"
+            <div className="md:col-span-4">
+              <LocationAutocompleteInput
+                label={tripType === 'local-ride' ? 'Pickup Area / Landmark' : 'Pickup Location'}
                 value={pickupAddress}
-                onChange={(e) => setPickupAddress(e.target.value)}
+                onChange={setPickupAddress}
                 placeholder="Type doorstep, area or hotel address..."
-                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                isPickup={true}
               />
             </div>
 
@@ -577,19 +600,13 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                     </div>
                   </div>
                 ) : (
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-200 flex items-center gap-1">
-                      <Navigation className="w-3.5 h-3.5 text-amber-400" />
-                      <span>{tripType === 'local-ride' ? 'Local Drop Area / Street' : 'Destination / Drop Location'}</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={dropAddress}
-                      onChange={(e) => setDropAddress(e.target.value)}
-                      placeholder={tripType === 'local-ride' ? 'Type local drop area (e.g., RS Puram, Saravanampatti)...' : 'Type any city, town or destination...'}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm font-medium text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
-                    />
-                  </div>
+                  <LocationAutocompleteInput
+                    label={tripType === 'local-ride' ? 'Local Drop Area / Street' : 'Destination / Drop Location'}
+                    value={dropAddress}
+                    onChange={setDropAddress}
+                    placeholder={tripType === 'local-ride' ? 'Type local drop area (e.g., RS Puram, Saravanampatti)...' : 'Type any city, town or destination...'}
+                    isPickup={false}
+                  />
                 )}
               </div>
             )}
@@ -654,14 +671,16 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                   if (fareBreakdown.totalFare > 0) {
                     itemTotalDisplay = `₹${fareBreakdown.totalFare.toLocaleString('en-IN')}`;
                   } else {
-                    itemTotalDisplay = 'Instant Quote';
+                    itemTotalDisplay = 'Enter Locations';
                   }
                 } else if (tripType === 'local') {
                   if (v.id === 'suv' || v.id === 'crysta') {
                     itemTotalDisplay = 'Call for Best Price';
-                  } else {
+                  } else if (fareBreakdown.totalFare > 0) {
                     const localFare = calculateLocalPackageFare(localHours);
                     itemTotalDisplay = `₹${localFare.toLocaleString('en-IN')}`;
+                  } else {
+                    itemTotalDisplay = 'Enter Pickup';
                   }
                 } else if (tripType === 'airport') {
                   itemTotalDisplay = 'Best Rate';
@@ -669,7 +688,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                   if (fareBreakdown.totalFare > 0) {
                     itemTotalDisplay = `₹${fareBreakdown.totalFare.toLocaleString('en-IN')}`;
                   } else {
-                    itemTotalDisplay = 'Instant Quote';
+                    itemTotalDisplay = 'Enter Locations';
                   }
                 } else {
                   if (hasSelectedDestination && fareBreakdown.totalFare > 0) {
@@ -681,7 +700,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                     const itemTotal = totalKm * rateKm + batta * tripDays + Math.round(calculatedDistanceKm * 2.2);
                     itemTotalDisplay = `₹${itemTotal.toLocaleString('en-IN')}`;
                   } else {
-                    itemTotalDisplay = 'Instant Quote';
+                    itemTotalDisplay = 'Enter Locations';
                   }
                 }
 
@@ -736,7 +755,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-amber-400" />
                   <span className="text-xs font-extrabold uppercase tracking-wider text-amber-400">
-                    Booking Rate & Guarantee
+                    Booking Rate & Trip Terms
                   </span>
                 </div>
                 <p className="text-xs text-slate-300 font-medium">{fareBreakdown.notes}</p>
@@ -766,9 +785,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                       <span className="text-lg font-black text-amber-400">
                         {fareBreakdown.totalFare > 0
                           ? `₹${fareBreakdown.totalFare.toLocaleString('en-IN')}`
-                          : hasSelectedDestination
-                          ? 'Quote upon Booking'
-                          : 'Select Destination'}
+                          : 'Enter Locations to Calculate'}
                       </span>
                     </div>
                     <div className="text-right text-[11px] text-slate-400 font-medium">
@@ -849,7 +866,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>10 Mins Pickup Guarantee*</span>
+              <span>Fast 10-Min Doorstep Pickup*</span>
             </div>
           </div>
         </div>

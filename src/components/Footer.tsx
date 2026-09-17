@@ -211,7 +211,7 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="py-6 border-t border-slate-900 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-500">
           <div>
             <p className="text-slate-400 font-medium leading-relaxed">
-              * 10 Mins Pickup Guarantee: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.
+              * Fast 10-Min Doorstep Pickup: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.
             </p>
             <p className="text-slate-400 font-medium leading-relaxed mt-1">
               Tariff Card: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
@@ -223,8 +223,6 @@ export const Footer: React.FC<FooterProps> = ({
             <a href="terms.html" className="hover:text-amber-400 transition">Terms & Conditions</a>
             <span>•</span>
             <a href="cancellation-refund.html" className="hover:text-amber-400 transition">Cancellation & Refund Policy</a>
-            <span>•</span>
-            <a href="sitemap.xml" className="hover:text-amber-400 transition">XML Sitemap</a>
           </div>
         </div>
 

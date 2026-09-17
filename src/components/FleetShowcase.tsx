@@ -51,7 +51,7 @@ export const FleetShowcase: React.FC<FleetShowcaseProps> = ({ onSelectVehicle })
                   </span>
 
                   <span className="absolute top-3 right-3 bg-white/95 text-emerald-800 text-xs font-extrabold px-3 py-1 rounded-full border border-emerald-200 shadow-sm">
-                    AC Guaranteed
+                    100% AC Fleet
                   </span>
                 </div>
 

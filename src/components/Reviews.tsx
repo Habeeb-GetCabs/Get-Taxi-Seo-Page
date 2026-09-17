@@ -56,7 +56,7 @@ export const Reviews: React.FC = () => {
               Trusted by 6,000+ Travellers &amp; Pilgrims
             </h2>
             <p className="text-slate-600 text-sm mt-1 font-medium">
-              See why Get Taxi Kovai is rated the #1 Call Taxi In Coimbatore with a 10-minute pickup guarantee, verified drivers, and zero hidden charges.
+              See why Get Taxi Kovai is a top-rated Call Taxi in Coimbatore with prompt 10-minute doorstep pickups, verified drivers, and zero hidden charges.
             </p>
           </div>
 
