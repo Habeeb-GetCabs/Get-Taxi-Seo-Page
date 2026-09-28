@@ -462,6 +462,82 @@ function generateHomePage() {
     </div>
   </section>
 
+  <!-- Corporate & Executive Travel Solutions -->
+  <section class="py-16 bg-slate-900 text-white border-b border-slate-800" id="corporate-travel">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-bold mb-3">
+          🏢 Business Class Mobility
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Corporate & Executive Travel Solutions</h2>
+        <p class="text-base text-slate-300 mt-3">Punctual airport transfers, factory and client visits across Coimbatore, Tiruppur, and Erode with 100% transparent pricing and GST invoicing.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-amber-400/50 transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-400/20 text-amber-400 flex items-center justify-center text-2xl font-bold mb-4">🧾</div>
+          <h3 class="text-lg font-bold text-white mb-2">GST Tax Invoicing</h3>
+          <p class="text-sm text-slate-300">Automated digital tax bills with company GST numbers for hassle-free corporate expense claims and compliance.</p>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-amber-400/50 transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-400/20 text-amber-400 flex items-center justify-center text-2xl font-bold mb-4">👔</div>
+          <h3 class="text-lg font-bold text-white mb-2">Dedicated Direct Driver</h3>
+          <p class="text-sm text-slate-300">Zero call center delays. Direct chauffeur coordination with prompt doorstep reporting 15 mins ahead of pickup.</p>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-amber-400/50 transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-400/20 text-amber-400 flex items-center justify-center text-2xl font-bold mb-4">🚘</div>
+          <h3 class="text-lg font-bold text-white mb-2">Pristine AC Sedans & SUVs</h3>
+          <p class="text-sm text-slate-300">Clean, commercial yellow-board DZire, Etios, and Innova Crysta cabs maintained to the highest hygiene standards.</p>
+        </div>
+      </div>
+
+      <!-- Pricing Matrix -->
+      <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700 overflow-x-auto">
+        <table class="w-full text-left text-sm text-slate-300 min-w-[600px]">
+          <thead>
+            <tr class="border-b border-slate-700 text-xs font-bold text-amber-400 uppercase tracking-wider">
+              <th class="py-3 px-4">Service Category</th>
+              <th class="py-3 px-4">Included Distance & Time</th>
+              <th class="py-3 px-4">Base Package Fare</th>
+              <th class="py-3 px-4">Extra Distance</th>
+              <th class="py-3 px-4">Extra Time</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-700/50 text-xs sm:text-sm">
+            <tr>
+              <td class="py-3.5 px-4 font-bold text-white">Local Executive Rental</td>
+              <td class="py-3.5 px-4">8 Hours / 80 Kms</td>
+              <td class="py-3.5 px-4 font-extrabold text-amber-400">₹2,400</td>
+              <td class="py-3.5 px-4">₹14 / km</td>
+              <td class="py-3.5 px-4">₹150 / hr</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-bold text-white">Airport Executive Transfer</td>
+              <td class="py-3.5 px-4">City limits to CJB Airport</td>
+              <td class="py-3.5 px-4 font-extrabold text-amber-400">₹699 Flat</td>
+              <td class="py-3.5 px-4">Toll extra if any</td>
+              <td class="py-3.5 px-4">Free 30m wait</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-bold text-white">Tiruppur / Erode Business Day</td>
+              <td class="py-3.5 px-4">12 Hours / 150 Kms</td>
+              <td class="py-3.5 px-4 font-extrabold text-amber-400">₹3,200</td>
+              <td class="py-3.5 px-4">₹14 / km</td>
+              <td class="py-3.5 px-4">₹150 / hr</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="mt-8 text-center">
+        <a href="https://wa.me/91${PHONE_NUMBER}?text=Hi%2C%20I%20need%20a%20corporate%20cab%20booking%20with%20GST%20invoice." target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-md transition">
+          <span>Book Corporate Cab with GST Invoice</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Customer Reviews / Social Proof -->
   <section class="py-16 bg-white border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -491,6 +567,66 @@ function generateHomePage() {
     </div>
   </section>
 
+  <!-- Coimbatore Travel & Local Heritage Blog (Home Page Showcase) -->
+  <section class="py-16 bg-slate-50 border-b border-slate-200" id="travel-guides">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-900 text-xs font-bold mb-2">
+          📖 26 Local Guides & History Articles
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight">Coimbatore Travel & Local Heritage Blog</h2>
+        <p class="text-base text-slate-600 mt-2">Discover Kongu Nadu history, Nilgiri hill getaways, Isha Yoga routes, Ooty & Valparai road trips, and outstation taxi fare savings.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        ${BLOG_POSTS.slice(0, 6).map(post => {
+          const pageUrl = getBlogFilename(post);
+          return `
+          <article class="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-amber-400/80 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-slate-100">
+                <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" onerror="this.src='${post.fallbackImage || 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'}'" />
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-xs text-amber-400 font-bold text-xs">
+                  ${post.category}
+                </span>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-2 text-[11px] text-slate-500 mb-2">
+                  <span>${post.date}</span>
+                  <span>•</span>
+                  <span>${post.readTime}</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 leading-snug mb-2 group-hover:text-amber-600 transition-colors">
+                  <a href="${pageUrl}">${post.title}</a>
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">${post.excerpt}</p>
+              </div>
+            </div>
+
+            <div class="p-6 pt-0">
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div class="flex flex-wrap gap-1">
+                  ${post.tags.slice(0, 2).map(tag => `<span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-medium">${tag}</span>`).join('')}
+                </div>
+                <a href="${pageUrl}" class="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1 group-hover:underline">
+                  Read Guide &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+          `;
+        }).join('')}
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="blog.html" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md hover:shadow-lg transition">
+          <span>Explore All 26 Travel Guides & Articles</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ Accordion Section -->
   <section class="py-16 bg-slate-50 border-b border-slate-200">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -511,6 +647,157 @@ function generateHomePage() {
           </div>
         </div>
         `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Route Silos (SEO Matrix) -->
+  <section class="py-16 bg-white border-b border-slate-200" id="route-silos">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold mb-2">
+          🗺️ Direct Outstation & Local Corridors
+        </div>
+        <h2 class="text-3xl font-black text-slate-950 tracking-tight">Popular Taxi Routes & Fares from Coimbatore</h2>
+        <p class="text-base text-slate-600 mt-2">Transparent one-way drop rates and round-trip packages across Tamil Nadu and neighbouring states.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Silo 1 -->
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+          <h3 class="text-base font-black text-slate-900 mb-1 flex items-center gap-1.5">
+            <span class="text-amber-500">📍</span> Coimbatore City & Airport
+          </h3>
+          <p class="text-xs text-slate-500 mb-4">Local transit & CJB terminal dispatches</p>
+          <ul class="space-y-2.5 text-xs">
+            <li>
+              <a href="blog-coimbatore-airport-cjb-taxi-transfer-guide.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Airport Taxi (CJB)</span>
+                <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 font-bold text-[10px]">24/7 Pickup</span>
+              </a>
+            </li>
+            <li>
+              <a href="tariffs.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Railway Station Drop</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">CBE Junction</span>
+              </a>
+            </li>
+            <li>
+              <a href="blog-coimbatore-city-local-hourly-taxi-rental-guide.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Hourly City Rental</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">₹350/hr</span>
+              </a>
+            </li>
+            <li>
+              <a href="tour-isha-yoga.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Isha Yoga Adiyogi</span>
+                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">₹1,100</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Silo 2 -->
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+          <h3 class="text-base font-black text-slate-900 mb-1 flex items-center gap-1.5">
+            <span class="text-amber-500">🏭</span> Western Hub Drop Taxi
+          </h3>
+          <p class="text-xs text-slate-500 mb-4">Textile & industrial highway drops</p>
+          <ul class="space-y-2.5 text-xs">
+            <li>
+              <a href="tariffs.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Pollachi</span>
+                <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 font-bold text-[10px]">From ₹1,199</span>
+              </a>
+            </li>
+            <li>
+              <a href="blog-coimbatore-to-tiruppur-texvalley-garment-hub-taxi-guide.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Tiruppur</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">55 km</span>
+              </a>
+            </li>
+            <li>
+              <a href="blog-coimbatore-to-erode-salem-highway-cab-rates-turmeric-market.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Erode</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">100 km</span>
+              </a>
+            </li>
+            <li>
+              <a href="blog-coimbatore-to-erode-salem-highway-cab-rates-turmeric-market.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Salem</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">165 km</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Silo 3 -->
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+          <h3 class="text-base font-black text-slate-900 mb-1 flex items-center gap-1.5">
+            <span class="text-amber-500">⛰️</span> Hill Station Getaways
+          </h3>
+          <p class="text-xs text-slate-500 mb-4">Nilgiri mountain & hairpin bend tours</p>
+          <ul class="space-y-2.5 text-xs">
+            <li>
+              <a href="tour-ooty-coonoor.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Ooty</span>
+                <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 font-bold text-[10px]">Flat ₹3,500</span>
+              </a>
+            </li>
+            <li>
+              <a href="tour-kodaikanal.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Kodaikanal</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">3-Day Tour</span>
+              </a>
+            </li>
+            <li>
+              <a href="blog-coonoor-hill-station-tea-tasting-sims-park-cab-sightseeing-guide.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Coonoor</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">70 km</span>
+              </a>
+            </li>
+            <li>
+              <a href="tour-valparai.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Valparai</span>
+                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">40 Bends</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Silo 4 -->
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+          <h3 class="text-base font-black text-slate-900 mb-1 flex items-center gap-1.5">
+            <span class="text-amber-500">🛕</span> South & Central TN Transfers
+          </h3>
+          <p class="text-xs text-slate-500 mb-4">Temple pilgrimages & highway drops</p>
+          <ul class="space-y-2.5 text-xs">
+            <li>
+              <a href="blog-coimbatore-to-madurai-meenakshi-amman-temple-highway-cab-tour.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Madurai</span>
+                <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 font-bold text-[10px]">215 km</span>
+              </a>
+            </li>
+            <li>
+              <a href="tour-palani.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Palani</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">Murugan Darshan</span>
+              </a>
+            </li>
+            <li>
+              <a href="tour-thanjavur.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Thanjavur</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">Big Temple</span>
+              </a>
+            </li>
+            <li>
+              <a href="blog-coimbatore-to-bangalore-bengaluru-one-way-drop-taxi-fares-guide.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Bangalore</span>
+                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">₹15/km</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>

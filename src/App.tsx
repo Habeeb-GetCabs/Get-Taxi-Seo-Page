@@ -7,6 +7,9 @@ import { FleetShowcase } from './components/FleetShowcase';
 import { DistanceMatrix } from './components/DistanceMatrix';
 import { BlogSection } from './components/BlogSection';
 import { Reviews } from './components/Reviews';
+import { CorporateTravel } from './components/CorporateTravel';
+import { RouteSilos } from './components/RouteSilos';
+import { TaxiSchema } from './components/TaxiSchema';
 import { BookingModal } from './components/BookingModal';
 import { TrackBookingModal } from './components/TrackBookingModal';
 import { AiAssistantModal } from './components/AiAssistantModal';
@@ -175,6 +178,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-slate-950 selection:text-white">
+      {/* Schema.org Structured Data (JSON-LD) */}
+      <TaxiSchema />
+
       {/* Navigation Header */}
       <Header
         onOpenTrackBooking={() => setTrackBookingOpen(true)}
@@ -236,6 +242,9 @@ export default function App() {
 
       {/* Fleet Overview Section */}
       <FleetShowcase onSelectVehicle={handleSelectVehicleFromFleet} />
+
+      {/* Corporate & Executive Travel Section */}
+      <CorporateTravel />
 
       {/* Route Distance Matrix */}
       <DistanceMatrix onQuickBookRoute={handleQuickBookRoute} />
@@ -308,6 +317,9 @@ export default function App() {
         isOpen={aiAssistantOpen}
         onClose={() => setAiAssistantOpen(false)}
       />
+
+      {/* Popular Route Silos (SEO Footer Links) */}
+      <RouteSilos onSelectRoute={(route) => handleQuickBookRoute(route.name)} />
 
       {/* Footer */}
       <Footer
