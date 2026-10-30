@@ -135,7 +135,7 @@ export function generateTermsPage() {
       <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-slate-800">
         <h2 class="text-base font-black text-amber-950 mb-1">Standard Transportation Contract</h2>
         <p class="text-xs sm:text-sm text-slate-700">
-          By booking a ride through <strong>https://gettaxikovai.in</strong>, our call center hotline (+91 9043743777), or official WhatsApp channel, you agree to the following terms and operational guidelines governing cab rental and chauffeur services.
+          By booking a ride through <strong>https://gettaxikovai.in</strong>, our call center hotline (+91 9843701437), or official WhatsApp channel, you agree to the following terms and operational guidelines governing cab rental and chauffeur services.
         </p>
       </div>
 
@@ -143,11 +143,11 @@ export function generateTermsPage() {
         <h2 class="text-xl font-bold text-slate-950 mb-3">1. Scope of Taxi Services</h2>
         <p class="mb-3">Get Taxi Kovai provides on-demand and scheduled passenger vehicle dispatch services including:</p>
         <ul class="list-disc pl-6 space-y-2 text-slate-700">
-          <li><strong>Local City Rides:</strong> Short trips within Coimbatore city limits starting at base fare ₹80 + ₹28/km.</li>
-          <li><strong>Hourly Car Rentals:</strong> Chauffeur-driven packages at flat ₹350/hr with 10 km free per hour (additional km billed per standard category rate).</li>
-          <li><strong>Airport Transfers:</strong> 24/7 dedicated terminal drop and pickup at Coimbatore International Airport (CJB) starting at ₹100 base.</li>
-          <li><strong>One-Way Drop Taxi:</strong> Direct inter-city transfers to Chennai, Bangalore, Salem, Erode, Tiruppur, Madurai, Trichy, etc., billed at ₹14–₹26/km.</li>
-          <li><strong>Outstation Round Trips & Hill Tours:</strong> Comprehensive holiday packages to Ooty, Coonoor, Kodaikanal, Valparai, Munnar, Palani, and Thanjavur at ₹13–₹15/km with daily driver bata (₹400–₹500/day).</li>
+          <li><strong>Local City Rides:</strong> Short trips within Coimbatore city limits starting at Base fare ₹80 + ₹28/km (Sedan).</li>
+          <li><strong>Hourly Car Rentals (Sedan):</strong> Chauffeur-driven packages at ₹375 for 1 hour, ₹750 for 2 hours, and ₹350 per additional hour after 2 hours (4 Hours: ₹1,450 | 8 Hours: ₹2,850 | 12 Hours: ₹4,250).</li>
+          <li><strong>Airport Transfers:</strong> 24/7 dedicated terminal drop and pickup at Coimbatore International Airport (CJB) starting at ₹100 base + ₹30/km.</li>
+          <li><strong>One-Way Drop Taxi:</strong> Direct inter-city transfers to Chennai, Bangalore, Salem, Erode, Tiruppur, Madurai, Trichy, etc., billed at Sedan ₹16/km, SUV ₹20/km, and Premium SUV / Creta ₹25/km + ₹500 driver batta (minimum 130 km billable distance; toll and permit charges extra).</li>
+          <li><strong>Outstation Round Trips & Hill Tours:</strong> Comprehensive holiday packages to Ooty, Coonoor, Kodaikanal, Valparai, Munnar, Palani, and Thanjavur at ₹15/km (Sedan) / ₹18/km (SUV) / ₹20/km (Innova Crysta) with daily driver batta (₹400–₹500/day), or Homepage Outstation Estimator at Base ₹300 + ₹30/km + ₹300 driver batta.</li>
         </ul>
       </div>
 
@@ -155,14 +155,14 @@ export function generateTermsPage() {
         <h2 class="text-xl font-bold text-slate-950 mb-3">2. Transparent Pricing Disclosures & Tariff Rules</h2>
         <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2 mb-4 text-xs sm:text-sm">
           <p><strong>Published Rate Card Standards:</strong></p>
-          <p>• <strong>Round-Trip Cabs:</strong> From ₹13/km (Hatchback) to ₹15/km (Sedan) / ₹18/km (SUV) / ₹24/km (Innova Crysta). Minimum 250 km billed per calendar day.</p>
-          <p>• <strong>One-Way Drop Cabs:</strong> From ₹14–₹26/km (Sedan flat ₹15/km). Minimum 130 km billed for outstation drop journeys.</p>
-          <p>• <strong>Hourly City Rental:</strong> ₹350/hr with 10 km included per hour.</p>
+          <p>• <strong>Round-Trip Cabs:</strong> Sedan ₹15/km | SUV ₹18/km | Innova Crysta ₹20/km. Minimum 250 km billed per calendar day.</p>
+          <p>• <strong>One-Way Drop Cabs:</strong> Sedan ₹16/km | SUV ₹20/km | Premium SUV / Creta ₹25/km + ₹500 Driver Batta. Minimum 130 km billable distance applies. Toll and permit charges are extra.</p>
+          <p>• <strong>Hourly City Rental (Sedan):</strong> 1 Hr: ₹375 | 2 Hrs: ₹750 | 4 Hrs: ₹1,450 | 8 Hrs: ₹2,850 | 12 Hrs: ₹4,250 (+₹350/hr after 2 hours).</p>
         </div>
         <ul class="list-disc pl-6 space-y-2 text-slate-700">
-          <li><strong>Tolls & Parking:</strong> National Highway toll plaza charges, airport parking fees, and state border tourist permit taxes are not included in the baseline per-km fuel rate and must be settled at actuals by the passenger.</li>
-          <li><strong>Driver Bata:</strong> Standard driver allowance of ₹400/day (Sedan) to ₹500/day (SUV/Innova) applies to outstation journeys extending past calendar midnight (06:00 AM to 10:00 PM standard shift).</li>
-          <li><strong>Night Driving Allowance:</strong> Night allowance of ₹300 applies for overnight travel between 10:00 PM and 06:00 AM.</li>
+          <li><strong>Tolls & Permits:</strong> National Highway toll plaza charges, airport parking fees, and state border tourist permit taxes are extra and settled at actuals by the passenger.</li>
+          <li><strong>Driver Batta:</strong> Driver allowance of ₹500 applies to one-way outstation trips across Sedan, SUV, and Premium SUV / Creta categories.</li>
+          <li><strong>Night Driving Allowance:</strong> Applicable night allowance applies for overnight travel between 10:00 PM and 06:00 AM where specified.</li>
         </ul>
       </div>
 
@@ -254,7 +254,7 @@ export function generateCancellationRefundPage() {
         <p class="mb-3">We understand that flights get rescheduled, meetings shift, and emergency family matters arise. Our cancellation terms are straightforward:</p>
         <ul class="list-disc pl-6 space-y-2 text-slate-700">
           <li><strong>Prior to Driver Departure:</strong> You may cancel your booking at any time without any cancellation penalty or fee.</li>
-          <li><strong>After Driver Dispatched / At Doorstep:</strong> If the vehicle has already arrived at your doorstep or traveled significant distance specifically for your pickup, we kindly request informing the dispatch desk immediately at <a href="${PHONE_HREF}" data-conversion-intent="call" class="text-amber-600 font-bold hover:underline">+91 9043743777</a>. A nominal fuel compensation of ₹150–₹250 may be requested by the driver for dead mileage if cancelled after arrival.</li>
+          <li><strong>After Driver Dispatched / At Doorstep:</strong> If the vehicle has already arrived at your doorstep or traveled significant distance specifically for your pickup, we kindly request informing the dispatch desk immediately at <a href="${PHONE_HREF}" data-conversion-intent="call" class="text-amber-600 font-bold hover:underline">+91 9843701437</a>. A nominal fuel compensation of ₹150–₹250 may be requested by the driver for dead mileage if cancelled after arrival.</li>
           <li><strong>Outstation Multi-Day Tour Cancellations:</strong> Free cancellation up to 4 hours prior to scheduled departure. No penalties apply.</li>
         </ul>
       </div>
@@ -293,7 +293,7 @@ export function generateCancellationRefundPage() {
         <p class="text-slate-700 mb-3">Our Coimbatore support team is available 24 hours a day, 7 days a week:</p>
         <div class="flex flex-wrap gap-3">
           <a href="${PHONE_HREF}" data-conversion-intent="call" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition shadow-sm">
-            <span>Call 24/7 Support: +91 9043743777</span>
+            <span>Call 24/7 Support: +91 9843701437</span>
           </a>
           <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition shadow-sm">
             <span>WhatsApp Support Desk</span>

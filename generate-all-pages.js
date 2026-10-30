@@ -20,6 +20,7 @@ import { FIXED_ROUTE_CARDS, TARIFF_POLICIES, FAQS, INITIAL_REVIEWS } from './src
 import { POPULAR_LOCATIONS, VEHICLES } from './src/data/locations.ts';
 import { SITE_URL, PHONE_NUMBER, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_URL, generateHtmlPage } from './build-static-site.js';
 import { writeLegalPages } from './create-legal-pages.js';
+import { writeAllDiscoveryPages } from './generate-discovery-pages.js';
 
 const ROOT_DIR = process.cwd();
 
@@ -95,7 +96,7 @@ function generateHomePage() {
           </h1>
 
           <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-            Experience reliable, transparent taxi travel with Coimbatore’s premier call taxi service. Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr. 6,000+ satisfied customers, verified drivers, and zero hidden charges.
+            Experience reliable, transparent taxi travel with Coimbatore’s premier call taxi service. Instant local city rides, One-Way Drops (Sedan ₹16/km, SUV ₹20/km, Premium SUV / Creta ₹25/km), and Hourly Rentals (from ₹375 for 1 Hr & ₹750 for 2 Hrs). 6,000+ satisfied customers, verified drivers, and zero hidden charges.
             <span class="block text-xs text-slate-400 mt-1">*Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.</span>
           </p>
 
@@ -103,7 +104,7 @@ function generateHomePage() {
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
             <a href="${PHONE_HREF}" data-conversion-intent="call" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg shadow-amber-400/20 hover:scale-[1.02] transition">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
-              Call 9043743777
+              Call 9843701437
             </a>
             <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base shadow-lg shadow-emerald-600/20 hover:scale-[1.02] transition">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -143,52 +144,39 @@ function generateHomePage() {
               <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">24/7 Live</span>
             </div>
 
-            <!-- Ride Type Selector Tabs: Local 1st, Hourly Rental 2nd, One-Way 3rd, Outstation 4th -->
-            <div class="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl mb-4 text-xs font-bold" id="ride-type-tabs">
-              <button type="button" class="tab-btn py-2 px-1 rounded-lg text-center bg-white text-slate-900 shadow-xs transition" data-type="local">Local Ride</button>
-              <button type="button" class="tab-btn py-2 px-1 rounded-lg text-center text-slate-600 hover:text-slate-900 transition" data-type="hourly">Hourly Rental</button>
-              <button type="button" class="tab-btn py-2 px-1 rounded-lg text-center text-slate-600 hover:text-slate-900 transition" data-type="oneway">One-Way</button>
-              <button type="button" class="tab-btn py-2 px-1 rounded-lg text-center text-slate-600 hover:text-slate-900 transition" data-type="outstation">Outstation</button>
+            <!-- Ride Type Selector Tabs: 1. Local Ride, 2. Outstation, 3. Hourly Rental -->
+            <div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 rounded-xl mb-4 text-xs font-bold" id="ride-type-tabs">
+              <button type="button" class="tab-btn py-2.5 px-2 rounded-lg text-center bg-white text-slate-900 shadow-xs transition cursor-pointer" data-type="local">Local Ride</button>
+              <button type="button" class="tab-btn py-2.5 px-2 rounded-lg text-center text-slate-600 hover:text-slate-900 transition cursor-pointer" data-type="outstation">Outstation</button>
+              <button type="button" class="tab-btn py-2.5 px-2 rounded-lg text-center text-slate-600 hover:text-slate-900 transition cursor-pointer" data-type="hourly">Hourly Rental</button>
             </div>
 
-            <!-- Form Inputs (No dropdown suggestions or preloaded destinations) -->
+            <!-- Form Inputs -->
             <div class="space-y-3 text-sm">
-              <!-- Pickup Field (Open text input, no preloaded destination) -->
+              <!-- Pickup Field -->
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1" id="lbl-pickup">Pickup Address / Area in Coimbatore</label>
+                <label class="block text-xs font-bold text-slate-700 mb-1" id="lbl-pickup" for="calc-pickup">Pickup Address / Area in Coimbatore</label>
                 <input type="text" id="calc-pickup" placeholder="Enter Pickup Location in Coimbatore" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none" />
               </div>
 
-              <!-- Drop Field (Open text input, no preloaded destination or dropdown) -->
+              <!-- Drop Field -->
               <div id="drop-container">
-                <label class="block text-xs font-bold text-slate-700 mb-1" id="lbl-drop">Drop Location in Coimbatore</label>
+                <label class="block text-xs font-bold text-slate-700 mb-1" id="lbl-drop" for="calc-drop">Drop Location in Coimbatore</label>
                 <input type="text" id="calc-drop" placeholder="Enter Drop Location" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none" />
               </div>
 
               <!-- Hourly Package Selector (Shown only when Hourly Rental tab is selected) -->
               <div id="hourly-container" class="hidden">
-                <label class="block text-xs font-bold text-slate-700 mb-1">Rental Package Duration</label>
+                <label class="block text-xs font-bold text-slate-700 mb-1" for="calc-hourly-pkg">Rental Package Duration</label>
                 <select id="calc-hourly-pkg" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none font-semibold text-slate-900">
-                  <option value="2">2 Hours (20 KM Free Included)</option>
-                  <option value="3">3 Hours (30 KM Free Included)</option>
-                  <option value="4" selected>4 Hours (40 KM Free Included)</option>
-                  <option value="6">6 Hours (60 KM Free Included)</option>
-                  <option value="8">8 Hours (80 KM Free Included)</option>
-                  <option value="10">10 Hours (100 KM Free Included)</option>
-                  <option value="12">12 Hours (120 KM Free Included)</option>
-                </select>
-                <p class="text-[11px] text-slate-500 mt-1">₹350 per hour with 10 km free per hour.</p>
-              </div>
-
-              <!-- Outstation Days Selector (Shown only when Outstation tab is selected) -->
-              <div id="outstation-container" class="hidden">
-                <label class="block text-xs font-bold text-slate-700 mb-1">Trip Duration</label>
-                <select id="calc-days" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none">
-                  <option value="1">1 Day Round Trip</option>
-                  <option value="2" selected>2 Days Round Trip</option>
-                  <option value="3">3 Days Round Trip</option>
-                  <option value="4">4 Days Round Trip</option>
-                  <option value="5">5+ Days Tour</option>
+                  <option value="1">1 Hour Package</option>
+                  <option value="2">2 Hours Package</option>
+                  <option value="3">3 Hours Package</option>
+                  <option value="4" selected>4 Hours Package</option>
+                  <option value="6">6 Hours Package</option>
+                  <option value="8">8 Hours Package</option>
+                  <option value="10">10 Hours Package</option>
+                  <option value="12">12 Hours Package</option>
                 </select>
               </div>
 
@@ -209,11 +197,11 @@ function generateHomePage() {
                     <span class="text-sm font-extrabold text-slate-900" id="calc-dist-display">Awaiting Location</span>
                   </div>
                   <div class="text-right">
-                    <span class="text-xs text-slate-600 block">Calculated Total Fare</span>
+                    <span class="text-xs text-slate-600 block" id="calc-fare-label">Estimated Fare</span>
                     <span class="text-2xl font-black text-amber-600" id="calc-fare-display">—</span>
                   </div>
                 </div>
-                <p class="text-[11px] text-slate-500 mt-1.5" id="calc-fare-breakdown">*Enter pickup & drop locations above to view live fare</p>
+                <p class="text-[11px] text-slate-500 mt-1.5" id="calc-fare-breakdown">*Enter pickup & drop locations above to view estimated fare</p>
               </div>
 
               <!-- Quick Book Trigger -->
@@ -278,14 +266,14 @@ function generateHomePage() {
             ⏱️
           </div>
           <h3 class="text-lg font-bold text-slate-900 mb-1">Hourly Rentals</h3>
-          <p class="text-xs text-slate-500 mb-4">₹350 / hr with 10 KM free per hour</p>
+          <p class="text-xs text-slate-500 mb-4">1 Hr ₹375 • 2 Hrs ₹750 • 4 Hrs ₹1,450 • 8 Hrs ₹2,850</p>
           <div class="space-y-2 text-sm border-t border-amber-200 pt-3">
-            <div class="flex justify-between"><span class="text-slate-600">Base Hourly Rate:</span> <strong class="text-slate-900">₹350 / hour</strong></div>
-            <div class="flex justify-between"><span class="text-slate-600">Included Distance:</span> <strong class="text-emerald-700 font-bold">10 KM Free / hr</strong></div>
-            <div class="flex justify-between"><span class="text-slate-600">Vehicle Retention:</span> <strong class="text-slate-900">Dedicated Cab</strong></div>
+            <div class="flex justify-between"><span class="text-slate-600">1 Hr / 2 Hrs:</span> <strong class="text-slate-900">₹375 / ₹750</strong></div>
+            <div class="flex justify-between"><span class="text-slate-600">4 Hrs / 8 Hrs:</span> <strong class="text-emerald-700 font-bold">₹1,450 / ₹2,850</strong></div>
+            <div class="flex justify-between"><span class="text-slate-600">12 Hrs Full Day:</span> <strong class="text-slate-900">₹4,250</strong></div>
           </div>
           <div class="mt-4 pt-3 border-t border-amber-200">
-            <a href="tariffs.html" class="text-xs font-bold text-amber-700 hover:text-amber-800 flex items-center gap-1">View Rental Packages &rarr;</a>
+            <a href="hourly-rental.html" class="text-xs font-bold text-amber-700 hover:text-amber-800 flex items-center gap-1">Explore Hourly Packages &rarr;</a>
           </div>
         </div>
 
@@ -295,14 +283,14 @@ function generateHomePage() {
             🚀
           </div>
           <h3 class="text-lg font-bold text-slate-900 mb-1">One-Way Drop Taxi</h3>
-          <p class="text-xs text-slate-500 mb-4">Save 50% on return km across TN & Bangalore</p>
+          <p class="text-xs text-slate-500 mb-4">Sedan ₹16/km • SUV ₹20/km • Creta ₹25/km</p>
           <div class="space-y-2 text-sm border-t border-slate-200 pt-3">
-            <div class="flex justify-between"><span class="text-slate-600">Return KM Fee:</span> <strong class="text-emerald-700 font-bold">ZERO Charge</strong></div>
-            <div class="flex justify-between"><span class="text-slate-600">Coverage:</span> <strong class="text-slate-900">All South India</strong></div>
-            <div class="flex justify-between"><span class="text-slate-600">Billing:</span> <strong class="text-slate-900">Drop-only Tolls</strong></div>
+            <div class="flex justify-between"><span class="text-slate-600">One-Way Rates:</span> <strong class="text-emerald-700 font-bold">From ₹16 / km</strong></div>
+            <div class="flex justify-between"><span class="text-slate-600">Min Billable:</span> <strong class="text-slate-900">130 KM + ₹500 Batta</strong></div>
+            <div class="flex justify-between"><span class="text-slate-600">Extra Charges:</span> <strong class="text-slate-900">Tolls & Permits Extra</strong></div>
           </div>
           <div class="mt-4 pt-3 border-t border-slate-200">
-            <a href="tariffs.html" class="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1">Calculate Drop Fares &rarr;</a>
+            <a href="oneway.html" class="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1">Calculate One-Way Fares &rarr;</a>
           </div>
         </div>
 
@@ -384,7 +372,7 @@ function generateHomePage() {
           return `
           <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col">
             <div class="relative h-48 overflow-hidden bg-slate-200">
-              <img src="${tour.coverImage}" alt="${tour.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'" />
+              <img src="${tour.coverImage}" alt="${tour.title}" width="600" height="384" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'" />
               <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-xs text-amber-400 font-bold text-xs">
                 ${tour.durationDays} Day${tour.durationDays > 1 ? 's' : ''} ${tour.durationNights > 0 ? `• ${tour.durationNights} Night` : ''}
               </span>
@@ -446,9 +434,9 @@ function generateHomePage() {
             </div>
             <p class="text-xs text-slate-600 mb-4">${v.popularFor}</p>
             <div class="bg-slate-50 rounded-xl p-3.5 space-y-1.5 text-xs border border-slate-200/80 mb-5">
-              <div class="flex justify-between"><span class="text-slate-500">One-Way Drop:</span> <strong class="text-slate-950 font-bold">₹${v.ratePerKmOneWay} / KM</strong></div>
+              <div class="flex justify-between"><span class="text-slate-500">One-Way Drop:</span> <strong class="text-slate-950 font-bold">${v.id === 'sedan' ? '₹16 / KM (+₹500 Batta)' : (v.id === 'suv' ? '₹20 / KM (+₹500 Batta)' : 'Custom Quote')}</strong></div>
               <div class="flex justify-between"><span class="text-slate-500">Round Trip:</span> <strong class="text-slate-950 font-bold">₹${v.ratePerKmRoundTrip} / KM</strong></div>
-              <div class="flex justify-between"><span class="text-slate-500">Driver Batta:</span> <strong class="text-slate-700 font-semibold">₹${v.driverBataPerDay} / day</strong></div>
+              <div class="flex justify-between"><span class="text-slate-500">Min One-Way Distance:</span> <strong class="text-slate-700 font-semibold">${v.minKmOneWay} KM</strong></div>
             </div>
           </div>
           <a href="https://wa.me/91${PHONE_NUMBER}?text=Hello%2C%20I%20want%20to%20book%20a%20${encodeURIComponent(v.name)}" target="_blank" rel="noopener" class="block w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs text-center shadow-md transition font-syne uppercase tracking-wider">
@@ -503,11 +491,11 @@ function generateHomePage() {
           </thead>
           <tbody class="divide-y divide-slate-700/50 text-xs sm:text-sm">
             <tr>
-              <td class="py-3.5 px-4 font-bold text-white">Local Executive Rental</td>
-              <td class="py-3.5 px-4">8 Hours / 80 Kms</td>
-              <td class="py-3.5 px-4 font-extrabold text-amber-400">₹2,400</td>
-              <td class="py-3.5 px-4">₹14 / km</td>
-              <td class="py-3.5 px-4">₹150 / hr</td>
+              <td class="py-3.5 px-4 font-bold text-white">Local Executive Rental (Sedan)</td>
+              <td class="py-3.5 px-4">8 Hours Package</td>
+              <td class="py-3.5 px-4 font-extrabold text-amber-400">₹2,850</td>
+              <td class="py-3.5 px-4">₹28 / km</td>
+              <td class="py-3.5 px-4">₹350 / hr</td>
             </tr>
             <tr>
               <td class="py-3.5 px-4 font-bold text-white">Airport Executive Transfer</td>
@@ -583,7 +571,7 @@ function generateHomePage() {
           <article class="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-amber-400/80 transition-all duration-300 flex flex-col justify-between group">
             <div>
               <div class="relative h-48 overflow-hidden bg-slate-100">
-                <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" onerror="this.src='${post.fallbackImage || 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'}'" />
+                <img src="${post.image}" alt="${post.title}" width="600" height="384" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async" onerror="this.src='${post.fallbackImage || 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'}'" />
                 <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-xs text-amber-400 font-bold text-xs">
                   ${post.category}
                 </span>
@@ -681,15 +669,15 @@ function generateHomePage() {
               </a>
             </li>
             <li>
-              <a href="blog-coimbatore-city-local-hourly-taxi-rental-guide.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+              <a href="hourly-rental.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
                 <span class="font-bold text-slate-800 group-hover:text-amber-600">Hourly City Rental</span>
-                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">₹350/hr</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">From ₹375</span>
               </a>
             </li>
             <li>
               <a href="tour-isha-yoga.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
-                <span class="font-bold text-slate-800 group-hover:text-amber-600">Isha Yoga Adiyogi</span>
-                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">₹1,100</span>
+                <span class="font-bold text-slate-800 group-hover:text-amber-600">Isha Yoga Tour & Pickup</span>
+                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">Tours ₹3,000 / ₹3,500</span>
               </a>
             </li>
           </ul>
@@ -705,13 +693,13 @@ function generateHomePage() {
             <li>
               <a href="tariffs.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
                 <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Pollachi</span>
-                <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 font-bold text-[10px]">From ₹1,199</span>
+                <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 font-bold text-[10px]">42 km</span>
               </a>
             </li>
             <li>
               <a href="blog-coimbatore-to-tiruppur-texvalley-garment-hub-taxi-guide.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
                 <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Tiruppur</span>
-                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">55 km</span>
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium text-[10px]">50 km • ₹2,100</span>
               </a>
             </li>
             <li>
@@ -789,9 +777,9 @@ function generateHomePage() {
               </a>
             </li>
             <li>
-              <a href="blog-coimbatore-to-bangalore-bengaluru-one-way-drop-taxi-fares-guide.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
+              <a href="oneway.html" class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xs transition group">
                 <span class="font-bold text-slate-800 group-hover:text-amber-600">Coimbatore to Bangalore</span>
-                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">₹15/km</span>
+                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold text-[10px]">₹16/km</span>
               </a>
             </li>
           </ul>
@@ -800,14 +788,66 @@ function generateHomePage() {
     </div>
   </section>
 
+  <!-- Explore Tamil Nadu & Coimbatore Local Discovery Directory Showcase -->
+  <section class="py-14 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">New • Local Discovery & Travel Directory</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight">Explore Coimbatore & Tamil Nadu Travel Guide</h2>
+          <p class="text-sm text-slate-600 mt-1 max-w-2xl">Verified neighbourhood guides, temples, restaurants, hospitals, public parking, scenic routes, and multi-stop trip planning.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="explore-tamil-nadu.html" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition">🧭 Explore Tamil Nadu Hub</a>
+          <a href="make-my-trip.html" class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">🗺️ Get Taxi Trip Planner</a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <a href="explore-coimbatore.html" class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 hover:shadow-md transition flex flex-col justify-between group">
+          <div>
+            <span class="text-2xl">🏙️</span>
+            <h3 class="text-base font-extrabold text-slate-900 mt-2 group-hover:text-amber-600">Explore Coimbatore</h3>
+            <p class="text-xs text-slate-600 mt-1">15 neighbourhoods (RS Puram, Gandhipuram, Peelamedu, Race Course, Town Hall, Perur & more) + verified local places.</p>
+          </div>
+          <span class="text-xs font-black text-amber-600 mt-4 inline-block">Browse City Directory →</span>
+        </a>
+        <a href="destinations-tamil-nadu.html" class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 hover:shadow-md transition flex flex-col justify-between group">
+          <div>
+            <span class="text-2xl">⛰️</span>
+            <h3 class="text-base font-extrabold text-slate-900 mt-2 group-hover:text-amber-600">Statewide Tamil Nadu Guide</h3>
+            <p class="text-xs text-slate-600 mt-1">Ooty, Coonoor, Valparai, Kodaikanal, Palani, Madurai, Rameswaram, Kanyakumari, Trichy, Thanjavur & more.</p>
+          </div>
+          <span class="text-xs font-black text-amber-600 mt-4 inline-block">Explore 23+ Destinations →</span>
+        </a>
+        <a href="scenic-routes.html" class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 hover:shadow-md transition flex flex-col justify-between group">
+          <div>
+            <span class="text-2xl">🌿</span>
+            <h3 class="text-base font-extrabold text-slate-900 mt-2 group-hover:text-amber-600">Scenic Drives & Hidden Gems</h3>
+            <p class="text-xs text-slate-600 mt-1">Compare main highways vs quieter scenic routes, dam viewpoints, forest checkpost timings, and offbeat detours.</p>
+          </div>
+          <span class="text-xs font-black text-amber-600 mt-4 inline-block">View Scenic Routes →</span>
+        </a>
+        <a href="make-my-trip.html" class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 hover:shadow-md transition flex flex-col justify-between group">
+          <div>
+            <span class="text-2xl">🗺️</span>
+            <h3 class="text-base font-extrabold text-slate-900 mt-2 group-hover:text-amber-600">Get Taxi Trip Planner (Multi-Stop)</h3>
+            <p class="text-xs text-slate-600 mt-1">Combine temples, restaurants, viewpoints, and hill stations into one custom route and get a tailored cab quote.</p>
+          </div>
+          <span class="text-xs font-black text-amber-600 mt-4 inline-block">Build Custom Itinerary →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Banner -->
   <section class="py-16 bg-slate-950 text-white text-center relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
       <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to Ride? Book Your Cab in 60 Seconds</h2>
-      <p class="text-slate-300 text-base max-w-2xl mx-auto">Call or WhatsApp our 24/7 booking desk at <strong>9043743777</strong> for prompt 24/7 doorstep dispatch anywhere in Coimbatore.</p>
+      <p class="text-slate-300 text-base max-w-2xl mx-auto">Call or WhatsApp our 24/7 booking desk at <strong>9843701437</strong> for prompt 24/7 doorstep dispatch anywhere in Coimbatore.</p>
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-        <a href="tel:${PHONE_NUMBER}" class="px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg transition">
-          📞 Call 9043743777
+        <a href="${PHONE_HREF}" class="px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg transition">
+          📞 Call 9843701437
         </a>
         <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" class="px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base shadow-lg transition">
           💬 WhatsApp Booking
@@ -818,15 +858,544 @@ function generateHomePage() {
 
   <!-- Interactive Script for Calculator on Homepage -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {\n      // Coimbatore Coordinates & Hub Matrix for High-Accuracy Distance Fallbacks\n      const COIMBATORE_LOCATIONS = [\n        { key: 'mayileripalayam', name: 'Mayileripalayam', lat: 10.8931, lng: 76.9942 },\n        { key: 'perur', name: 'Perur', lat: 10.9708, lng: 76.9077 },\n        { key: 'selvapuram', name: 'Selvapuram', lat: 10.9856, lng: 76.9388 },\n        { key: 'airport', name: 'Coimbatore Airport (CJB)', lat: 11.0298, lng: 77.0434 },\n        { key: 'cjb', name: 'Coimbatore Airport (CJB)', lat: 11.0298, lng: 77.0434 },\n        { key: 'peelamedu', name: 'Peelamedu', lat: 11.0240, lng: 77.0120 },\n        { key: 'railway', name: 'Coimbatore Railway Junction', lat: 10.9998, lng: 76.9634 },\n        { key: 'junction', name: 'Coimbatore Railway Junction', lat: 10.9998, lng: 76.9634 },\n        { key: 'station', name: 'Coimbatore Railway Junction', lat: 10.9998, lng: 76.9634 },\n        { key: 'gandhipuram', name: 'Gandhipuram', lat: 11.0183, lng: 76.9644 },\n        { key: 'rs puram', name: 'RS Puram', lat: 11.0084, lng: 76.9458 },\n        { key: 'r.s. puram', name: 'RS Puram', lat: 11.0084, lng: 76.9458 },\n        { key: 'saravanampatti', name: 'Saravanampatti', lat: 11.0797, lng: 76.9997 },\n        { key: 'singanallur', name: 'Singanallur', lat: 10.9972, lng: 77.0250 },\n        { key: 'ukkadam', name: 'Ukkadam', lat: 10.9880, lng: 76.9610 },\n        { key: 'vadavalli', name: 'Vadavalli', lat: 11.0242, lng: 76.8998 },\n        { key: 'thudiyalur', name: 'Thudiyalur', lat: 11.0805, lng: 76.9392 },\n        { key: 'kovaipudur', name: 'Kovaipudur', lat: 10.9328, lng: 76.9381 },\n        { key: 'podanur', name: 'Podanur', lat: 10.9636, lng: 76.9961 },\n        { key: 'eachanari', name: 'Eachanari', lat: 10.9348, lng: 76.9757 },\n        { key: 'malumichampatti', name: 'Malumichampatti', lat: 10.9150, lng: 76.9850 },\n        { key: 'kinathukadavu', name: 'Kinathukadavu', lat: 10.8173, lng: 77.0195 },\n        { key: 'pollachi', name: 'Pollachi', lat: 10.6609, lng: 77.0048 },\n        { key: 'mettupalayam', name: 'Mettupalayam', lat: 11.3005, lng: 76.9450 },\n        { key: 'karamadai', name: 'Karamadai', lat: 11.2427, lng: 76.9587 },\n        { key: 'sulur', name: 'Sulur', lat: 11.0287, lng: 77.1264 },\n        { key: 'annur', name: 'Annur', lat: 11.2335, lng: 77.1352 },\n        { key: 'marudhamalai', name: 'Marudhamalai', lat: 11.0456, lng: 76.8523 },\n        { key: 'isha', name: 'Isha Yoga Center', lat: 10.9763, lng: 76.7344 },\n        { key: 'adiyogi', name: 'Isha Yoga Adiyogi', lat: 10.9763, lng: 76.7344 },\n        { key: 'ooty', name: 'Ooty', lat: 11.4102, lng: 76.6950 },\n        { key: 'coonoor', name: 'Coonoor', lat: 11.3530, lng: 76.7959 },\n        { key: 'kodaikanal', name: 'Kodaikanal', lat: 10.2381, lng: 77.4892 },\n        { key: 'valparai', name: 'Valparai', lat: 10.3267, lng: 76.9554 },\n        { key: 'palani', name: 'Palani', lat: 10.4504, lng: 77.5186 },\n        { key: 'munnar', name: 'Munnar', lat: 10.0889, lng: 77.0595 },\n        { key: 'bangalore', name: 'Bangalore', lat: 12.9716, lng: 77.5946 },\n        { key: 'bengaluru', name: 'Bangalore', lat: 12.9716, lng: 77.5946 },\n        { key: 'chennai', name: 'Chennai', lat: 13.0827, lng: 80.2707 },\n        { key: 'salem', name: 'Salem', lat: 11.6643, lng: 78.1460 },\n        { key: 'tiruppur', name: 'Tiruppur', lat: 11.1085, lng: 77.3411 },\n        { key: 'erode', name: 'Erode', lat: 11.3410, lng: 77.7172 },\n        { key: 'madurai', name: 'Madurai', lat: 9.9252, lng: 78.1198 },\n        { key: 'trichy', name: 'Trichy', lat: 10.7905, lng: 78.7047 }\n      ];\n\n      // Exact verified road distances between primary Coimbatore corridors\n      const ROUTE_PAIR_OVERRIDES = {\n        'airport-perur': 19,\n        'perur-airport': 19,\n        'airport-selvapuram': 14,\n        'selvapuram-airport': 14,\n        'mayileripalayam-railway': 19,\n        'railway-mayileripalayam': 19,\n        'mayileripalayam-station': 19,\n        'station-mayileripalayam': 19,\n        'mayileripalayam-junction': 19,\n        'junction-mayileripalayam': 19,\n        'mayileripalayam-gandhipuram': 21,\n        'gandhipuram-mayileripalayam': 21,\n        'mayileripalayam-airport': 24,\n        'airport-mayileripalayam': 24,\n        'mayileripalayam-perur': 16,\n        'perur-mayileripalayam': 16,\n        'mayileripalayam-selvapuram': 14,\n        'selvapuram-mayileripalayam': 14,\n        'airport-railway': 12,\n        'railway-airport': 12,\n        'airport-gandhipuram': 11,\n        'gandhipuram-airport': 11,\n        'airport-rspuram': 14,\n        'rspuram-airport': 14,\n        'perur-gandhipuram': 9,\n        'gandhipuram-perur': 9,\n        'selvapuram-gandhipuram': 6,\n        'gandhipuram-selvapuram': 6,\n        'isha-airport': 40,\n        'airport-isha': 40,\n        'isha-gandhipuram': 30,\n        'gandhipuram-isha': 30,\n        'ooty-coimbatore': 86,\n        'coimbatore-ooty': 86\n      };\n\n      let activeRideType = 'local';\n      let activeVehicle = 'suv'; // 'suv' = Family SUV Ertiga, 'crysta' = Innova Crysta\n      let currentDrivingKm = null;\n      let pickupCoords = null;\n      let dropCoords = null;\n\n      const tabs = document.querySelectorAll('#ride-type-tabs .tab-btn');\n      const pickupInput = document.getElementById('calc-pickup');\n      const dropContainer = document.getElementById('drop-container');\n      const dropInput = document.getElementById('calc-drop');\n      const lblDrop = document.getElementById('lbl-drop');\n      const hourlyContainer = document.getElementById('hourly-container');\n      const hourlyPkgSelect = document.getElementById('calc-hourly-pkg');\n      const outstationContainer = document.getElementById('outstation-container');\n      const daysSelect = document.getElementById('calc-days');\n      const distLabel = document.getElementById('calc-dist-label');\n      const distDisp = document.getElementById('calc-dist-display');\n      const fareDisp = document.getElementById('calc-fare-display');\n      const breakdownDisp = document.getElementById('calc-fare-breakdown');\n      const whatsappBtn = document.getElementById('calc-whatsapp-btn');\n      const vehSelect = document.getElementById('calc-vehicle');\n      if (vehSelect) {\n        vehSelect.addEventListener('change', updateCalculation);\n      }\n\n      function switchTab(type) {\n        activeRideType = type;\n        tabs.forEach(t => {\n          if (t.dataset.type === type) {\n            t.classList.add('bg-white', 'text-slate-900', 'shadow-xs');\n            t.classList.remove('text-slate-600');\n          } else {\n            t.classList.remove('bg-white', 'text-slate-900', 'shadow-xs');\n            t.classList.add('text-slate-600');\n          }\n        });\n\n        if (type === 'local') {\n          dropContainer.classList.remove('hidden');\n          lblDrop.textContent = 'Drop Location in Coimbatore';\n          dropInput.placeholder = 'Enter Drop Location in Coimbatore';\n          hourlyContainer.classList.add('hidden');\n          outstationContainer.classList.add('hidden');\n        } else if (type === 'hourly') {\n          dropContainer.classList.add('hidden');\n          hourlyContainer.classList.remove('hidden');\n          outstationContainer.classList.add('hidden');\n        } else if (type === 'oneway') {\n          dropContainer.classList.remove('hidden');\n          lblDrop.textContent = 'Destination / Drop City';\n          dropInput.placeholder = 'Enter Outstation Drop City (e.g. Ooty, Chennai, Bangalore)';\n          hourlyContainer.classList.add('hidden');\n          outstationContainer.classList.add('hidden');\n        } else if (type === 'outstation') {\n          dropContainer.classList.remove('hidden');\n          lblDrop.textContent = 'Outstation Destination';\n          dropInput.placeholder = 'Enter Outstation Destination';\n          hourlyContainer.classList.add('hidden');\n          outstationContainer.classList.remove('hidden');\n        }\n\n        requestRealDistance();\n      }\n\n      // Helper: Haversine distance with real-world road winding factor\n      function getHaversineDrivingKm(lat1, lon1, lat2, lon2) {\n        const R = 6371;\n        const dLat = (lat2 - lat1) * Math.PI / 180;\n        const dLon = (lon2 - lon1) * Math.PI / 180;\n        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +\n                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *\n                  Math.sin(dLon / 2) * Math.sin(dLon / 2);\n        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));\n        const straight = R * c;\n        // Coimbatore urban/suburban road curvature multiplier is ~1.28x\n        return Math.max(2, Math.round(straight * 1.28));\n      }\n\n      // Match freeform text to Coimbatore location registry\n      function findLocationInText(text) {\n        if (!text) return null;\n        const lower = text.toLowerCase().replace(/[^a-z0-9]/g, ' ');\n        for (const loc of COIMBATORE_LOCATIONS) {\n          if (lower.includes(loc.key)) return loc;\n        }\n        return null;\n      }\n\n      // Check route pair overrides for exact known Coimbatore journeys\n      function getOverrideKm(pText, dText) {\n        const pLoc = findLocationInText(pText);\n        const dLoc = findLocationInText(dText);\n        if (pLoc && dLoc) {\n          const directKey = pLoc.key + '-' + dLoc.key;\n          if (ROUTE_PAIR_OVERRIDES[directKey]) {\n            return ROUTE_PAIR_OVERRIDES[directKey];\n          }\n          // Compute using exact coordinates\n          return getHaversineDrivingKm(pLoc.lat, pLoc.lng, dLoc.lat, dLoc.lng);\n        }\n        // Fallback for long outstation cities\n        if (dLoc && ['ooty', 'coonoor', 'kodaikanal', 'valparai', 'palani', 'munnar', 'bangalore', 'bengaluru', 'chennai', 'salem', 'tiruppur', 'erode', 'madurai', 'trichy', 'pollachi', 'mettupalayam'].includes(dLoc.key)) {\n          const COV_CENTER = { lat: 11.0168, lng: 76.9558 };\n          return getHaversineDrivingKm(COV_CENTER.lat, COV_CENTER.lng, dLoc.lat, dLoc.lng);\n        }\n        return null;\n      }\n\n      // Real Google Maps Distance Matrix / Directions resolver\n      let debounceTimer = null;\n      function requestRealDistance() {\n        clearTimeout(debounceTimer);\n        debounceTimer = setTimeout(() => {\n          calculateDistanceWithGoogleMaps();\n        }, 150);\n      }\n\n      function calculateDistanceWithGoogleMaps() {\n        const pText = (pickupInput.value || '').trim();\n        const dText = (dropInput.value || '').trim();\n\n        if (activeRideType === 'hourly') {\n          updateCalculation();\n          return;\n        }\n\n        if (!pText || !dText) {\n          currentDrivingKm = null;\n          updateCalculation();\n          return;\n        }\n\n        // 1. Check known pair overrides first for instantaneous display\n        const knownKm = getOverrideKm(pText, dText);\n        if (knownKm) {\n          currentDrivingKm = knownKm;\n        }\n\n        // 2. Query Google Maps DistanceMatrixService if available\n        if (window.google && window.google.maps && window.google.maps.DistanceMatrixService) {\n          try {\n            const matrix = new google.maps.DistanceMatrixService();\n            const originParam = pickupCoords \n              ? new google.maps.LatLng(pickupCoords.lat, pickupCoords.lng) \n              : (pText.includes('Tamil Nadu') ? pText : pText + ', Coimbatore, Tamil Nadu, India');\n            const destParam = dropCoords \n              ? new google.maps.LatLng(dropCoords.lat, dropCoords.lng) \n              : (dText.includes('Tamil Nadu') ? dText : dText + ', Coimbatore, Tamil Nadu, India');\n\n            matrix.getDistanceMatrix({\n              origins: [originParam],\n              destinations: [destParam],\n              travelMode: google.maps.TravelMode.DRIVING,\n              unitSystem: google.maps.UnitSystem.METRIC,\n            }, (response, status) => {\n              if (status === 'OK' && response && response.rows && response.rows[0] && response.rows[0].elements && response.rows[0].elements[0] && response.rows[0].elements[0].status === 'OK') {\n                const meters = response.rows[0].elements[0].distance.value;\n                currentDrivingKm = Math.max(1, Math.round(meters / 1000));\n                updateCalculation();\n              } else {\n                // Fallback to DirectionsService\n                tryDirectionsService(originParam, destParam);\n              }\n            });\n            return;\n          } catch(err) {\n            console.log('DistanceMatrix fallback:', err);\n          }\n        }\n\n        // If Google Maps not available or error, calculate from coords or knownKm\n        if (pickupCoords && dropCoords) {\n          currentDrivingKm = getHaversineDrivingKm(pickupCoords.lat, pickupCoords.lng, dropCoords.lat, dropCoords.lng);\n        } else if (!currentDrivingKm) {\n          currentDrivingKm = activeRideType === 'local' ? 12 : 130;\n        }\n        updateCalculation();\n      }\n\n      function tryDirectionsService(origin, dest) {\n        if (window.google && window.google.maps && window.google.maps.DirectionsService) {\n          const dir = new google.maps.DirectionsService();\n          dir.route({\n            origin: origin,\n            destination: dest,\n            travelMode: google.maps.TravelMode.DRIVING\n          }, (res, status) => {\n            if (status === 'OK' && res && res.routes && res.routes[0] && res.routes[0].legs && res.routes[0].legs[0]) {\n              const meters = res.routes[0].legs[0].distance.value;\n              currentDrivingKm = Math.max(1, Math.round(meters / 1000));\n            }\n            updateCalculation();\n          });\n        } else {\n          updateCalculation();\n        }\n      }\n\n      function updateCalculation() {\n        const vehSelect = document.getElementById('calc-vehicle');\n        const activeVehicle = vehSelect ? vehSelect.value : 'sedan';\n        const pickupText = (pickupInput.value || '').trim();\n        const dropText = (dropInput.value || '').trim();\n        const isCrysta = activeVehicle === 'crysta';\n        const isSedan = activeVehicle === 'sedan';\n        const vehName = isCrysta \n          ? 'Innova Crysta - 7 Seater Luxury AC' \n          : (isSedan ? 'Executive Sedan (Dzire / Etios) - 4 Seater AC' : 'Family SUV (Ertiga) - 6 Seater AC');\n\n        let distText = '';\n        let estimatedFare = 0;\n        let breakdownText = '';\n        let bookingSummary = '';\n\n        if (activeRideType === 'local') {\n          distLabel.textContent = 'Trip Coverage';\n          if (!pickupText || !dropText) {\n            distDisp.textContent = !pickupText && !dropText ? 'Awaiting Location' : (!pickupText ? 'Enter Pickup' : 'Enter Drop');\n            fareDisp.textContent = '—';\n            breakdownDisp.textContent = '*Type pickup & drop address using Google autocomplete to calculate exact fare';\n            const msg = encodeURIComponent(\n              'Hello Get Taxi Kovai, I want to book a cab in Coimbatore:\n\n' +\n              '• Trip: Local Ride\n' +\n              (pickupText ? '• Pickup: ' + pickupText + '\n' : '') +\n              (dropText ? '• Drop: ' + dropText + '\n' : '') +\n              '• Vehicle: ' + vehName + '\n\n' +\n              (isCrysta ? 'Please share the best price quote for Innova Crysta.' : 'Please confirm booking & 10 mins pickup.')\n            );\n            whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;\n            return;\n          }\n\n          const km = currentDrivingKm || 12;\n          distText = '~' + km + ' KM Local';\n          bookingSummary = 'Local Ride from ' + pickupText + ' to ' + dropText;\n\n          if (isCrysta) {\n            breakdownText = '*Premium 7-Seater Toyota Innova Crysta AC • Call or WhatsApp for guaranteed best custom quote!';\n          } else if (isSedan) {\n            // Executive Sedan (Dzire/Etios): Base ₹80 + ₹26/km\n            estimatedFare = Math.round(80 + (km * 26));\n            breakdownText = '*Executive Sedan (Dzire / Etios - 4 Seater AC) • Fast doorstep pickup across Coimbatore • Zero surge • 100% AC';\n          } else {\n            // Family SUV (Ertiga 6-Seater): Base ₹100 + ₹40/km\n            estimatedFare = Math.round(100 + (km * 40));\n            breakdownText = '*Family SUV (Ertiga 6-Seater AC) • Base fare ₹100 + ₹40/km • Zero surge • 100% AC';\n          }\n        } else if (activeRideType === 'hourly') {\n          distLabel.textContent = 'Rental Package';\n          const hours = parseInt(hourlyPkgSelect.value, 10) || 4;\n          const freeKm = hours * 10;\n          distText = hours + ' Hours (' + freeKm + ' KM Free)';\n          bookingSummary = 'Hourly Rental (' + hours + ' Hours / ' + freeKm + ' KM Free) from ' + (pickupText || 'Coimbatore');\n\n          if (!pickupText) {\n            distDisp.textContent = distText;\n            fareDisp.textContent = isCrysta ? 'Contact Us for Best Price' : '—';\n            breakdownDisp.textContent = '*Enter pickup location in Coimbatore to view package booking details';\n            const msg = encodeURIComponent(\n              'Hello Get Taxi Kovai, I want to book an hourly rental cab (' + hours + ' Hours / ' + freeKm + ' KM Free) in Coimbatore.\n' +\n              '• Vehicle: ' + vehName + '\n\n' +\n              (isCrysta ? 'Please share best package price quote for Innova Crysta.' : 'Please confirm driver availability.')\n            );\n            whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;\n            return;\n          }\n\n          if (isCrysta) {\n            breakdownText = '*Innova Crysta 7-Seater Luxury Hourly Rental • Contact us for exclusive package pricing';\n          } else if (isSedan) {\n            // Executive Sedan: ₹350/hr package\n            estimatedFare = hours * 350;\n            breakdownText = '*₹350/hr with 10 KM free per hour included • Dedicated Executive AC Sedan';\n          } else {\n            // Family SUV (Ertiga): ₹400/hr package\n            estimatedFare = hours * 400;\n            breakdownText = '*₹400/hr with 10 KM free per hour included • Dedicated 6-seater AC SUV';\n          }\n        } else if (activeRideType === 'oneway') {\n          distLabel.textContent = 'One-Way Distance';\n          if (!dropText || !pickupText) {\n            distDisp.textContent = !dropText ? 'Enter Destination City' : 'Enter Pickup Location';\n            fareDisp.textContent = '—';\n            breakdownDisp.textContent = '*Enter pickup location and destination city to calculate one-way trip';\n            const msg = encodeURIComponent(\n              'Hello Get Taxi Kovai, I want to book a one-way drop cab:\n\n' +\n              (pickupText ? '• Pickup: ' + pickupText + '\n' : '') +\n              (dropText ? '• Destination: ' + dropText + '\n' : '') +\n              '• Vehicle: ' + vehName + '\n\n' +\n              (isCrysta ? 'Please provide best discounted price quote for Innova Crysta.' : 'Please provide one-way fare quote and confirm.')\n            );\n            whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;\n            return;\n          }\n\n          const km = currentDrivingKm || 130;\n          const chargedKm = Math.max(km, 130);\n          distText = chargedKm + ' KM Coverage';\n          bookingSummary = 'One-Way Drop to ' + dropText + ' from ' + pickupText;\n\n          if (isCrysta) {\n            breakdownText = '*Toyota Innova Crysta Luxury One-Way Drop • Contact us for guaranteed best rates';\n          } else if (isSedan) {\n            // Executive Sedan: ₹15/km (min 130 km) + ₹500 batta\n            estimatedFare = (chargedKm * 15) + 500;\n            breakdownText = '*One-way Sedan tariff: ₹15/km (min 130 km coverage) + ₹500 driver batta • Zero return fee';\n          } else {\n            // Family SUV (Ertiga): ₹18/km (min 130 km) + ₹500 batta\n            estimatedFare = (chargedKm * 18) + 500;\n            breakdownText = '*One-way SUV tariff: ₹18/km (min 130 km coverage) + ₹500 driver batta • Zero return fee';\n          }\n        } else if (activeRideType === 'outstation') {\n          distLabel.textContent = 'Round Trip Total';\n          const days = parseInt(daysSelect.value, 10) || 2;\n          if (!dropText || !pickupText) {\n            distDisp.textContent = !dropText ? 'Enter Destination' : 'Enter Pickup Location';\n            fareDisp.textContent = '—';\n            breakdownDisp.textContent = '*Enter pickup location and outstation destination to calculate tour';\n            const msg = encodeURIComponent(\n              'Hello Get Taxi Kovai, I want to book an outstation round trip:\n\n' +\n              '• Trip: Outstation Round Trip (' + days + ' Days)\n' +\n              (pickupText ? '• Pickup: ' + pickupText + '\n' : '') +\n              (dropText ? '• Destination: ' + dropText + '\n' : '') +\n              '• Vehicle: ' + vehName + '\n\n' +\n              (isCrysta ? 'Please share best package quote for Innova Crysta.' : 'Please provide round trip fare quote.')\n            );\n            whatsappBtn.href = 'https://wa.me/919043743777?text=' + msg;\n            return;\n          }\n\n          const km = currentDrivingKm || 130;\n          const totalKm = Math.max(km * 2, days * 250);\n          distText = totalKm + ' KM (' + days + ' Days)';\n          bookingSummary = 'Outstation Tour to ' + dropText + ' (' + days + ' Days) from ' + pickupText;\n\n          if (isCrysta) {\n            breakdownText = '*Innova Crysta 7-Seater Luxury Tour • Ghat road driving included • Call/WhatsApp for best price';\n          } else if (isSedan) {\n            // Executive Sedan: ₹15/km + ₹500/day batta\n            estimatedFare = Math.round((totalKm * 15) + (days * 500));\n            breakdownText = '*Includes ' + days + ' days round trip travel in 4-seater AC Sedan • Professional chauffeur';\n          } else {\n            // Family SUV (Ertiga): ₹18/km + ₹500/day batta\n            estimatedFare = Math.round((totalKm * 18) + (days * 500));\n            breakdownText = '*Includes ' + days + ' days round trip travel in 6-seater AC Ertiga SUV • Professional chauffeur';\n          }\n        }\n\n        distDisp.textContent = distText;\n\n        // Pricing Display Logic: Strictly HIDE price for Innova Crysta!\n        if (isCrysta) {\n          fareDisp.innerHTML = '<span class="text-sm sm:text-base font-black text-amber-600 block leading-tight">Contact Us for Best Price</span>';\n        } else {\n          fareDisp.textContent = '₹' + estimatedFare.toLocaleString('en-IN') + '*';\n        }\n        breakdownDisp.textContent = breakdownText;\n\n        const msgText = isCrysta\n          ? 'Hello Get Taxi Kovai, I want to book an Innova Crysta (7-Seater Luxury AC):\n\n' +\n            '• Trip: ' + (bookingSummary || 'Call Taxi In Coimbatore') + '\n' +\n            '• Pickup: ' + (pickupText || 'Coimbatore Doorstep') + '\n' +\n            '• Drop: ' + (dropText || 'As requested') + '\n' +\n            (distText ? '• Distance/Duration: ' + distText + '\n' : '') +\n            '• Vehicle: Innova Crysta (7-Seater Luxury AC)\n\n' +\n            'Please share your best discounted price and confirm driver availability.'\n          : 'Hello Get Taxi Kovai, I want to book a taxi:\n\n' +\n            '• Trip: ' + (bookingSummary || 'Call Taxi In Coimbatore') + '\n' +\n            '• Pickup: ' + (pickupText || 'Coimbatore Doorstep') + '\n' +\n            '• Drop: ' + (dropText || 'As requested') + '\n' +\n            (distText ? '• Coverage: ' + distText + '\n' : '') +\n            '• Vehicle: ' + vehName + '\n' +\n            '• Estimated Fare: ₹' + estimatedFare.toLocaleString('en-IN') + '\n\n' +\n            'Please confirm driver availability and prompt doorstep pickup.';\n\n        whatsappBtn.href = 'https://wa.me/919043743777?text=' + encodeURIComponent(msgText);\n      }\n\n      tabs.forEach(tab => {\n        tab.addEventListener('click', () => {\n          switchTab(tab.dataset.type);\n        });\n      });\n\n      pickupInput.addEventListener('input', () => {\n        pickupCoords = null;\n        requestRealDistance();\n      });\n      dropInput.addEventListener('input', () => {\n        dropCoords = null;\n        requestRealDistance();\n      });\n      hourlyPkgSelect.addEventListener('change', updateCalculation);\n      daysSelect.addEventListener('change', requestRealDistance);\n\n      // Hub chips handler with instant exact coordinate binding\n      document.querySelectorAll('.hub-chip').forEach(chip => {\n        chip.addEventListener('click', () => {\n          const hub = chip.dataset.hub;\n          const loc = findLocationInText(hub);\n          if (!pickupInput.value) {\n            pickupInput.value = hub;\n            if (loc) pickupCoords = { lat: loc.lat, lng: loc.lng };\n          } else {\n            dropInput.value = hub;\n            if (loc) dropCoords = { lat: loc.lat, lng: loc.lng };\n          }\n          requestRealDistance();\n        });\n      });\n\n      // Initialize Google Places Autocomplete with geometry extraction\n      function initGooglePlaces() {\n        if (window.google && window.google.maps && window.google.maps.places) {\n          try {\n            const pAuto = new google.maps.places.Autocomplete(pickupInput, {\n              componentRestrictions: { country: 'in' },\n              fields: ['formatted_address', 'name', 'geometry']\n            });\n            pAuto.addListener('place_changed', () => {\n              const p = pAuto.getPlace();\n              if (p) {\n                pickupInput.value = p.formatted_address || p.name || pickupInput.value;\n                if (p.geometry && p.geometry.location) {\n                  pickupCoords = { lat: p.geometry.location.lat(), lng: p.geometry.location.lng() };\n                }\n                requestRealDistance();\n              }\n            });\n\n            const dAuto = new google.maps.places.Autocomplete(dropInput, {\n              componentRestrictions: { country: 'in' },\n              fields: ['formatted_address', 'name', 'geometry']\n            });\n            dAuto.addListener('place_changed', () => {\n              const p = dAuto.getPlace();\n              if (p) {\n                dropInput.value = p.formatted_address || p.name || dropInput.value;\n                if (p.geometry && p.geometry.location) {\n                  dropCoords = { lat: p.geometry.location.lat(), lng: p.geometry.location.lng() };\n                }\n                requestRealDistance();\n              }\n            });\n          } catch(e) { console.log('Places Autocomplete ready'); }\n        } else {\n          setTimeout(initGooglePlaces, 300);\n        }\n      }\n      initGooglePlaces();\n\n      // Initial run\n      switchTab('local');
+    document.addEventListener('DOMContentLoaded', () => {
+      // Coimbatore Coordinates & Hub Matrix for High-Accuracy Distance Fallbacks
+      const COIMBATORE_LOCATIONS = [
+        { key: 'mayileripalayam', name: 'Mayileripalayam', lat: 10.8931, lng: 76.9942 },
+        { key: 'perur', name: 'Perur', lat: 10.9708, lng: 76.9077 },
+        { key: 'selvapuram', name: 'Selvapuram', lat: 10.9856, lng: 76.9388 },
+        { key: 'airport', name: 'Coimbatore Airport (CJB)', lat: 11.0298, lng: 77.0434 },
+        { key: 'cjb', name: 'Coimbatore Airport (CJB)', lat: 11.0298, lng: 77.0434 },
+        { key: 'peelamedu', name: 'Peelamedu', lat: 11.0240, lng: 77.0120 },
+        { key: 'railway', name: 'Coimbatore Railway Junction', lat: 10.9998, lng: 76.9634 },
+        { key: 'junction', name: 'Coimbatore Railway Junction', lat: 10.9998, lng: 76.9634 },
+        { key: 'station', name: 'Coimbatore Railway Junction', lat: 10.9998, lng: 76.9634 },
+        { key: 'gandhipuram', name: 'Gandhipuram', lat: 11.0183, lng: 76.9644 },
+        { key: 'rs puram', name: 'RS Puram', lat: 11.0084, lng: 76.9458 },
+        { key: 'r.s. puram', name: 'RS Puram', lat: 11.0084, lng: 76.9458 },
+        { key: 'saravanampatti', name: 'Saravanampatti', lat: 11.0797, lng: 76.9997 },
+        { key: 'singanallur', name: 'Singanallur', lat: 10.9972, lng: 77.0250 },
+        { key: 'ukkadam', name: 'Ukkadam', lat: 10.9880, lng: 76.9610 },
+        { key: 'vadavalli', name: 'Vadavalli', lat: 11.0242, lng: 76.8998 },
+        { key: 'thudiyalur', name: 'Thudiyalur', lat: 11.0805, lng: 76.9392 },
+        { key: 'kovaipudur', name: 'Kovaipudur', lat: 10.9328, lng: 76.9381 },
+        { key: 'podanur', name: 'Podanur', lat: 10.9636, lng: 76.9961 },
+        { key: 'eachanari', name: 'Eachanari', lat: 10.9348, lng: 76.9757 },
+        { key: 'malumichampatti', name: 'Malumichampatti', lat: 10.9150, lng: 76.9850 },
+        { key: 'kinathukadavu', name: 'Kinathukadavu', lat: 10.8173, lng: 77.0195 },
+        { key: 'pollachi', name: 'Pollachi', lat: 10.6609, lng: 77.0048 },
+        { key: 'mettupalayam', name: 'Mettupalayam', lat: 11.3005, lng: 76.9450 },
+        { key: 'karamadai', name: 'Karamadai', lat: 11.2427, lng: 76.9587 },
+        { key: 'sulur', name: 'Sulur', lat: 11.0287, lng: 77.1264 },
+        { key: 'annur', name: 'Annur', lat: 11.2335, lng: 77.1352 },
+        { key: 'marudhamalai', name: 'Marudhamalai', lat: 11.0456, lng: 76.8523 },
+        { key: 'isha', name: 'Isha Yoga Center', lat: 10.9763, lng: 76.7344 },
+        { key: 'adiyogi', name: 'Isha Yoga Adiyogi', lat: 10.9763, lng: 76.7344 },
+        { key: 'ooty', name: 'Ooty', lat: 11.4102, lng: 76.6950 },
+        { key: 'coonoor', name: 'Coonoor', lat: 11.3530, lng: 76.7959 },
+        { key: 'kodaikanal', name: 'Kodaikanal', lat: 10.2381, lng: 77.4892 },
+        { key: 'valparai', name: 'Valparai', lat: 10.3267, lng: 76.9554 },
+        { key: 'palani', name: 'Palani', lat: 10.4504, lng: 77.5186 },
+        { key: 'munnar', name: 'Munnar', lat: 10.0889, lng: 77.0595 },
+        { key: 'bangalore', name: 'Bangalore', lat: 12.9716, lng: 77.5946 },
+        { key: 'bengaluru', name: 'Bangalore', lat: 12.9716, lng: 77.5946 },
+        { key: 'chennai', name: 'Chennai', lat: 13.0827, lng: 80.2707 },
+        { key: 'salem', name: 'Salem', lat: 11.6643, lng: 78.1460 },
+        { key: 'tiruppur', name: 'Tiruppur', lat: 11.1085, lng: 77.3411 },
+        { key: 'erode', name: 'Erode', lat: 11.3410, lng: 77.7172 },
+        { key: 'madurai', name: 'Madurai', lat: 9.9252, lng: 78.1198 },
+        { key: 'trichy', name: 'Trichy', lat: 10.7905, lng: 78.7047 }
+      ];
+
+      // Exact verified road distances between primary Coimbatore corridors
+      const ROUTE_PAIR_OVERRIDES = {
+        'airport-perur': 19,
+        'perur-airport': 19,
+        'airport-selvapuram': 14,
+        'selvapuram-airport': 14,
+        'mayileripalayam-railway': 19,
+        'railway-mayileripalayam': 19,
+        'mayileripalayam-station': 19,
+        'station-mayileripalayam': 19,
+        'mayileripalayam-junction': 19,
+        'junction-mayileripalayam': 19,
+        'mayileripalayam-gandhipuram': 21,
+        'gandhipuram-mayileripalayam': 21,
+        'mayileripalayam-airport': 24,
+        'airport-mayileripalayam': 24,
+        'mayileripalayam-perur': 16,
+        'perur-mayileripalayam': 16,
+        'mayileripalayam-selvapuram': 14,
+        'selvapuram-mayileripalayam': 14,
+        'airport-railway': 12,
+        'railway-airport': 12,
+        'airport-gandhipuram': 11,
+        'gandhipuram-airport': 11,
+        'airport-rspuram': 14,
+        'rspuram-airport': 14,
+        'perur-gandhipuram': 9,
+        'gandhipuram-perur': 9,
+        'selvapuram-gandhipuram': 6,
+        'gandhipuram-selvapuram': 6,
+        'isha-airport': 40,
+        'airport-isha': 40,
+        'isha-gandhipuram': 30,
+        'gandhipuram-isha': 30,
+        'gandhipuram-tiruppur': 50,
+        'tiruppur-gandhipuram': 50,
+        'coimbatore-tiruppur': 50,
+        'tiruppur-coimbatore': 50,
+        'ooty-coimbatore': 86,
+        'coimbatore-ooty': 86,
+        'gandhipuram-ooty': 86,
+        'ooty-gandhipuram': 86
+      };
+
+      const OUTSTATION_KEYS = ['ooty', 'coonoor', 'kodaikanal', 'valparai', 'palani', 'munnar', 'bangalore', 'bengaluru', 'chennai', 'salem', 'tiruppur', 'erode', 'madurai', 'trichy', 'pollachi', 'mettupalayam'];
+
+      let activeRideType = 'local';
+      let currentDrivingKm = null;
+      let sameLocationError = false;
+      let pickupCoords = null;
+      let dropCoords = null;
+
+      const tabs = document.querySelectorAll('#ride-type-tabs .tab-btn');
+      const pickupInput = document.getElementById('calc-pickup');
+      const dropContainer = document.getElementById('drop-container');
+      const dropInput = document.getElementById('calc-drop');
+      const lblDrop = document.getElementById('lbl-drop');
+      const hourlyContainer = document.getElementById('hourly-container');
+      const hourlyPkgSelect = document.getElementById('calc-hourly-pkg');
+      const distLabel = document.getElementById('calc-dist-label');
+      const distDisp = document.getElementById('calc-dist-display');
+      const fareLabel = document.getElementById('calc-fare-label');
+      const fareDisp = document.getElementById('calc-fare-display');
+      const breakdownDisp = document.getElementById('calc-fare-breakdown');
+      const whatsappBtn = document.getElementById('calc-whatsapp-btn');
+      const vehSelect = document.getElementById('calc-vehicle');
+      if (vehSelect) {
+        vehSelect.addEventListener('change', updateCalculation);
+      }
+
+      function switchTab(type) {
+        activeRideType = type;
+        tabs.forEach(t => {
+          if (t.dataset.type === type) {
+            t.classList.add('bg-white', 'text-slate-900', 'shadow-xs');
+            t.classList.remove('text-slate-600');
+          } else {
+            t.classList.remove('bg-white', 'text-slate-900', 'shadow-xs');
+            t.classList.add('text-slate-600');
+          }
+        });
+
+        if (type === 'local') {
+          dropContainer.classList.remove('hidden');
+          lblDrop.textContent = 'Drop Location in Coimbatore';
+          dropInput.placeholder = 'Enter Drop Location in Coimbatore';
+          hourlyContainer.classList.add('hidden');
+          if (fareLabel) fareLabel.textContent = 'Estimated Fare';
+        } else if (type === 'outstation') {
+          dropContainer.classList.remove('hidden');
+          lblDrop.textContent = 'Outstation Destination';
+          dropInput.placeholder = 'Enter Outstation Destination (e.g. Tiruppur, Ooty, Madurai)';
+          hourlyContainer.classList.add('hidden');
+          if (fareLabel) fareLabel.textContent = 'Estimated Outstation Fare';
+        } else if (type === 'hourly') {
+          dropContainer.classList.add('hidden');
+          hourlyContainer.classList.remove('hidden');
+          if (fareLabel) fareLabel.textContent = 'Estimated Fare';
+        }
+
+        requestRealDistance();
+      }
+
+      function getHaversineDrivingKm(lat1, lon1, lat2, lon2) {
+        const R = 6371;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const straight = R * c;
+        return Math.max(2, Math.round(straight * 1.28));
+      }
+
+      function findLocationInText(text) {
+        if (!text) return null;
+        const lower = text.toLowerCase().replace(/[^a-z0-9]/g, ' ');
+        for (const loc of COIMBATORE_LOCATIONS) {
+          if (lower.includes(loc.key)) return loc;
+        }
+        return null;
+      }
+
+      function getOverrideKm(pText, dText) {
+        const pLoc = findLocationInText(pText);
+        const dLoc = findLocationInText(dText);
+        if (pLoc && dLoc) {
+          const directKey = pLoc.key + '-' + dLoc.key;
+          if (ROUTE_PAIR_OVERRIDES[directKey]) {
+            return ROUTE_PAIR_OVERRIDES[directKey];
+          }
+          return getHaversineDrivingKm(pLoc.lat, pLoc.lng, dLoc.lat, dLoc.lng);
+        }
+        if (dLoc && dLoc.key === 'tiruppur' && pText.toLowerCase().includes('coimbatore')) {
+          return 50;
+        }
+        if (dLoc && OUTSTATION_KEYS.includes(dLoc.key) && pText.toLowerCase().includes('coimbatore')) {
+          const COV_CENTER = { lat: 11.0168, lng: 76.9558 };
+          return getHaversineDrivingKm(COV_CENTER.lat, COV_CENTER.lng, dLoc.lat, dLoc.lng);
+        }
+        return null;
+      }
+
+      let debounceTimer = null;
+      function requestRealDistance() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          calculateDistanceWithGoogleMaps();
+        }, 150);
+      }
+
+      function calculateDistanceWithGoogleMaps() {
+        const pText = (pickupInput.value || '').trim();
+        const dText = (dropInput.value || '').trim();
+
+        // Always reset previous distance state before computing a new route
+        currentDrivingKm = null;
+        sameLocationError = false;
+
+        if (activeRideType === 'hourly') {
+          updateCalculation();
+          return;
+        }
+
+        if (!pText || !dText) {
+          updateCalculation();
+          return;
+        }
+
+        const pLoc = findLocationInText(pText);
+        const dLoc = findLocationInText(dText);
+        const normP = pText.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const normD = dText.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+        if (normP === normD || (pLoc && dLoc && pLoc.name === dLoc.name)) {
+          sameLocationError = true;
+          updateCalculation();
+          return;
+        }
+
+        const knownKm = getOverrideKm(pText, dText);
+        if (knownKm) {
+          currentDrivingKm = knownKm;
+        }
+
+        if (window.google && window.google.maps && window.google.maps.DistanceMatrixService) {
+          try {
+            const matrix = new google.maps.DistanceMatrixService();
+            const originParam = pickupCoords
+              ? new google.maps.LatLng(pickupCoords.lat, pickupCoords.lng)
+              : (pText.includes('Tamil Nadu') ? pText : pText + ', Coimbatore, Tamil Nadu, India');
+            const destParam = dropCoords
+              ? new google.maps.LatLng(dropCoords.lat, dropCoords.lng)
+              : (dText.includes('Tamil Nadu') ? dText : dText + ', Coimbatore, Tamil Nadu, India');
+
+            matrix.getDistanceMatrix({
+              origins: [originParam],
+              destinations: [destParam],
+              travelMode: google.maps.TravelMode.DRIVING,
+              unitSystem: google.maps.UnitSystem.METRIC,
+            }, (response, status) => {
+              if (status === 'OK' && response && response.rows && response.rows[0] && response.rows[0].elements && response.rows[0].elements[0] && response.rows[0].elements[0].status === 'OK') {
+                const meters = response.rows[0].elements[0].distance.value;
+                if (meters < 200) {
+                  sameLocationError = true;
+                  currentDrivingKm = null;
+                } else {
+                  currentDrivingKm = knownKm || Math.max(1, Math.round(meters / 1000));
+                }
+                updateCalculation();
+              } else {
+                tryDirectionsService(originParam, destParam, knownKm);
+              }
+            });
+            return;
+          } catch(err) {
+            console.log('DistanceMatrix fallback:', err);
+          }
+        }
+
+        if (!currentDrivingKm && pickupCoords && dropCoords) {
+          currentDrivingKm = getHaversineDrivingKm(pickupCoords.lat, pickupCoords.lng, dropCoords.lat, dropCoords.lng);
+        }
+        updateCalculation();
+      }
+
+      function tryDirectionsService(origin, dest, knownKm) {
+        if (window.google && window.google.maps && window.google.maps.DirectionsService) {
+          const dir = new google.maps.DirectionsService();
+          dir.route({
+            origin: origin,
+            destination: dest,
+            travelMode: google.maps.TravelMode.DRIVING
+          }, (res, status) => {
+            if (status === 'OK' && res && res.routes && res.routes[0] && res.routes[0].legs && res.routes[0].legs[0]) {
+              const meters = res.routes[0].legs[0].distance.value;
+              currentDrivingKm = knownKm || Math.max(1, Math.round(meters / 1000));
+            }
+            updateCalculation();
+          });
+        } else {
+          updateCalculation();
+        }
+      }
+
+      function updateCalculation() {
+        const vehSelect = document.getElementById('calc-vehicle');
+        const activeVehicle = vehSelect ? vehSelect.value : 'sedan';
+        const pickupText = (pickupInput.value || '').trim();
+        const dropText = (dropInput.value || '').trim();
+        const isCrysta = activeVehicle === 'crysta';
+        const isSedan = activeVehicle === 'sedan';
+        const vehName = isCrysta
+          ? 'Innova Crysta - 7 Seater Luxury AC'
+          : (isSedan ? 'Executive Sedan (Dzire / Etios) - 4 Seater AC' : 'Family SUV (Ertiga) - 6 Seater AC');
+
+        let distText = '';
+        let estimatedFare = 0;
+        let breakdownText = '';
+        let bookingSummary = '';
+
+        if (activeRideType === 'local') {
+          if (fareLabel) fareLabel.textContent = 'Estimated Fare';
+          distLabel.textContent = 'Trip Coverage';
+          if (!pickupText || !dropText) {
+            distDisp.textContent = !pickupText && !dropText ? 'Awaiting Location' : (!pickupText ? 'Enter Pickup' : 'Enter Drop');
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Enter pickup & drop locations in Coimbatore to view estimated fare';
+            const msg = encodeURIComponent(
+              'Hello Get Taxi Kovai, I want to book a cab in Coimbatore:\\n\\n' +
+              '• Trip: Local Ride\\n' +
+              (pickupText ? '• Pickup: ' + pickupText + '\\n' : '') +
+              (dropText ? '• Drop: ' + dropText + '\\n' : '') +
+              '• Vehicle: ' + vehName + '\\n\\n' +
+              'Please confirm booking & doorstep pickup.'
+            );
+            whatsappBtn.href = 'https://wa.me/919843701437?text=' + msg;
+            return;
+          }
+
+          if (sameLocationError) {
+            distDisp.textContent = 'Same Pickup & Drop';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Pickup and drop locations cannot be identical. Please enter a different destination.';
+            return;
+          }
+
+          const pLoc = findLocationInText(pickupText);
+          const dLoc = findLocationInText(dropText);
+          const isOutstationDest = (dLoc && OUTSTATION_KEYS.includes(dLoc.key)) || (pLoc && OUTSTATION_KEYS.includes(pLoc.key)) || (currentDrivingKm && currentDrivingKm > 45);
+          if (isOutstationDest) {
+            distDisp.textContent = 'Outstation Route';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*This destination is outside local city limits. Please select the Outstation tab above.';
+            return;
+          }
+
+          if (!currentDrivingKm) {
+            distDisp.textContent = 'Location Not Recognized';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Please enter a recognized Coimbatore area (e.g. Gandhipuram, RS Puram, Peelamedu, CJB Airport) or contact +91 9843701437.';
+            return;
+          }
+
+          const km = currentDrivingKm;
+          distText = '~' + km + ' KM Local';
+          bookingSummary = 'Local Ride from ' + pickupText + ' to ' + dropText;
+
+          if (isCrysta) {
+            breakdownText = '*Premium 7-Seater Toyota Innova Crysta AC • Call or WhatsApp for custom quote';
+          } else if (isSedan) {
+            estimatedFare = Math.round(80 + (km * 28));
+            breakdownText = '*Estimated Fare for Executive AC Sedan • Fast doorstep pickup across Coimbatore';
+          } else {
+            estimatedFare = Math.round(100 + (km * 40));
+            breakdownText = '*Estimated Fare for Family AC SUV • Fast doorstep pickup across Coimbatore';
+          }
+        } else if (activeRideType === 'outstation') {
+          if (fareLabel) fareLabel.textContent = 'Estimated Outstation Fare';
+          distLabel.textContent = 'Outstation Route';
+          if (!dropText || !pickupText) {
+            distDisp.textContent = !dropText ? 'Enter Destination' : 'Enter Pickup Location';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Enter pickup location and outstation destination to view estimated fare';
+            const msg = encodeURIComponent(
+              'Hello Get Taxi Kovai, I want to book an outstation cab:\\n\\n' +
+              '• Trip: Outstation\\n' +
+              (pickupText ? '• Pickup: ' + pickupText + '\\n' : '') +
+              (dropText ? '• Destination: ' + dropText + '\\n' : '') +
+              '• Vehicle: ' + vehName + '\\n\\n' +
+              'Please share fare quote and confirm driver availability.'
+            );
+            whatsappBtn.href = 'https://wa.me/919843701437?text=' + msg;
+            return;
+          }
+
+          if (sameLocationError) {
+            distDisp.textContent = 'Same Pickup & Drop';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Pickup and destination cannot be identical. Please enter a valid outstation destination.';
+            return;
+          }
+
+          if (!currentDrivingKm) {
+            distDisp.textContent = 'Route Distance Required';
+            fareDisp.textContent = '—';
+            breakdownDisp.textContent = '*Please enter a recognized pickup and destination (e.g. Gandhipuram to Tiruppur, Ooty, Madurai) or contact +91 9843701437.';
+            return;
+          }
+
+          const km = currentDrivingKm;
+          distText = '~' + km + ' KM Route';
+          bookingSummary = 'Outstation Trip from ' + pickupText + ' to ' + dropText;
+
+          if (isCrysta) {
+            breakdownText = '*Innova Crysta 7-Seater Luxury Outstation • Call/WhatsApp for custom quote';
+          } else {
+            estimatedFare = Math.round(300 + (km * 30) + 300);
+            breakdownText = '*Estimated Outstation Fare • Toll and applicable permit charges are extra';
+          }
+        } else if (activeRideType === 'hourly') {
+          if (fareLabel) fareLabel.textContent = 'Estimated Fare';
+          distLabel.textContent = 'Rental Package';
+          const hours = parseInt(hourlyPkgSelect.value, 10) || 4;
+          distText = hours + (hours === 1 ? ' Hour Package' : ' Hours Package');
+          bookingSummary = 'Hourly Rental (' + distText + ') from ' + (pickupText || 'Coimbatore');
+
+          if (isCrysta) {
+            breakdownText = '*Innova Crysta 7-Seater Luxury Hourly Rental • Contact us for custom package quote';
+          } else if (isSedan) {
+            estimatedFare = hours === 1 ? 375 : 750 + ((hours - 2) * 350);
+            breakdownText = '*Estimated Hourly Rental Fare • Dedicated Executive AC Sedan & Chauffeur';
+          } else {
+            breakdownText = '*Family SUV (Ertiga 6-Seater AC) Hourly Rental • Contact us for custom package quote';
+          }
+        }
+
+        distDisp.textContent = distText;
+
+        if (isCrysta || (activeRideType === 'hourly' && !isSedan)) {
+          fareDisp.innerHTML = '<span class="text-sm sm:text-base font-black text-amber-600 block leading-tight">Contact Us for Quote</span>';
+        } else {
+          fareDisp.textContent = '₹' + estimatedFare.toLocaleString('en-IN');
+        }
+        breakdownDisp.textContent = breakdownText;
+
+        const msgText = (isCrysta || (activeRideType === 'hourly' && !isSedan))
+          ? 'Hello Get Taxi Kovai, I want to book a ' + vehName + ':\\n\\n' +
+            '• Trip: ' + (bookingSummary || 'Call Taxi In Coimbatore') + '\\n' +
+            '• Pickup: ' + (pickupText || 'Coimbatore Doorstep') + '\\n' +
+            (activeRideType !== 'hourly' ? '• Drop: ' + (dropText || 'As requested') + '\\n' : '') +
+            (distText ? '• Package/Route: ' + distText + '\\n' : '') +
+            '• Vehicle: ' + vehName + '\\n\\n' +
+            'Please share your best price and confirm driver availability.'
+          : 'Hello Get Taxi Kovai, I want to book a taxi:\\n\\n' +
+            '• Trip: ' + (bookingSummary || 'Call Taxi In Coimbatore') + '\\n' +
+            '• Pickup: ' + (pickupText || 'Coimbatore Doorstep') + '\\n' +
+            (activeRideType !== 'hourly' ? '• Drop: ' + (dropText || 'As requested') + '\\n' : '') +
+            (distText ? '• Coverage: ' + distText + '\\n' : '') +
+            '• Vehicle: ' + vehName + '\\n' +
+            '• Estimated Fare: ₹' + estimatedFare.toLocaleString('en-IN') + '\\n\\n' +
+            'Please confirm driver availability and prompt doorstep pickup.';
+
+        whatsappBtn.href = 'https://wa.me/919843701437?text=' + encodeURIComponent(msgText);
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          switchTab(tab.dataset.type);
+        });
+      });
+
+      pickupInput.addEventListener('input', () => {
+        pickupCoords = null;
+        requestRealDistance();
+      });
+      dropInput.addEventListener('input', () => {
+        dropCoords = null;
+        requestRealDistance();
+      });
+      hourlyPkgSelect.addEventListener('change', updateCalculation);
+
+      document.querySelectorAll('.hub-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const hub = chip.dataset.hub;
+          const loc = findLocationInText(hub);
+          if (!pickupInput.value) {
+            pickupInput.value = hub;
+            if (loc) pickupCoords = { lat: loc.lat, lng: loc.lng };
+          } else {
+            dropInput.value = hub;
+            if (loc) dropCoords = { lat: loc.lat, lng: loc.lng };
+          }
+          requestRealDistance();
+        });
+      });
+
+      let gmapsRetries = 0;
+      const MAX_GMAPS_RETRIES = 15;
+      function initGooglePlaces() {
+        if (window.google && window.google.maps && window.google.maps.places) {
+          try {
+            const pAuto = new google.maps.places.Autocomplete(pickupInput, {
+              componentRestrictions: { country: 'in' },
+              fields: ['formatted_address', 'name', 'geometry']
+            });
+            pAuto.addListener('place_changed', () => {
+              const p = pAuto.getPlace();
+              if (p) {
+                pickupInput.value = p.formatted_address || p.name || pickupInput.value;
+                if (p.geometry && p.geometry.location) {
+                  pickupCoords = { lat: p.geometry.location.lat(), lng: p.geometry.location.lng() };
+                }
+                requestRealDistance();
+              }
+            });
+
+            const dAuto = new google.maps.places.Autocomplete(dropInput, {
+              componentRestrictions: { country: 'in' },
+              fields: ['formatted_address', 'name', 'geometry']
+            });
+            dAuto.addListener('place_changed', () => {
+              const p = dAuto.getPlace();
+              if (p) {
+                dropInput.value = p.formatted_address || p.name || dropInput.value;
+                if (p.geometry && p.geometry.location) {
+                  dropCoords = { lat: p.geometry.location.lat(), lng: p.geometry.location.lng() };
+                }
+                requestRealDistance();
+              }
+            });
+          } catch(e) { console.log('Places Autocomplete ready'); }
+        } else if (document.getElementById('gmaps-script') && gmapsRetries < MAX_GMAPS_RETRIES) {
+          gmapsRetries++;
+          setTimeout(initGooglePlaces, 300);
+        }
+      }
+      initGooglePlaces();
+
+      switchTab('local');
     });
   </script>
   `;
 
   return generateHtmlPage({
-    title: 'Call Taxi In Coimbatore | Get Taxi Kovai 9043743777 | Fast Pickup',
-    description: 'Book Call Taxi In Coimbatore with Get Taxi Kovai. Prompt doorstep pickup across Coimbatore, 6,000+ satisfied customers, Hourly rentals at ₹350/hr with 10km free, and One-Way drops at ₹15/km. Call 9043743777!',
-    keywords: 'Call Taxi In Coimbatore, Get Taxi Kovai, taxi in Coimbatore, Coimbatore airport cab, Ooty drop taxi, outstation cabs Coimbatore, hourly rental cab Coimbatore, Kovai call taxi 9043743777',
+    title: 'Call Taxi In Coimbatore | Get Taxi Kovai 9843701437 | Fast Pickup',
+    description: 'Book Call Taxi In Coimbatore with Get Taxi Kovai. Prompt doorstep pickup across Coimbatore, instant local city rides, Hourly rentals from ₹375, and One-Way drops from ₹16/km. Call 9843701437!',
+    keywords: 'Call Taxi In Coimbatore, Get Taxi Kovai, taxi in Coimbatore, Coimbatore airport cab, Ooty drop taxi, outstation cabs Coimbatore, hourly rental cab Coimbatore, Kovai call taxi 9843701437',
     canonicalUrl: `${SITE_URL}/`,
     activeNav: 'home',
     bodyContent,
@@ -842,7 +1411,7 @@ function generateTariffsPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Call Taxi In Coimbatore Tariffs & Rate Card - Get Taxi Kovai",
-    "description": "Transparent One-Way taxi tariff at ₹15 per km, minimum 130 km coverage, and ₹500 driver batta. Hourly rentals at ₹350/hr with 10 km free per hour.",
+    "description": "Transparent One-Way taxi tariff: Sedan ₹16/km, SUV ₹20/km, Premium SUV / Creta ₹25/km + ₹500 driver batta (minimum 130 km billable distance; tolls and permits extra). Hourly rentals from ₹375.",
     "url": `${SITE_URL}/tariffs.html`
   };
 
@@ -857,47 +1426,50 @@ function generateTariffsPage() {
 
   <!-- Official One-Way Drop Taxi Tariff Card (Explicitly Disclosed) -->
   <section class="py-14 bg-white border-b border-slate-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-gradient-to-br from-amber-500 to-amber-600 rounded-3xl p-8 sm:p-10 text-slate-950 shadow-xl border border-amber-400">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/10 border border-slate-950/20 text-slate-950 text-xs font-black uppercase tracking-wider mb-4">
-          <span>⭐ Official Tariff Card</span>
+          <span>⭐ Official One-Way Tariff Card</span>
         </div>
         <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-950">One-Way Drop Taxi Tariff</h2>
         <p class="text-sm sm:text-base text-slate-900 mt-2 font-medium">Clear, upfront rates for intercity one-way drops across Tamil Nadu, Kerala, and Karnataka with zero return kilometer fees.</p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 bg-white/90 backdrop-blur-xs p-6 rounded-2xl border border-amber-300 shadow-sm text-center">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 bg-white/95 backdrop-blur-xs p-6 rounded-2xl border border-amber-300 shadow-sm text-center">
           <div class="p-3">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-600 block">Rate Per KM</span>
-            <span class="text-3xl sm:text-4xl font-black text-amber-600 mt-1 block">₹15 <span class="text-base font-bold text-slate-700">/ KM</span></span>
-            <span class="text-[11px] text-slate-500 mt-1 block">Clean AC Sedan / Cab</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-600 block">Sedan One-Way</span>
+            <span class="text-3xl sm:text-4xl font-black text-amber-600 mt-1 block">₹16 <span class="text-base font-bold text-slate-700">/ KM</span></span>
+            <span class="text-[11px] text-slate-600 mt-1 block font-semibold">+ ₹500 Driver Batta • Min 130 KM</span>
           </div>
           <div class="p-3 border-y sm:border-y-0 sm:border-x border-slate-200">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-600 block">Minimum Coverage</span>
-            <span class="text-3xl sm:text-4xl font-black text-slate-950 mt-1 block">130 <span class="text-base font-bold text-slate-700">KM</span></span>
-            <span class="text-[11px] text-slate-500 mt-1 block">Direct one-way drop</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-600 block">SUV One-Way</span>
+            <span class="text-3xl sm:text-4xl font-black text-slate-950 mt-1 block">₹20 <span class="text-base font-bold text-slate-700">/ KM</span></span>
+            <span class="text-[11px] text-slate-600 mt-1 block font-semibold">+ ₹500 Driver Batta • Min 130 KM</span>
           </div>
           <div class="p-3">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-600 block">Driver Batta</span>
-            <span class="text-3xl sm:text-4xl font-black text-emerald-700 mt-1 block">₹500</span>
-            <span class="text-[11px] text-slate-500 mt-1 block">Per trip fixed batta</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-600 block">Premium SUV / Creta</span>
+            <span class="text-3xl sm:text-4xl font-black text-emerald-700 mt-1 block">₹25 <span class="text-base font-bold text-slate-700">/ KM</span></span>
+            <span class="text-[11px] text-slate-600 mt-1 block font-semibold">+ ₹500 Driver Batta • Min 130 KM</span>
           </div>
         </div>
 
         <div class="mt-6 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-amber-400/60 text-xs sm:text-sm font-semibold text-slate-900">
           <div class="flex items-center gap-2">
-            <span>✓ Minimum Starting Fare: <strong>₹2,450</strong> (130 KM × ₹15 + ₹500 Batta)</span>
+            <span>✓ Minimum Billable Distance: <strong>130 KM</strong> | Driver Batta: <strong>₹500</strong></span>
           </div>
           <div class="flex items-center gap-2">
-            <span>✓ Fast 10-Min Doorstep Pickup across Coimbatore</span>
+            <span>✓ Toll charges and applicable permit charges are extra</span>
           </div>
         </div>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="https://wa.me/91${PHONE_NUMBER}?text=Hello%20Get%20Taxi%20Kovai%2C%20I%20want%20to%20book%20a%20One-Way%20Drop%20Taxi%20at%20₹15/km" target="_blank" rel="noopener" class="flex-1 py-4 px-6 rounded-xl bg-slate-950 hover:bg-slate-900 text-white font-extrabold text-sm text-center shadow-lg transition">
-            Book One-Way Taxi on WhatsApp
+          <a href="oneway.html" class="flex-1 py-4 px-6 rounded-xl bg-slate-950 hover:bg-slate-900 text-amber-400 font-extrabold text-sm text-center shadow-lg transition">
+            Open One-Way Fare Estimator &rarr;
           </a>
-          <a href="tel:${PHONE_NUMBER}" class="py-4 px-6 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-sm text-center shadow-sm transition">
-            Call 9043743777
+          <a href="https://wa.me/91${PHONE_NUMBER}?text=Hello%20Get%20Taxi%20Kovai%2C%20I%20want%20to%20book%20a%20One-Way%20Drop%20Taxi" target="_blank" rel="noopener" class="py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm text-center shadow-lg transition">
+            Book on WhatsApp
+          </a>
+          <a href="${PHONE_HREF}" class="py-4 px-6 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-sm text-center shadow-sm transition">
+            Call 9843701437
           </a>
         </div>
       </div>
@@ -912,7 +1484,7 @@ function generateTariffsPage() {
           🚗 Clean Commercial AC Fleet
         </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Fleet & Service Options</h2>
-        <p class="text-sm text-slate-300 mt-1">Book clean, air-conditioned vehicles with professional chauffeurs. Instant automatic quote on WhatsApp.</p>
+        <p class="text-sm text-slate-300 mt-1">Book clean, air-conditioned vehicles with professional chauffeurs. Instant quote on WhatsApp.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -929,9 +1501,9 @@ function generateTariffsPage() {
               </div>
               <ul class="space-y-2 text-xs text-slate-600 mt-4 mb-6">
                 <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">✓</span> <span>Capacity: <strong class="text-slate-900">${v.passengers} Passengers + ${v.luggage} Bags</strong></span></li>
-                <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">✓</span> <span>Fast 10-min doorstep pickup</span></li>
+                <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">✓</span> <span>One-Way Drop: <strong class="text-slate-900">${v.id === 'sedan' ? '₹16/km (+₹500 Batta)' : (v.id === 'suv' ? '₹20/km (+₹500 Batta)' : 'Custom Quote')}</strong></span></li>
                 <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">✓</span> <span>Zero surge pricing policy</span></li>
-                <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">✓</span> <span>Hourly rental at ₹350/hr with 10 km free</span></li>
+                <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">✓</span> <span>${v.id === 'sedan' ? 'Hourly rental: 1h ₹375 | 2h ₹750 | 4h ₹1,450 | 8h ₹2,850' : 'Custom hourly & tour packages available'}</span></li>
               </ul>
             </div>
             <a href="https://wa.me/91${PHONE_NUMBER}?text=Hello%20Get%20Taxi%20Kovai%2C%20I%20want%20to%20get%20a%20fare%20quote%20for%20a%20${encodeURIComponent(v.name)}" target="_blank" rel="noopener" class="w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs text-center shadow-md transition font-syne uppercase tracking-wider">
@@ -1005,7 +1577,7 @@ function generateTariffsPage() {
       <h3 class="text-2xl font-bold">Have custom travel requirements or bulk fleet needs?</h3>
       <p class="text-sm text-slate-400">Speak directly with our Call Taxi In Coimbatore dispatch desk for instant customized quotes.</p>
       <div class="flex justify-center gap-3 pt-2">
-        <a href="tel:${PHONE_NUMBER}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call 9043743777</a>
+        <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call 9843701437</a>
         <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition">WhatsApp Us</a>
       </div>
     </div>
@@ -1013,9 +1585,9 @@ function generateTariffsPage() {
   `;
 
   return generateHtmlPage({
-    title: 'Call Taxi In Coimbatore Tariffs & Rate Card | Get Taxi Kovai 9043743777',
-    description: 'One-Way Drop taxi tariff at ₹15 per km, minimum 130 km coverage, and ₹500 driver batta. Hourly rentals at ₹350/hr with 10 km free. Prompt doorstep pickup across Coimbatore.',
-    keywords: 'Call Taxi In Coimbatore tariff, Coimbatore taxi rate card, Ooty drop taxi price, one way taxi Coimbatore rate card, outstation cab tariff Coimbatore, Kovai call taxi 9043743777',
+    title: 'Call Taxi In Coimbatore Tariffs & Rate Card | Get Taxi Kovai 9843701437',
+    description: 'One-Way Drop taxi tariff: Sedan ₹16/km, SUV ₹20/km, Premium SUV / Creta ₹25/km + ₹500 driver batta (minimum 130 km billable distance; tolls and permits extra). Hourly rentals from ₹375.',
+    keywords: 'Call Taxi In Coimbatore tariff, Coimbatore taxi rate card, Ooty drop taxi price, one way taxi Coimbatore rate card, outstation cab tariff Coimbatore, Kovai call taxi 9843701437',
     canonicalUrl: `${SITE_URL}/tariffs.html`,
     activeNav: 'tariffs',
     bodyContent,
@@ -1057,7 +1629,7 @@ function generateToursDirectoryPage() {
           <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col justify-between group">
             <div>
               <div class="relative h-52 overflow-hidden bg-slate-200">
-                <img src="${tour.coverImage}" alt="${tour.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'" />
+                <img src="${tour.coverImage}" alt="${tour.title}" width="600" height="416" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'" />
                 <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-slate-950/80 backdrop-blur-xs text-amber-400 font-bold text-xs">
                   ${tour.durationDays} Day${tour.durationDays > 1 ? 's' : ''} ${tour.durationNights > 0 ? `• ${tour.durationNights} Night` : ''}
                 </span>
@@ -1165,7 +1737,7 @@ function generateIshaYogaTourPage() {
   <!-- Tour Header / Banner -->
   <section class="relative bg-slate-950 text-white py-16 overflow-hidden">
     <div class="absolute inset-0 opacity-25">
-      <img src="/images/tours/tour-isha-adiyogi.webp" alt="Isha Yoga & Adiyogi Tour Packages from Coimbatore" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80'" />
+      <img src="/images/tours/tour-isha-adiyogi.webp" alt="Isha Yoga & Adiyogi Tour Packages from Coimbatore" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80'" />
       <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
     </div>
 
@@ -1209,9 +1781,9 @@ function generateIshaYogaTourPage() {
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
             <span>WhatsApp Us</span>
           </a>
-          <a href="tel:${PHONE_NUMBER}" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm flex items-center gap-2 border border-slate-700 shadow-md transition">
+          <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm flex items-center gap-2 border border-slate-700 shadow-md transition">
             <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
-            <span>Call 9043743777</span>
+            <span>Call 9843701437</span>
           </a>
         </div>
       </div>
@@ -1367,7 +1939,7 @@ function generateIshaYogaTourPage() {
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
               <span>Book Option 1 (₹3,000)</span>
             </a>
-            <a href="tel:${PHONE_NUMBER}" class="w-full py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-center text-xs flex items-center justify-center gap-2 transition">
+            <a href="${PHONE_HREF}" class="w-full py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-center text-xs flex items-center justify-center gap-2 transition">
               <svg class="w-3.5 h-3.5 text-slate-600" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
               <span>Call to Book Option 1</span>
             </a>
@@ -1493,13 +2065,52 @@ function generateIshaYogaTourPage() {
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
               <span>Book Option 2 (₹3,500)</span>
             </a>
-            <a href="tel:${PHONE_NUMBER}" class="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-center text-xs flex items-center justify-center gap-2 transition">
+            <a href="${PHONE_HREF}" class="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-center text-xs flex items-center justify-center gap-2 transition">
               <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
               <span>Call to Book Option 2</span>
             </a>
           </div>
         </div>
 
+      </div>
+
+      <!-- DIRECT POINT-TO-POINT PICKUP QUOTES (SEPARATE FROM FULL-DAY TOUR PACKAGES) -->
+      <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl mb-16">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-400 text-xs font-extrabold uppercase tracking-wider">
+              Direct Point-to-Point Pickup Quotes (Separate from Full-Day Tour Packages)
+            </span>
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-2">Need Only a Direct Pickup to Isha Yoga Center?</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">
+              Unlike Option 1 (₹3,000 / 10 Hrs / 100 KM) and Option 2 (₹3,500 / 12 Hrs / 120 KM) which are full-day private sightseeing & waiting tour packages, the quotes below apply to direct point-to-point transfers to Isha Yoga Center.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-slate-950/90 rounded-2xl p-5 border border-slate-800 flex items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block">Direct City Hub Pickup</span>
+              <h4 class="text-lg font-extrabold text-white mt-0.5">Gandhipuram to Isha Yoga Center</h4>
+              <p class="text-xs text-slate-400 mt-1">Direct transfer (~30 KM via Thondamuthur) • Sedan AC Cab</p>
+            </div>
+            <div class="text-right shrink-0">
+              <span class="text-2xl sm:text-3xl font-black text-amber-400 block">₹1,100</span>
+              <a href="https://wa.me/91${PHONE_NUMBER}?text=I%20would%20like%20to%20book%20a%20direct%20Gandhipuram%20to%20Isha%20Yoga%20pickup%20(₹1,100)." target="_blank" rel="noopener" class="inline-block mt-2 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition">Book ₹1,100 Pickup</a>
+            </div>
+          </div>
+          <div class="bg-slate-950/90 rounded-2xl p-5 border border-slate-800 flex items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block">Direct Airport Terminal Pickup</span>
+              <h4 class="text-lg font-extrabold text-white mt-0.5">Coimbatore Airport (CJB) to Isha Yoga</h4>
+              <p class="text-xs text-slate-400 mt-1">Direct transfer (~40 KM from CJB Terminal) • Sedan AC Cab</p>
+            </div>
+            <div class="text-right shrink-0">
+              <span class="text-2xl sm:text-3xl font-black text-amber-400 block">₹1,400</span>
+              <a href="https://wa.me/91${PHONE_NUMBER}?text=I%20would%20like%20to%20book%20a%20direct%20Coimbatore%20Airport%20to%20Isha%20Yoga%20pickup%20(₹1,400)." target="_blank" rel="noopener" class="inline-block mt-2 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition">Book ₹1,400 Pickup</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- PACKAGE COMPARISON TABLE SECTION -->
@@ -1754,7 +2365,7 @@ function generateIshaYogaTourPage() {
 
   return generateHtmlPage({
     title: 'Isha Yoga & Adiyogi Tour Packages from Coimbatore | Get Taxi Kovai',
-    description: 'Book private full-day Isha Yoga cab tours from Coimbatore. Option 1: Spiritual & Heritage Tour (₹3,000 / 10 Hrs / 100 KM). Option 2: Adiyogi + Light Show Tour (₹3,500 / 12 Hrs / 120 KM). Doorstep Coimbatore pickup & drop. Call 9043743777.',
+    description: 'Book private full-day Isha Yoga cab tours from Coimbatore. Option 1: Spiritual & Heritage Tour (₹3,000 / 10 Hrs / 100 KM). Option 2: Adiyogi + Light Show Tour (₹3,500 / 12 Hrs / 120 KM). Doorstep Coimbatore pickup & drop. Call 9843701437.',
     keywords: 'Isha Yoga Center Tour from Coimbatore, Adiyogi Tour from Coimbatore, Isha Light Show Tour, Marudhamalai and Isha Tour, Coimbatore Private Cab Tour, Isha Yoga Tour Package',
     canonicalUrl,
     activeNav: 'tours',
@@ -1797,7 +2408,7 @@ function generateIndividualTourPage(tour) {
   <!-- Tour Header / Banner -->
   <section class="relative bg-slate-950 text-white py-16 overflow-hidden">
     <div class="absolute inset-0 opacity-25">
-      <img src="${tour.coverImage}" alt="${tour.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80'" />
+      <img src="${tour.coverImage}" alt="${tour.title}" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80'" />
       <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
     </div>
 
@@ -1819,8 +2430,8 @@ function generateIndividualTourPage(tour) {
           <a href="https://wa.me/91${PHONE_NUMBER}?text=Hello%20Get%20Taxi%20Kovai%2C%20I%20want%20to%20book%20the%20${encodeURIComponent(tour.title)}" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center gap-2 shadow-lg transition">
             <span>Book Tour on WhatsApp</span>
           </a>
-          <a href="tel:${PHONE_NUMBER}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm flex items-center gap-2 shadow-lg transition">
-            <span>Call 9043743777</span>
+          <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm flex items-center gap-2 shadow-lg transition">
+            <span>Call 9843701437</span>
           </a>
         </div>
       </div>
@@ -1922,8 +2533,8 @@ function generateIndividualTourPage(tour) {
               <a href="https://wa.me/91${PHONE_NUMBER}?text=Hello%20Get%20Taxi%20Kovai%2C%20I%20want%20to%20reserve%20the%20${encodeURIComponent(tour.title)}" target="_blank" rel="noopener" class="block w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-center text-sm shadow-md transition">
                 Reserve on WhatsApp
               </a>
-              <a href="tel:${PHONE_NUMBER}" class="block w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-center text-sm transition">
-                Call 9043743777
+              <a href="${PHONE_HREF}" class="block w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-center text-sm transition">
+                Call 9843701437
               </a>
             </div>
 
@@ -1937,7 +2548,7 @@ function generateIndividualTourPage(tour) {
 
   return generateHtmlPage({
     title: `${tour.title} | Get Taxi Kovai`,
-    description: `${tour.title} from Coimbatore. ${tour.subtitle}. All-inclusive private AC cab package starting from ₹${tour.startingPrice}. Call 9043743777.`,
+    description: `${tour.title} from Coimbatore. ${tour.subtitle}. All-inclusive private AC cab package starting from ₹${tour.startingPrice}. Call 9843701437.`,
     keywords: `${tour.title}, Coimbatore to ${tour.destinationsCovered[0]} taxi, ${tour.category} tour Kovai, outstation cab Coimbatore`,
     canonicalUrl,
     activeNav: 'tours',
@@ -1976,7 +2587,7 @@ function generateBlogDirectoryPage() {
           <article class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col justify-between group">
             <div>
               <div class="relative h-48 overflow-hidden bg-slate-200">
-                <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'" />
+                <img src="${post.image}" alt="${post.title}" width="600" height="384" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'" />
                 <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-xs text-amber-400 font-bold text-xs">
                   ${post.category}
                 </span>
@@ -2077,7 +2688,7 @@ function generateIndividualBlogPostPage(post) {
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Feature Image -->
       <div class="rounded-2xl overflow-hidden mb-10 shadow-md bg-slate-100 max-h-[450px]">
-        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80'" />
+        <img src="${post.image}" alt="${post.title}" width="900" height="450" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80'" />
       </div>
 
       <!-- Lead Excerpt Box -->
@@ -2099,9 +2710,9 @@ function generateIndividualBlogPostPage(post) {
       <!-- Booking CTA Box -->
       <div class="mt-12 bg-slate-900 text-white rounded-2xl p-8 text-center space-y-4">
         <h3 class="text-2xl font-bold tracking-tight">Need a Reliable Cab in Coimbatore?</h3>
-        <p class="text-sm text-slate-300 max-w-xl mx-auto">Get Taxi Kovai provides 24/7 doorstep pickup across Coimbatore with zero surge pricing. Call or WhatsApp 9043743777 now!</p>
+        <p class="text-sm text-slate-300 max-w-xl mx-auto">Get Taxi Kovai provides 24/7 doorstep pickup across Coimbatore with zero surge pricing. Call or WhatsApp 9843701437 now!</p>
         <div class="flex flex-wrap justify-center gap-3 pt-2">
-          <a href="tel:${PHONE_NUMBER}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call 9043743777</a>
+          <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call 9843701437</a>
           <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition">Book on WhatsApp</a>
         </div>
       </div>
@@ -2150,7 +2761,7 @@ function generateAboutPage() {
             Founded in the heart of Gandhipuram, Coimbatore, <strong>Get Taxi Kovai</strong> was built to solve a major frustration among passengers: unexpected surge pricing, driver cancellations, and exorbitant return kilometer charges on one-way outstation trips.
           </p>
           <p>
-            We introduced transparent per-kilometer rates (<strong class="text-slate-900">Base ₹80 + ₹28/km local</strong>, <strong class="text-slate-900">₹26/km one-way drop</strong>, and <strong class="text-slate-900">₹15/km round-trips</strong>) with a simple policy: what you are quoted is exactly what you pay.
+            We introduced transparent rates (<strong class="text-slate-900">Base ₹80 + ₹28/km local Sedan</strong>, <strong class="text-slate-900">One-Way Drop: Sedan ₹16/km, SUV ₹20/km, Premium SUV / Creta ₹25/km + ₹500 driver batta</strong>, and <strong class="text-slate-900">₹15/km round-trips</strong>) with a simple policy: what you are quoted is what you pay.
           </p>
           <p>
             Today, our network covers over 500+ verified vehicles ranging from compact hatchbacks to executive sedans, spacious Ertigas, luxury Innova Crystas, and 14-seater Tempo Travellers.
@@ -2209,7 +2820,7 @@ function generateContactPage() {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact & 24/7 Booking - Get Taxi Kovai",
-    "description": "Contact Get Taxi Kovai for 24/7 cab booking in Coimbatore. Call 9043743777 or visit Cross Cut Road, Gandhipuram.",
+    "description": "Contact Get Taxi Kovai for 24/7 cab booking in Coimbatore. Call 9843701437 or visit Cross Cut Road, Gandhipuram.",
     "url": `${SITE_URL}/contact.html`
   };
 
@@ -2243,7 +2854,7 @@ function generateContactPage() {
                 <span class="text-amber-500 text-lg">📞</span>
                 <div>
                   <strong class="text-slate-900 block">24/7 Booking Hotline:</strong>
-                  <a href="tel:${PHONE_NUMBER}" class="text-amber-600 font-bold hover:underline">+91 ${PHONE_DISPLAY}</a>
+                  <a href="${PHONE_HREF}" class="text-amber-600 font-bold hover:underline">+91 ${PHONE_DISPLAY}</a>
                 </div>
               </div>
 
@@ -2317,9 +2928,24 @@ function generateContactPage() {
                 </div>
               </div>
 
-              <button type="submit" class="w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base transition shadow-md">
-                Send Booking on WhatsApp
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base transition shadow-md cursor-pointer">
+                Prepare Booking Request for WhatsApp
               </button>
+
+              <div id="contact-wa-handoff" class="hidden rounded-2xl bg-emerald-50 border border-emerald-300 p-4 space-y-2.5 text-xs text-emerald-950" role="status" aria-live="polite">
+                <p class="font-extrabold text-emerald-900 text-sm">✓ Booking Details Prepared — Action Required: Send on WhatsApp</p>
+                <p class="text-slate-700 leading-relaxed">
+                  <strong>Important:</strong> This form does not save or dispatch your booking automatically. Please click the button below to open WhatsApp and <strong>press Send</strong> to transmit your request to our 24/7 dispatch desk (+91 ${PHONE_DISPLAY}).
+                </p>
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <a id="contact-wa-link" href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs">
+                    Open WhatsApp & Press Send →
+                  </a>
+                  <a href="${PHONE_HREF}" data-conversion-intent="call" class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs">
+                    Or Call +91 ${PHONE_DISPLAY}
+                  </a>
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -2330,6 +2956,8 @@ function generateContactPage() {
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.getElementById('contact-booking-form');
+      const handoff = document.getElementById('contact-wa-handoff');
+      const waLink = document.getElementById('contact-wa-link');
       if (form) {
         form.addEventListener('submit', (e) => {
           e.preventDefault();
@@ -2350,7 +2978,8 @@ function generateContactPage() {
             '• Trip Type: ' + trip
           );
 
-          window.open('https://wa.me/919043743777?text=' + text, '_blank');
+          if (waLink) waLink.href = 'https://wa.me/919843701437?text=' + text;
+          if (handoff) handoff.classList.remove('hidden');
         });
       }
     });
@@ -2358,9 +2987,9 @@ function generateContactPage() {
   `;
 
   return generateHtmlPage({
-    title: 'Contact & 24/7 Cab Booking | Get Taxi Kovai 9043743777',
-    description: 'Contact Get Taxi Kovai for 24/7 taxi booking in Coimbatore. Call 9043743777 or message on WhatsApp for 15-minute doorstep dispatch.',
-    keywords: 'Contact Get Taxi Kovai, Coimbatore taxi phone number, call taxi 9043743777, book taxi Gandhipuram',
+    title: 'Contact & 24/7 Cab Booking | Get Taxi Kovai 9843701437',
+    description: 'Contact Get Taxi Kovai for 24/7 taxi booking in Coimbatore. Call 9843701437 or message on WhatsApp for 15-minute doorstep dispatch.',
+    keywords: 'Contact Get Taxi Kovai, Coimbatore taxi phone number, call taxi 9843701437, book taxi Gandhipuram',
     canonicalUrl: `${SITE_URL}/contact.html`,
     activeNav: 'contact',
     bodyContent,
@@ -2371,11 +3000,13 @@ function generateContactPage() {
 // ==========================================
 // 9. GENERATE SITEMAP.XML
 // ==========================================
-function generateSitemapXml() {
+function generateSitemapXml(extraUrls = []) {
   const today = new Date().toISOString().split('T')[0];
   
   const urls = [
     { loc: `${SITE_URL}/`, priority: '1.0', changefreq: 'daily' },
+    { loc: `${SITE_URL}/oneway.html`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${SITE_URL}/hourly-rental.html`, priority: '0.9', changefreq: 'weekly' },
     { loc: `${SITE_URL}/tariffs.html`, priority: '0.9', changefreq: 'weekly' },
     { loc: `${SITE_URL}/tours.html`, priority: '0.9', changefreq: 'weekly' },
     { loc: `${SITE_URL}/blog.html`, priority: '0.8', changefreq: 'weekly' },
@@ -2405,6 +3036,11 @@ function generateSitemapXml() {
       priority: '0.75',
       changefreq: 'monthly'
     });
+  });
+
+  // Add Discovery & Directory pages
+  extraUrls.forEach(u => {
+    urls.push(u);
   });
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -2477,8 +3113,12 @@ console.log('✓ Created: contact.html');
 // 9. Mandatory Legal Pages (Privacy, Terms, Cancellation/Refund)
 writeLegalPages();
 
-// 10. Sitemap & Robots
-fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), generateSitemapXml(), 'utf8');
+// 10. Tamil Nadu & Coimbatore Local Discovery Directory Pages
+const discoveryUrls = writeAllDiscoveryPages();
+
+// 11. Sitemap & Robots
+const sitemapXml = generateSitemapXml(discoveryUrls);
+fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
 console.log('✓ Created: sitemap.xml');
 
 fs.writeFileSync(path.join(ROOT_DIR, 'robots.txt'), generateRobotsTxt(), 'utf8');
@@ -2486,7 +3126,7 @@ console.log('✓ Created: robots.txt');
 
 // Copy sitemap.xml & robots.txt to public folder too
 if (fs.existsSync(path.join(ROOT_DIR, 'public'))) {
-  fs.writeFileSync(path.join(ROOT_DIR, 'public', 'sitemap.xml'), generateSitemapXml(), 'utf8');
+  fs.writeFileSync(path.join(ROOT_DIR, 'public', 'sitemap.xml'), sitemapXml, 'utf8');
   fs.writeFileSync(path.join(ROOT_DIR, 'public', 'robots.txt'), generateRobotsTxt(), 'utf8');
 }
 

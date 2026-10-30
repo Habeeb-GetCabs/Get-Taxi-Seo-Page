@@ -21,10 +21,10 @@ import { FIXED_ROUTE_CARDS, TARIFF_POLICIES, FAQS } from './src/data/tariffs.ts'
 import { POPULAR_LOCATIONS, VEHICLES } from './src/data/locations.ts';
 
 const SITE_URL = 'https://gettaxikovai.in';
-const PHONE_NUMBER = '9043743777';
-const PHONE_DISPLAY = '9043743777';
-const PHONE_HREF = 'tel:+919043743777';
-const WHATSAPP_URL = `https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20in%20Coimbatore.`;
+const PHONE_NUMBER = '9843701437';
+const PHONE_DISPLAY = '9843701437';
+const PHONE_HREF = 'tel:+919843701437';
+const WHATSAPP_URL = `https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20in%20Coimbatore.`;
 
 // Shared Header Component HTML
 function getHeader(activePage = '') {
@@ -67,20 +67,59 @@ function getHeader(activePage = '') {
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center gap-1 lg:gap-2">
-          <a href="index.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'home' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Home</a>
-          <a href="tariffs.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'tariffs' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Tariffs & Fares</a>
-          <a href="tours.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'tours' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Tour Packages</a>
-          <a href="blog.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'blog' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Travel Guide</a>
-          <a href="about.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'about' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">About Us</a>
-          <a href="contact.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'contact' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Contact</a>
+        <nav class="hidden md:flex items-center gap-1 lg:gap-1.5">
+          <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'home' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Home</a>
+
+          <!-- Explore Tamil Nadu Dropdown -->
+          <div class="relative" id="explore-dropdown-wrapper">
+            <button type="button" id="explore-dropdown-btn" class="inline-flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-bold transition ${activePage === 'explore' ? 'text-amber-600 bg-amber-50' : 'text-slate-800 hover:text-amber-600 hover:bg-amber-50/60'}" aria-expanded="false">
+              <span>Explore Tamil Nadu</span>
+              <span class="px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-black uppercase">New</span>
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="explore-dropdown-menu" class="hidden absolute left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 z-50">
+              <div class="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between">
+                <a href="explore-tamil-nadu.html" class="text-xs font-black uppercase tracking-wider text-amber-600 hover:underline">🧭 Explore Tamil Nadu Hub →</a>
+                <a href="make-my-trip.html" class="px-2 py-0.5 rounded-md bg-slate-900 text-amber-400 font-bold text-[10px] hover:bg-slate-800">Get Taxi Trip Planner</a>
+              </div>
+              <div class="space-y-1 text-xs">
+                <a href="explore-coimbatore.html" class="flex items-center justify-between p-2 rounded-xl hover:bg-amber-50 text-slate-900 font-bold transition">
+                  <span>🏙️ Explore Coimbatore (Flagship)</span>
+                  <span class="text-[10px] text-amber-600 font-extrabold">15 Areas</span>
+                </a>
+                <a href="category-places-to-visit.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🏛️ Places to Visit & Sightseeing</a>
+                <a href="category-temples-pilgrimage.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🛕 Temples & Pilgrimage</a>
+                <a href="category-restaurants-food.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🍛 Restaurants & Food</a>
+                <a href="category-hotels-accommodation.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🏨 Hotels & Accommodation</a>
+                <a href="category-shopping-entertainment.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🛍️ Shopping, Malls & Cinemas</a>
+                <a href="category-transport-hubs.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">✈️ Airport, Rail & Bus Hubs</a>
+                <a href="category-hospitals-essential.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🏥 Hospitals & Essential Services</a>
+                <a href="category-public-facilities.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🅿️ Public Toilets & Parking</a>
+                <a href="category-hill-stations-nature.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">⛰️ Hill Stations, Waterfalls & Nature</a>
+                <a href="scenic-routes.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🌿 Hidden Gems & Scenic Routes</a>
+                <a href="destinations-tamil-nadu.html" class="block px-2.5 py-1.5 rounded-lg hover:bg-slate-50 text-slate-700 font-semibold">🗺️ All Tamil Nadu Destinations</a>
+              </div>
+              <div class="pt-2.5 mt-2.5 border-t border-slate-100 flex items-center justify-between gap-2">
+                <a href="make-my-trip.html" class="flex-1 text-center py-2 px-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">🗺️ Get Taxi Trip Planner</a>
+                <a href="contact.html" class="flex-1 text-center py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition">🚖 Book a Taxi</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="oneway.html" class="px-2.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'oneway' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">One-Way Taxi</a>
+          <a href="hourly-rental.html" class="px-2.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'hourly-rental' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Hourly Rental</a>
+          <a href="tariffs.html" class="px-2.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'tariffs' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Tariffs & Fares</a>
+          <a href="tours.html" class="px-2.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'tours' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Tour Packages</a>
+          <a href="make-my-trip.html" class="px-2.5 py-2 rounded-lg text-sm font-semibold transition text-slate-700 hover:text-amber-600 hover:bg-slate-50">Get Taxi Trip Planner</a>
+          <a href="blog.html" class="px-2.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'blog' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Travel Guide</a>
+          <a href="contact.html" class="px-2.5 py-2 rounded-lg text-sm font-semibold transition ${activePage === 'contact' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:text-amber-600 hover:bg-slate-50'}">Contact</a>
         </nav>
 
         <!-- CTA Buttons -->
         <div class="hidden lg:flex items-center gap-3">
           <a href="${PHONE_HREF}" data-conversion-intent="call" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-sm hover:shadow-md transition">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
-            Call 9043743777
+            Call 9843701437
           </a>
           <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-sm hover:shadow-md transition">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -99,6 +138,25 @@ function getHeader(activePage = '') {
     <!-- Mobile Drawer Menu -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg">
       <a href="index.html" class="block px-4 py-2.5 rounded-xl text-base font-semibold ${activePage === 'home' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:bg-slate-50'}">Home</a>
+      <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200 space-y-1.5">
+        <div class="flex items-center justify-between px-2">
+          <a href="explore-tamil-nadu.html" class="text-sm font-black text-amber-600">🧭 Explore Tamil Nadu Hub</a>
+          <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-black uppercase">Directory</span>
+        </div>
+        <div class="grid grid-cols-2 gap-1.5 pt-1 text-xs">
+          <a href="explore-coimbatore.html" class="px-2.5 py-2 rounded-lg bg-white border border-slate-200 font-bold text-slate-800">🏙️ Explore Coimbatore</a>
+          <a href="make-my-trip.html" class="px-2.5 py-2 rounded-lg bg-amber-400 font-extrabold text-slate-950">🗺️ Get Taxi Trip Planner</a>
+          <a href="category-places-to-visit.html" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 font-medium text-slate-700">🏛️ Places to Visit</a>
+          <a href="category-temples-pilgrimage.html" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 font-medium text-slate-700">🛕 Temples</a>
+          <a href="category-restaurants-food.html" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 font-medium text-slate-700">🍛 Restaurants</a>
+          <a href="category-hotels-accommodation.html" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 font-medium text-slate-700">🏨 Hotels</a>
+          <a href="category-hospitals-essential.html" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 font-medium text-slate-700">🏥 Hospitals</a>
+          <a href="scenic-routes.html" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 font-medium text-slate-700">🌿 Scenic Routes</a>
+          <a href="destinations-tamil-nadu.html" class="col-span-2 px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 font-bold text-slate-800 text-center">🗺️ All Tamil Nadu Destinations →</a>
+        </div>
+      </div>
+      <a href="oneway.html" class="block px-4 py-2.5 rounded-xl text-base font-semibold ${activePage === 'oneway' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:bg-slate-50'}">One-Way Drop Taxi</a>
+      <a href="hourly-rental.html" class="block px-4 py-2.5 rounded-xl text-base font-semibold ${activePage === 'hourly-rental' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:bg-slate-50'}">Hourly Car Rental</a>
       <a href="tariffs.html" class="block px-4 py-2.5 rounded-xl text-base font-semibold ${activePage === 'tariffs' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:bg-slate-50'}">Tariffs & Rate Card</a>
       <a href="tours.html" class="block px-4 py-2.5 rounded-xl text-base font-semibold ${activePage === 'tours' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:bg-slate-50'}">Tour Packages</a>
       <a href="blog.html" class="block px-4 py-2.5 rounded-xl text-base font-semibold ${activePage === 'blog' ? 'text-amber-600 bg-amber-50' : 'text-slate-700 hover:bg-slate-50'}">Travel Guide & Blog</a>
@@ -107,7 +165,7 @@ function getHeader(activePage = '') {
       <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
         <a href="${PHONE_HREF}" data-conversion-intent="call" class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-amber-400 text-slate-950 font-bold text-base shadow-sm">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
-          Call 9043743777
+          Call 9843701437
         </a>
         <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-600 text-white font-bold text-base shadow-sm">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -138,10 +196,10 @@ function getFooter() {
             </div>
           </div>
           <p class="text-slate-400 text-sm leading-relaxed mb-4">
-            Coimbatore’s most trusted call taxi and outstation cab network. Serving local city rides, CJB Airport drops, Nilgiri hill station tours, and inter-district one-way drops with transparent fares.
+            Coimbatore’s most trusted call taxi, local discovery directory, and outstation cab network. Serving local city rides, CJB Airport drops, Nilgiri hill station tours, and inter-district one-way drops with transparent fares.
           </p>
           <p class="text-[11px] text-amber-400/90 leading-relaxed font-semibold mb-6 bg-amber-400/10 p-2.5 rounded-lg border border-amber-400/20">
-            *Transparent Tariff Schedule: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
+            *Transparent Tariff Schedule: One-Way Drop from ₹16/km (Sedan), ₹20/km (SUV), ₹25/km (Premium SUV) | Hourly Rentals from ₹375 (1 hr), ₹750 (2 hrs), ₹1,450 (4 hrs) & ₹2,850 (8 hrs).
           </p>
           <div class="flex items-center gap-3 text-white font-semibold">
             <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-amber-400 text-xs">⭐ 4.9 / 5.0</span>
@@ -149,11 +207,18 @@ function getFooter() {
           </div>
         </div>
 
-        <!-- Quick Links -->
+        <!-- Quick Links & Local Discovery -->
         <div>
-          <h4 class="text-white font-bold text-base mb-4 tracking-wide">Quick Navigation</h4>
-          <ul class="space-y-2.5">
+          <h4 class="text-white font-bold text-base mb-4 tracking-wide">Quick Navigation & Discovery</h4>
+          <ul class="space-y-2">
             <li><a href="index.html" class="hover:text-amber-400 transition">Home</a></li>
+            <li><a href="oneway.html" class="hover:text-amber-400 transition font-semibold text-white">🚖 One-Way Drop Taxi</a></li>
+            <li><a href="hourly-rental.html" class="hover:text-amber-400 transition font-semibold text-white">⏱️ Hourly Car Rental</a></li>
+            <li><a href="explore-tamil-nadu.html" class="text-amber-400 font-bold hover:underline transition">🧭 Explore Tamil Nadu Directory</a></li>
+            <li><a href="explore-coimbatore.html" class="hover:text-amber-400 transition">🏙️ Explore Coimbatore (15 Areas)</a></li>
+            <li><a href="destinations-tamil-nadu.html" class="hover:text-amber-400 transition">🗺️ Statewide Destinations Guide</a></li>
+            <li><a href="make-my-trip.html" class="hover:text-amber-400 transition">✨ Get Taxi Trip Planner (Multi-Stop)</a></li>
+            <li><a href="scenic-routes.html" class="hover:text-amber-400 transition">🌿 Hidden Gems & Scenic Routes</a></li>
             <li><a href="tariffs.html" class="hover:text-amber-400 transition">Tariff Rate Card & Rules</a></li>
             <li><a href="tours.html" class="hover:text-amber-400 transition">Holiday Tour Packages</a></li>
             <li><a href="blog.html" class="hover:text-amber-400 transition">Travel Guides & Blog</a></li>
@@ -170,11 +235,11 @@ function getFooter() {
           <h4 class="text-white font-bold text-base mb-4 tracking-wide">Popular Cab Routes</h4>
           <ul class="space-y-2.5 text-xs">
             <li><a href="tour-ooty-coonoor.html" class="hover:text-amber-400 transition flex items-center justify-between"><span>Coimbatore to Ooty Taxi</span> <span class="text-amber-400 font-semibold">₹3,500</span></a></li>
-            <li><a href="tour-isha-yoga.html" class="hover:text-amber-400 transition flex items-center justify-between"><span>Coimbatore to Isha Yoga Adiyogi</span> <span class="text-amber-400 font-semibold">₹1,100</span></a></li>
+            <li><a href="tour-isha-yoga.html" class="hover:text-amber-400 transition flex items-center justify-between"><span>Coimbatore to Isha Yoga Adiyogi</span> <span class="text-amber-400 font-semibold">₹3,000</span></a></li>
             <li><a href="tour-valparai.html" class="hover:text-amber-400 transition flex items-center justify-between"><span>Coimbatore to Valparai 40 Bends</span> <span class="text-amber-400 font-semibold">Tour Package</span></a></li>
             <li><a href="tour-kodaikanal.html" class="hover:text-amber-400 transition flex items-center justify-between"><span>Coimbatore to Kodaikanal</span> <span class="text-amber-400 font-semibold">Tour Package</span></a></li>
             <li><a href="blog-coimbatore-airport-cjb-taxi-transfer-guide.html" class="hover:text-amber-400 transition flex items-center justify-between"><span>CJB Airport Transfers</span> <span class="text-amber-400 font-semibold">24/7 Pickup</span></a></li>
-            <li><a href="blog-coimbatore-to-bangalore-bengaluru-one-way-drop-taxi-fares-guide.html" class="hover:text-amber-400 transition flex items-center justify-between"><span>Coimbatore to Bangalore Drop</span> <span class="text-amber-400 font-semibold">₹15/km</span></a></li>
+            <li><a href="blog-coimbatore-to-bangalore-bengaluru-one-way-drop-taxi-fares-guide.html" class="hover:text-amber-400 transition flex items-center justify-between"><span>Coimbatore to Bangalore Drop</span> <span class="text-amber-400 font-semibold">₹16/km</span></a></li>
           </ul>
         </div>
 
@@ -214,7 +279,7 @@ function getFooter() {
             * Fast 10-Min Doorstep Pickup: Within Coimbatore Municipal Corporation limits, subject to peak traffic and vehicle availability.
           </p>
           <p class="text-slate-400 font-medium leading-relaxed mt-1">
-            Tariff Rate Card: Round-Trip from ₹13–15/km | One-Way Drop from ₹14–26/km | Hourly Rentals at ₹350/hr.
+            Tariff Rate Card: One-Way Drop from ₹16/km (Sedan), ₹20/km (SUV), ₹25/km (Premium SUV) with 130 km min & ₹500 driver batta | Hourly Rentals from ₹375 (1 hr), ₹750 (2 hrs), ₹1,450 (4 hrs) & ₹2,850 (8 hrs).
           </p>
         </div>
         <div class="flex flex-wrap items-center md:justify-end gap-3 text-slate-400">
@@ -241,7 +306,7 @@ function getFooter() {
   <div class="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t border-slate-800 p-2 flex items-center gap-2 shadow-2xl">
     <a href="${PHONE_HREF}" data-conversion-intent="call" class="flex-1 flex items-center justify-center gap-2 py-3 px-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs shadow-md transition active:scale-95">
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
-      <span>Call 9043743777</span>
+      <span>Call 9843701437</span>
     </a>
     <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="flex-1 flex items-center justify-center gap-2 py-3 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-md transition active:scale-95">
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -253,7 +318,7 @@ function getFooter() {
   <div class="hidden sm:flex fixed bottom-5 right-5 z-50 items-center gap-3">
     <a href="${PHONE_HREF}" data-conversion-intent="call" class="flex items-center gap-2 px-4 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm shadow-xl hover:scale-105 transition-all border border-slate-950/10">
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
-      <span>Call 9043743777</span>
+      <span>Call 9843701437</span>
     </a>
     <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="flex items-center gap-2 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm shadow-xl hover:scale-105 transition-all border border-white/20">
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -261,9 +326,32 @@ function getFooter() {
     </a>
   </div>
 
-  <!-- Common Client Script for Mobile Menu & FAQ Accordions -->
+  <!-- Common Client Script for Mobile Menu, Explore Dropdown & FAQ Accordions -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Explore Tamil Nadu Desktop Dropdown Toggle
+      const exploreWrapper = document.getElementById('explore-dropdown-wrapper');
+      const exploreBtn = document.getElementById('explore-dropdown-btn');
+      const exploreMenu = document.getElementById('explore-dropdown-menu');
+
+      if (exploreBtn && exploreMenu && exploreWrapper) {
+        exploreBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          exploreMenu.classList.toggle('hidden');
+        });
+        exploreWrapper.addEventListener('mouseenter', () => {
+          exploreMenu.classList.remove('hidden');
+        });
+        exploreWrapper.addEventListener('mouseleave', () => {
+          exploreMenu.classList.add('hidden');
+        });
+        document.addEventListener('click', (e) => {
+          if (!exploreWrapper.contains(e.target)) {
+            exploreMenu.classList.add('hidden');
+          }
+        });
+      }
+
       // Mobile Drawer Toggle
       const mobileBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -301,6 +389,33 @@ function getFooter() {
           }
         });
       });
+
+      // Conversion Intent Event Dispatcher (Google Ads / GTM / GA4 dataLayer ready)
+      window.dataLayer = window.dataLayer || [];
+      document.addEventListener('click', (e) => {
+        const target = e.target && e.target.closest ? e.target.closest('[data-conversion-intent], a[href^="tel:"], a[href*="wa.me/"]') : null;
+        if (!target) return;
+        const href = target.getAttribute('href') || '';
+        const intent = target.getAttribute('data-conversion-intent') || (href.startsWith('tel:') ? 'call' : (href.includes('wa.me/') ? 'whatsapp' : ''));
+        if (!intent) return;
+        const eventName = intent === 'call' ? 'call_click' : (intent === 'whatsapp' ? 'whatsapp_click' : 'conversion_intent_click');
+        const payload = {
+          event: eventName,
+          conversion_intent: intent,
+          phone_number: '+919843701437',
+          page_path: window.location.pathname,
+          link_url: href
+        };
+        window.dataLayer.push(payload);
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, {
+            event_category: 'engagement',
+            event_label: window.location.pathname,
+            phone_number: '+919843701437',
+            link_url: href
+          });
+        }
+      });
     });
   </script>
   `;
@@ -314,7 +429,7 @@ const DEFAULT_GLOBAL_SCHEMA = {
   "image": "https://gettaxikovai.in/images/brand/og-banner.webp",
   "@id": "https://gettaxikovai.in/#taxiservice",
   "url": "https://gettaxikovai.in",
-  "telephone": "+919043743777",
+  "telephone": "+919843701437",
   "email": "booking@gettaxikovai.in",
   "priceRange": "₹80 - ₹4800",
   "paymentAccepted": "Cash, UPI, Credit Card, Net Banking",
@@ -349,7 +464,7 @@ const DEFAULT_GLOBAL_SCHEMA = {
     "closes": "23:59"
   },
   "sameAs": [
-    "https://wa.me/919043743777"
+    "https://wa.me/919843701437"
   ]
 };
 
@@ -364,16 +479,21 @@ function generateHtmlPage({
   bodyContent,
   schemaJson = null
 }) {
-  const finalSchema = schemaJson ? [DEFAULT_GLOBAL_SCHEMA, schemaJson] : DEFAULT_GLOBAL_SCHEMA;
+  const finalSchema = schemaJson
+    ? [DEFAULT_GLOBAL_SCHEMA, ...(Array.isArray(schemaJson) ? schemaJson : [schemaJson])]
+    : DEFAULT_GLOBAL_SCHEMA;
+  const safeTitle = String(title || '').replace(/"/g, '&quot;');
+  const safeDesc = String(description || '').replace(/"/g, '&quot;');
+  const safeKeywords = String(keywords || '').replace(/"/g, '&quot;');
 
   return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${title}</title>
-    <meta name="description" content="${description}" />
-    <meta name="keywords" content="${keywords}" />
+    <title>${safeTitle}</title>
+    <meta name="description" content="${safeDesc}" />
+    <meta name="keywords" content="${safeKeywords}" />
     <link rel="canonical" href="${canonicalUrl}" />
     
     <!-- Google Search Favicon Optimization (Exact match tag requirement) -->
@@ -395,14 +515,15 @@ function generateHtmlPage({
     <meta name="theme-color" content="#FACC15" />
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="${title}" />
-    <meta property="og:description" content="${description}" />
+    <meta property="og:title" content="${safeTitle}" />
+    <meta property="og:description" content="${safeDesc}" />
     <meta property="og:url" content="${canonicalUrl}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Get Taxi Kovai" />
     <meta property="og:image" content="https://gettaxikovai.in/images/brand/og-banner.webp" />
 
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -440,7 +561,7 @@ ${JSON.stringify(finalSchema, null, 2)}
         color: #0f172a !important;
       }
     </style>
-    ${process.env.VITE_GOOGLE_MAPS_API_KEY ? `<script>
+    ${(process.env.VITE_GOOGLE_MAPS_API_KEY && (String(bodyContent).includes('calc-pickup') || String(bodyContent).includes('calc-drop'))) ? `<script>
       window.addEventListener('DOMContentLoaded', function() {
         function loadGmaps() {
           if (document.getElementById('gmaps-script')) return;
@@ -453,9 +574,17 @@ ${JSON.stringify(finalSchema, null, 2)}
         }
         var pickup = document.getElementById('calc-pickup') || document.getElementById('calc-pickup-input');
         var drop = document.getElementById('calc-drop') || document.getElementById('calc-drop-input');
-        if (pickup) pickup.addEventListener('focus', loadGmaps, { once: true });
-        if (drop) drop.addEventListener('focus', loadGmaps, { once: true });
-        loadGmaps();
+        if (pickup || drop) {
+          ['focus', 'pointerdown', 'touchstart'].forEach(function(evt) {
+            if (pickup) pickup.addEventListener(evt, loadGmaps, { once: true, passive: true });
+            if (drop) drop.addEventListener(evt, loadGmaps, { once: true, passive: true });
+          });
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadGmaps, { timeout: 2500 });
+          } else {
+            setTimeout(loadGmaps, 2000);
+          }
+        }
       });
     </script>` : ''}
     ${extraHead}

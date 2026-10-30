@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href="tel:+919043743777" data-conversion-intent="call" className="hover:text-amber-400 transition font-bold">+91 9043743777</a>
+                <a href="tel:+919843701437" data-conversion-intent="call" className="hover:text-amber-400 transition font-bold">+91 9843701437</a>
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
@@ -169,23 +169,23 @@ export const Footer: React.FC<FooterProps> = ({
 
             <div className="pt-2 space-y-2">
               <a
-                href="https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20in%20Coimbatore."
+                href="https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20in%20Coimbatore."
                 target="_blank"
                 rel="noopener noreferrer"
                 data-conversion-intent="whatsapp"
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-3 rounded-lg text-xs flex items-center justify-center gap-1.5 transition shadow-sm"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp 9043743777</span>
+                <span>WhatsApp 9843701437</span>
               </a>
 
               <a
-                href="tel:+919043743777"
+                href="tel:+919843701437"
                 data-conversion-intent="call"
                 className="w-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold py-2.5 px-3 rounded-lg text-xs flex items-center justify-center gap-1.5 transition shadow-sm"
               >
                 <Phone className="w-4 h-4" />
-                <span>Call +91 9043743777</span>
+                <span>Call +91 9843701437</span>
               </a>
             </div>
 

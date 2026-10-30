@@ -243,13 +243,13 @@ export const DistanceMatrix: React.FC<DistanceMatrixProps> = ({ onQuickBookRoute
                     </button>
                   )}
                   <a
-                    href={`tel:+919043743777`}
+                    href={`tel:+919843701437`}
                     className="bg-slate-950 hover:bg-slate-900 text-white font-black px-6 py-3 rounded-xl text-xs flex items-center gap-2 transition shadow-md border border-slate-800"
                   >
-                    <Phone className="w-4 h-4 text-amber-400 fill-amber-400" /> Call 9043743777
+                    <Phone className="w-4 h-4 text-amber-400 fill-amber-400" /> Call 9843701437
                   </a>
                   <a
-                    href={`https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20I%20calculated%20fare%20from%20${encodeURIComponent(
+                    href={`https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20calculated%20fare%20from%20${encodeURIComponent(
                       pickupLocation
                     )}%20to%20${encodeURIComponent(dropLocation)}%20(Estimated%20Fare:%20₹${estimatedFare}).%20Please%20book%20a%20cab.`}
                     target="_blank"

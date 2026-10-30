@@ -17,7 +17,7 @@ export const INITIAL_REVIEWS: Review[] = [
     location: 'Bangalore (Visiting Isha Yoga)',
     rating: 5,
     tripTitle: 'Airport to Isha Foundation & Marudhamalai',
-    comment: 'Punctual pickup right at CJB airport arrival gates. Driver helped with luggage and waited patiently while we visited Adiyogi and Dhyanalinga. Base fare ₹100 + ₹30/km was completely transparent! Call 9043743777 recommended.',
+    comment: 'Punctual pickup right at CJB airport arrival gates. Driver helped with luggage and waited patiently while we visited Adiyogi and Dhyanalinga. Pricing was completely transparent! Call 9843701437 recommended.',
     date: 'August 12, 2026',
     verified: true,
   },
@@ -27,7 +27,7 @@ export const INITIAL_REVIEWS: Review[] = [
     location: 'Gandhipuram, Coimbatore',
     rating: 5,
     tripTitle: 'One-Way Drop to Chennai',
-    comment: 'Needed an urgent night drop cab to Chennai. Sedan arrived within 15 minutes of WhatsApp booking (9043743777). Charged exact flat ₹26/km + ₹300 driver batta with zero return km fee. Excellent service!',
+    comment: 'Needed an urgent night drop cab to Chennai. Sedan arrived within 15 minutes of WhatsApp booking (9843701437). Charged exact flat ₹16/km + ₹500 driver batta with zero return km fee. Excellent service!',
     date: 'August 04, 2026',
     verified: true,
   },
@@ -63,11 +63,11 @@ export const FIXED_ROUTE_CARDS: RouteCard[] = [
   },
   {
     id: 'r2',
-    route: 'Isha Yoga Center',
-    distance: '33 KM',
-    fare: 1100,
-    description: 'World-famous spiritual sanctuary at Velliangiri Foothills housing the iconic 112ft Adiyogi Shiva Statue.',
-    attractions: ['112ft Adiyogi Statue', 'Dhyanalinga', 'Suryakund & Chandrakund', 'Divya Darshanam'],
+    route: 'Isha Yoga Center (Full-Day Package)',
+    distance: 'Up to 100 KM / 10 Hrs',
+    fare: 3000,
+    description: 'Private full-day Spiritual & Heritage Tour from Coimbatore covering Perur Pateeswarar Temple, Marudhamalai Temple, and Isha Yoga Center (or ₹3,500 for 12 Hrs / 120 KM Adiyogi + Evening Light Show Tour).',
+    attractions: ['112ft Adiyogi Statue', 'Dhyanalinga', 'Perur Pateeswarar Temple', 'Marudhamalai Temple'],
   },
   {
     id: 'r3',
@@ -185,38 +185,39 @@ export const FIXED_ROUTE_CARDS: RouteCard[] = [
 
 export const TARIFF_POLICIES = [
   {
-    title: 'Distance-Based Round Trip & Long Drop Rules',
-    points: [
-      'Oneway drops under 100 KM: Calculated at round-trip mileage @ ₹30/ KM (Go + Return).',
-      'Oneway drops over 130 KM: Calculated at round-trip mileage @ ₹15 / KM (Go + Return) plus ₹500 Driver Batta.',
-      'Tollgate fees, State Permit (for Kerala/Karnataka) and parking charges extra if applicable.',
-      'Doorstep pickup and dispatch in 15 minutes across Coimbatore.',
-    ],
-  },
-  {
     title: 'One-Way Drop Taxi Rules',
     points: [
-      'Calculated at transparent flat rates per kilometer.',
-      'Driver Batta applied per trip as applicable.',
-      'Tollgate fees, State Permit and parking charges extra if applicable.',
-      'Zero return kilometer charges for long distance drops!',
+      'One-Way Rates: Sedan ₹16 / KM | SUV ₹20 / KM | Premium SUV / Creta ₹25 / KM.',
+      'Minimum billable distance: 130 KM for all one-way trips.',
+      'Driver Batta: ₹500 flat for each vehicle category.',
+      'Toll charges and applicable permit charges are extra.',
+      'Zero return kilometer charges for one-way drops.',
     ],
   },
   {
     title: 'Outstation Round Trip Rules',
     points: [
-      'Standard round-trip mileage rate per kilometer.',
-      'Driver Batta applied per day.',
+      'Standard round-trip mileage rate per kilometer (Sedan ₹15 / KM, min 250 KM/day).',
+      'Homepage Outstation Estimator: Base ₹300 + ₹30 / KM + ₹300 Driver Batta.',
       'Ghat road & Nilgiri hill station driving charges included.',
       'Tollgate fees, State Permit and parking charges extra if applicable.',
     ],
   },
   {
+    title: 'Hourly Rental Rules (Sedan)',
+    points: [
+      '1 Hour Package: ₹375 | 2 Hours Package: ₹750.',
+      'Every additional hour after 2 hours: ₹350 per hour.',
+      '4 Hours: ₹1,450 | 8 Hours: ₹2,850 | 12 Hours: ₹4,250.',
+      'Ideal for city shopping, corporate meetings, and wedding logistics.',
+    ],
+  },
+  {
     title: 'Local City & Airport Rules',
     points: [
-      'Local City Base fare & Per km charges apply.',
-      'Airport transfers servicing all drops to and from CJB Airport.',
-      'Hourly Packages available for 4 Hrs / 40 KM, 8 Hrs / 80 KM, and 12 Hrs / 120 KM.',
+      'Local Sedan Ride: Base fare ₹80 + ₹28 / KM.',
+      'Airport transfers servicing all drops to and from CJB Airport (Base ₹100 + ₹30 / KM).',
+      'Isha Yoga Packages: Full-Day ₹3,000 (10 Hrs / 100 KM) & ₹3,500 (12 Hrs / 120 KM); Direct Point-to-Point Pickup from Gandhipuram ₹1,100 & Airport ₹1,400.',
       '24/7 flight tracking and instant doorstep pickup.',
     ],
   },
@@ -225,23 +226,23 @@ export const TARIFF_POLICIES = [
 export const FAQS = [
   {
     question: 'How is the fare calculated for outstation one-way drop taxis with Get Taxi Kovai?',
-    answer: 'For one-way drops, you only pay for the distance from pickup to drop location at a flat rate of ₹26 per km + ₹300 driver batta (minimum 130 km applies). Tolls, permits, and parking are extra if applicable. There are NO return kilometer fees charged!',
+    answer: 'For one-way drops, you pay only for the one-way distance (minimum 130 km billable distance) at Sedan ₹16/km, SUV ₹20/km, or Premium SUV / Creta ₹25/km + ₹500 driver batta. Toll charges and applicable permit charges are extra. There are NO return kilometer fees charged!',
   },
   {
     question: 'What is the fare for outstation round trips?',
     answer: 'Outstation round trips are charged at ₹15 per km + ₹400 driver batta per day (minimum 250 km/day applies). Hill station driving to Ooty, Coonoor, Kodaikanal, and Valparai is included.',
   },
   {
-    question: 'What are Get Taxi Kovai local ride and airport transfer rates?',
-    answer: 'Local rides are priced at Base fare ₹80 + ₹28 per km. Airport transfers to Coimbatore International Airport (CJB) are priced at Base fare ₹100 + ₹30 per km (airport tolls extra).',
+    question: 'What are Get Taxi Kovai local ride, hourly rental, and airport transfer rates?',
+    answer: 'Local Sedan rides are priced at Base fare ₹80 + ₹28 per km. Hourly Sedan rentals are ₹375 for 1 hour, ₹750 for 2 hours, and ₹350 for each additional hour (4 hrs: ₹1,450, 8 hrs: ₹2,850, 12 hrs: ₹4,250). Airport transfers to Coimbatore International Airport (CJB) are priced at Base fare ₹100 + ₹30 per km.',
   },
   {
     question: 'How do I book or call Get Taxi Kovai?',
-    answer: 'You can instantly book by calling or sending a WhatsApp message to 9043743777. Our dispatch desk operates 24/7 with prompt 15-minute doorstep pickups in Coimbatore.',
+    answer: 'You can instantly book by calling or sending a WhatsApp message to 9843701437. Our dispatch desk operates 24/7 with prompt 15-minute doorstep pickups in Coimbatore.',
   },
   {
     question: 'Are there any hidden hill station charges for Ooty or Valparai?',
-    answer: 'No hidden fees! All hill station travel tariffs follow our transparent ₹26/km (one-way + ₹300 batta) or ₹15/km (round trip + ₹400 batta) rate card.',
+    answer: 'No hidden fees! All hill station travel tariffs follow our transparent rate card: one-way drop from ₹16/km (Sedan, min 130 km + ₹500 driver batta, tolls/permits extra) or round-trip at ₹15/km (+ ₹400 batta/day).',
   },
 ];
 

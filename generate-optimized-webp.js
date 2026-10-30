@@ -22,7 +22,7 @@ const ASSETS_TO_GENERATE = [
     height: 512,
     badge: 'GET TAXI KOVAI',
     title: 'GET TAXI',
-    subtitle: 'KOVAI • 9043743777',
+    subtitle: 'KOVAI • 9843701437',
     bgGradient: ['#0f172a', '#1e293b'],
     accentColor: '#f59e0b',
     icon: '🚖'

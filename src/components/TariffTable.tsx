@@ -149,14 +149,14 @@ export const TariffTable: React.FC = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     <a
-                      href="tel:+919043743777"
+                      href="tel:+919843701437"
                       className="bg-slate-950 hover:bg-slate-800 text-white font-bold text-xs py-2.5 px-2 rounded-xl flex items-center justify-center gap-1.5 transition shadow-sm"
                     >
                       <Phone className="w-3.5 h-3.5" />
                       <span>Call Now</span>
                     </a>
                     <a
-                      href={`https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20for%20${encodeURIComponent(
+                      href={`https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20for%20${encodeURIComponent(
                         item.route
                       )}%20(${encodeURIComponent(item.distance)}%20-%20%E2%82%B9${item.fare}).%20Please%20confirm%20booking.`}
                       target="_blank"
@@ -246,8 +246,8 @@ export const TariffTable: React.FC = () => {
                         <td className="p-4 font-bold text-slate-900">Call for Best Price</td>
                         <td className="p-4 font-bold text-slate-900">Call for Best Price</td>
                         <td className="p-4 text-slate-900 text-xs font-semibold">
-                          <a href="tel:+919043743777" className="hover:underline flex items-center gap-1 text-slate-950 font-bold">
-                            <Phone className="w-3.5 h-3.5 text-slate-800" /> 9043743777
+                          <a href="tel:+919843701437" className="hover:underline flex items-center gap-1 text-slate-950 font-bold">
+                            <Phone className="w-3.5 h-3.5 text-slate-800" /> 9843701437
                           </a>
                         </td>
                       </tr>
@@ -264,8 +264,8 @@ export const TariffTable: React.FC = () => {
                         <td className="p-4 font-bold text-slate-900">Call for Best Price</td>
                         <td className="p-4 font-bold text-slate-900">Call for Best Price</td>
                         <td className="p-4 text-slate-900 text-xs font-semibold">
-                          <a href="tel:+919043743777" className="hover:underline flex items-center gap-1 text-slate-950 font-bold">
-                            <Phone className="w-3.5 h-3.5 text-slate-800" /> 9043743777
+                          <a href="tel:+919843701437" className="hover:underline flex items-center gap-1 text-slate-950 font-bold">
+                            <Phone className="w-3.5 h-3.5 text-slate-800" /> 9843701437
                           </a>
                         </td>
                       </tr>

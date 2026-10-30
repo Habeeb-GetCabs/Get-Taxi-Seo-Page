@@ -227,7 +227,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
           estimatedTolls: 0,
           totalFare: 0,
           isCustomQuote: true,
-          notes: `Hourly Rental for ${selectedVehicleId === 'suv' ? '6-Seater Family SUV' : 'Premium Innova Crysta'} (${hours} Hours): Exclusive package rate. Call us at 9043743777 for instant confirmation!`,
+          notes: `Hourly Rental for ${selectedVehicleId === 'suv' ? '6-Seater Family SUV' : 'Premium Innova Crysta'} (${hours} Hours): Exclusive package rate. Call us at 9843701437 for instant confirmation!`,
           packageHours: hours,
         };
       }
@@ -771,11 +771,11 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                       </span>
                     </div>
                     <a
-                      href="tel:+919043743777"
+                      href="tel:+919843701437"
                       className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-3.5 py-1.5 rounded-lg text-xs flex items-center gap-1 transition shrink-0"
                     >
                       <Phone className="w-3.5 h-3.5 fill-slate-950" />
-                      <span>9043743777</span>
+                      <span>9843701437</span>
                     </a>
                   </div>
                 ) : (
@@ -799,15 +799,15 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
               {tripType === 'local' && (selectedVehicleId === 'suv' || selectedVehicleId === 'crysta') ? (
                 <div className="shrink-0 flex flex-col sm:flex-row lg:flex-col gap-2">
                   <a
-                    href="tel:+919043743777"
+                    href="tel:+919843701437"
                     data-conversion-intent="call"
                     className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-base px-8 py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 transition cursor-pointer"
                   >
                     <Phone className="w-5 h-5 fill-slate-950" />
-                    <span>Call 9043743777 for Best Price</span>
+                    <span>Call 9843701437 for Best Price</span>
                   </a>
                   <a
-                    href={`https://wa.me/919043743777?text=Hi%20Get%20Taxi%20Kovai,%20please%20quote%20hourly%20rental%20tariff%20for%20${encodeURIComponent(selectedVehicleId === 'suv' ? '6-Seater Family SUV' : 'Premium Innova Crysta')}%20for%20${localHours}%20Hours%20in%20Coimbatore.`}
+                    href={`https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20please%20quote%20hourly%20rental%20tariff%20for%20${encodeURIComponent(selectedVehicleId === 'suv' ? '6-Seater Family SUV' : 'Premium Innova Crysta')}%20for%20${localHours}%20Hours%20in%20Coimbatore.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-conversion-intent="whatsapp"
@@ -828,7 +828,7 @@ export const HeroFareCalculator: React.FC<HeroFareCalculatorProps> = ({
                   </button>
 
                   <a
-                    href={`https://wa.me/919043743777?text=${encodeURIComponent(
+                    href={`https://wa.me/919843701437?text=${encodeURIComponent(
                       `Hi Get Taxi Kovai, I want to book a cab in Coimbatore. Route: ${pickupAddress || 'Coimbatore'} to ${dropAddress || 'Destination'} (${selectedVehicle.name}). ` +
                       (fareBreakdown.totalFare > 0 ? `Estimated Fare: ₹${fareBreakdown.totalFare}. ` : '') +
                       `Please confirm driver & cab details!`

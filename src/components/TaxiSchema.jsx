@@ -7,7 +7,7 @@ import React from 'react';
 export const TaxiSchema = ({
   businessName = 'Get Taxi Kovai',
   url = 'https://gettaxikovai.in',
-  telephone = '+91-9043743777',
+  telephone = '+91-9843701437',
   priceRange = '₹13 - ₹15 per km',
   currenciesAccepted = 'INR',
   ratingValue = '4.9',
