@@ -2350,6 +2350,9 @@ export function generateMakeMyTripPage(options = {}) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
           });
+          if (res.status === 404 || res.status === 405) {
+            throw new Error('Static host fallback');
+          }
           const data = await res.json();
           if (!res.ok || !data.ok) {
             errorAlert.textContent = data.error || 'Could not validate trip enquiry. Please check your inputs.';

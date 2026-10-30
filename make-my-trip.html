@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17918498714"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17918498714');
+      gtag('config', 'GT-5NR4LTD2');
+    </script>
     <title>Get Taxi Trip Planner — Custom Sightseeing & Multi-Stop Taxi Planner | Get Taxi Kovai</title>
     <meta name="description" content="Plan your custom sightseeing or intercity trip from Coimbatore with the Get Taxi Trip Planner. Select pickup, destination, multiple stops (Ooty, Coonoor, Kodaikanal, Valparai, Temples), and request a quote." />
     <meta name="keywords" content="Get Taxi Trip Planner, Coimbatore taxi trip planner, custom sightseeing cab Coimbatore, plan my trip Tamil Nadu, multi stop cab booking Coimbatore" />
@@ -814,6 +823,9 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
           });
+          if (res.status === 404 || res.status === 405) {
+            throw new Error('Static host fallback');
+          }
           const data = await res.json();
           if (!res.ok || !data.ok) {
             errorAlert.textContent = data.error || 'Could not validate trip enquiry. Please check your inputs.';
