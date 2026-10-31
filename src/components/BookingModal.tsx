@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { TripType, VehicleCategory, BookingDetails } from '../types';
+import { CALL_PHONE_DISPLAY, CALL_PHONE_TEL, WHATSAPP_BASE_URL, OFFICIAL_PHONE_RAW } from '../data/contact';
 import { X, CheckCircle2, MessageSquare, Phone, Printer, Calendar, Clock, MapPin, User, Car, ShieldCheck, AlertCircle } from 'lucide-react';
 
 interface BookingModalProps {
@@ -135,7 +136,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       `*Terms:* Zero Advance • Pay Cash/UPI After Ride • Fast 10-Min Doorstep Pickup\n\n` +
       `Please confirm driver & vehicle registration details!`;
 
-    return `https://wa.me/919843701437?text=${encodeURIComponent(text)}`;
+    return `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(text)}`;
   };
 
   const handlePrint = () => {
@@ -184,7 +185,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div>
                 <h4 className="font-bold text-emerald-900 text-sm">Cab Booking Reserved Successfully!</h4>
                 <p className="text-xs text-emerald-800 mt-1 font-medium leading-relaxed">
-                  Your reference ID is <span className="font-mono font-bold text-slate-950 bg-emerald-100 px-1.5 py-0.5 rounded">{confirmedBooking.id}</span>. Our Coimbatore dispatch team (+91 9843701437) will send your chauffeur contact and vehicle number.
+                  Your reference ID is <span className="font-mono font-bold text-slate-950 bg-emerald-100 px-1.5 py-0.5 rounded">{confirmedBooking.id}</span>. Our Coimbatore dispatch team ({CALL_PHONE_DISPLAY}) will send your chauffeur contact and vehicle number.
                 </p>
               </div>
             </div>
@@ -272,12 +273,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <span>Print Ticket</span>
                 </button>
                 <a
-                  href="tel:+919843701437"
+                  href={CALL_PHONE_TEL}
                   data-conversion-intent="call"
                   className="bg-slate-950 hover:bg-slate-900 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition"
                 >
                   <Phone className="w-4 h-4 text-amber-400" />
-                  <span>Call +91 9843701437</span>
+                  <span>Call {CALL_PHONE_DISPLAY}</span>
                 </a>
               </div>
             </div>
@@ -383,7 +384,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                     <input
                       type="tel"
-                      placeholder="e.g. 9843701437"
+                      placeholder={`e.g. ${OFFICIAL_PHONE_RAW}`}
                       value={passengerPhone}
                       onChange={(e) => {
                         setPassengerPhone(e.target.value);

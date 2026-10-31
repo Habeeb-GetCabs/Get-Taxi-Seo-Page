@@ -18,6 +18,7 @@ import { Footer } from './components/Footer';
 import { TripType, VehicleCategory, BookingDetails, TourPackage } from './types';
 import { VEHICLES, POPULAR_LOCATIONS } from './data/locations';
 import { FAQS } from './data/tariffs';
+import { CALL_PHONE_DISPLAY, CALL_PHONE_TEL, WHATSAPP_URL, WHATSAPP_PHONE_DISPLAY, OFFICIAL_PHONE_RAW } from './data/contact';
 
 import { Phone, MessageSquare, ShieldCheck, HelpCircle, ChevronDown, ChevronUp, Sparkles, Car, CheckCircle2, Clock } from 'lucide-react';
 
@@ -67,7 +68,7 @@ export default function App() {
         pickupDate: '2026-08-28',
         pickupTime: '06:30',
         passengerName: 'Karthik Raja',
-        passengerPhone: '9843701437',
+        passengerPhone: OFFICIAL_PHONE_RAW,
         passengerEmail: 'karthik@example.com',
         pickupAddress: '#12, Cross Cut Road, Gandhipuram',
         specialNotes: 'Family trip to Ooty Doddabetta',
@@ -197,18 +198,18 @@ export default function App() {
       {/* Floating Call & WhatsApp Quick Bar for Mobile */}
       <div className="lg:hidden fixed bottom-4 left-4 right-4 z-30 flex gap-2.5">
         <a
-          href="https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab."
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 bg-emerald-700 text-white py-3.5 rounded-2xl font-black text-xs flex items-center justify-center gap-1.5 shadow-2xl border border-emerald-600"
         >
-          <MessageSquare className="w-4 h-4 fill-white/20" /> WhatsApp 9843701437
+          <MessageSquare className="w-4 h-4 fill-white/20" /> WhatsApp {WHATSAPP_PHONE_DISPLAY}
         </a>
         <a
-          href="tel:+919843701437"
+          href={CALL_PHONE_TEL}
           className="flex-1 bg-slate-950 text-white py-3.5 rounded-2xl font-black text-xs flex items-center justify-center gap-1.5 shadow-2xl border border-slate-800"
         >
-          <Phone className="w-4 h-4 fill-amber-400 text-amber-400" /> Call 9843701437
+          <Phone className="w-4 h-4 fill-amber-400 text-amber-400" /> Call {CALL_PHONE_DISPLAY}
         </a>
       </div>
 
@@ -331,15 +332,15 @@ export default function App() {
       {/* MOBILE-OPTIMIZED FULL-WIDTH FIXED BOTTOM STICKY BAR (<640px) */}
       <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t border-slate-800 p-2 flex items-center gap-2 shadow-2xl">
         <a
-          href="tel:+919843701437"
+          href={CALL_PHONE_TEL}
           data-conversion-intent="call"
           className="flex-1 flex items-center justify-center gap-2 py-3 px-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs shadow-md transition active:scale-95 cursor-pointer"
         >
           <Phone className="w-4 h-4 fill-slate-950" />
-          <span>Call 9843701437</span>
+          <span>Call {CALL_PHONE_DISPLAY}</span>
         </a>
         <a
-          href="https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20in%20Coimbatore."
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           data-conversion-intent="whatsapp"
@@ -353,15 +354,15 @@ export default function App() {
       {/* DESKTOP FLOATING QUICK ACTION BUTTONS (>=640px) */}
       <div className="hidden sm:flex fixed bottom-5 right-5 z-50 items-center gap-3">
         <a
-          href="tel:+919843701437"
+          href={CALL_PHONE_TEL}
           data-conversion-intent="call"
           className="flex items-center gap-2 px-4 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm shadow-xl hover:scale-105 transition-all border border-slate-950/10 cursor-pointer"
         >
           <Phone className="w-4 h-4 fill-slate-950" />
-          <span>Call 9843701437</span>
+          <span>Call {CALL_PHONE_DISPLAY}</span>
         </a>
         <a
-          href="https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20in%20Coimbatore."
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           data-conversion-intent="whatsapp"

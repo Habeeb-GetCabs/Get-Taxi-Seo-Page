@@ -13,6 +13,7 @@ import {
   ChevronRight,
   ArrowRight
 } from 'lucide-react';
+import { CALL_PHONE_DISPLAY, CALL_PHONE_TEL, WHATSAPP_BASE_URL } from '../data/contact';
 
 /**
  * CorporateTravel Component
@@ -232,7 +233,7 @@ export const CorporateTravel = ({ onBookCorporate = undefined }) => {
                   </div>
 
                   <a
-                    href={`https://wa.me/919843701437?text=${corporateWhatsAppMsg}`}
+                    href={`${WHATSAPP_BASE_URL}?text=${corporateWhatsAppMsg}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-conversion-intent="whatsapp"
@@ -269,7 +270,7 @@ export const CorporateTravel = ({ onBookCorporate = undefined }) => {
 
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
             <a
-              href={`https://wa.me/919843701437?text=${corporateWhatsAppMsg}`}
+              href={`${WHATSAPP_BASE_URL}?text=${corporateWhatsAppMsg}`}
               target="_blank"
               rel="noopener noreferrer"
               data-conversion-intent="whatsapp"
@@ -281,13 +282,13 @@ export const CorporateTravel = ({ onBookCorporate = undefined }) => {
             </a>
 
             <a
-              href="tel:+919843701437"
+              href={CALL_PHONE_TEL}
               data-conversion-intent="call"
-              aria-label="Call Get Taxi Kovai corporate desk at 9843701437"
+              aria-label={`Call Get Taxi Kovai corporate desk at ${CALL_PHONE_DISPLAY}`}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm shadow-md transition active:scale-95 cursor-pointer"
             >
               <Phone className="w-4 h-4 fill-slate-950" />
-              <span>Call 9843701437</span>
+              <span>Call {CALL_PHONE_DISPLAY}</span>
             </a>
           </div>
         </div>

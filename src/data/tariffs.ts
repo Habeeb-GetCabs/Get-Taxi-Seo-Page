@@ -17,7 +17,7 @@ export const INITIAL_REVIEWS: Review[] = [
     location: 'Bangalore (Visiting Isha Yoga)',
     rating: 5,
     tripTitle: 'Airport to Isha Foundation & Marudhamalai',
-    comment: 'Punctual pickup right at CJB airport arrival gates. Driver helped with luggage and waited patiently while we visited Adiyogi and Dhyanalinga. Pricing was completely transparent! Call 9843701437 recommended.',
+    comment: 'Punctual pickup right at CJB airport arrival gates. Driver helped with luggage and waited patiently while we visited Adiyogi and Dhyanalinga. Pricing was completely transparent! Call +91 90437 00334 recommended.',
     date: 'August 12, 2026',
     verified: true,
   },
@@ -27,7 +27,7 @@ export const INITIAL_REVIEWS: Review[] = [
     location: 'Gandhipuram, Coimbatore',
     rating: 5,
     tripTitle: 'One-Way Drop to Chennai',
-    comment: 'Needed an urgent night drop cab to Chennai. Sedan arrived within 15 minutes of WhatsApp booking (9843701437). Charged exact flat ₹16/km + ₹500 driver batta with zero return km fee. Excellent service!',
+    comment: 'Needed an urgent night drop cab to Chennai. Sedan arrived within 15 minutes of WhatsApp booking (+91 90437 00334). Charged exact flat ₹16/km + ₹500 driver batta with zero return km fee. Excellent service!',
     date: 'August 04, 2026',
     verified: true,
   },
@@ -238,7 +238,7 @@ export const FAQS = [
   },
   {
     question: 'How do I book or call Get Taxi Kovai?',
-    answer: 'You can instantly book by calling or sending a WhatsApp message to 9843701437. Our dispatch desk operates 24/7 with prompt 15-minute doorstep pickups in Coimbatore.',
+    answer: 'You can instantly book by calling or sending a WhatsApp message to +91 90437 00334. Our dispatch desk operates 24/7 with prompt 15-minute doorstep pickups in Coimbatore.',
   },
   {
     question: 'Are there any hidden hill station charges for Ooty or Valparai?',

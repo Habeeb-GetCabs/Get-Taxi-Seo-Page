@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, MessageSquare, Car, MapPin, Clock, Search, Sparkles, Menu, X, BookOpen, ShieldCheck } from 'lucide-react';
+import { CALL_PHONE_DISPLAY, CALL_PHONE_TEL, WHATSAPP_URL, WHATSAPP_PHONE_DISPLAY } from '../data/contact';
 
 interface HeaderProps {
   onOpenTrackBooking: () => void;
@@ -146,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* WhatsApp Direct */}
             <a
-              href="https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20in%20Coimbatore."
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               data-conversion-intent="whatsapp"
@@ -158,12 +159,12 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Call Button */}
             <a
-              href="tel:+919843701437"
+              href={CALL_PHONE_TEL}
               data-conversion-intent="call"
               className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl shadow-md flex items-center gap-1.5 cursor-pointer border border-amber-400 transition hover:scale-105"
             >
               <Phone className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
-              <span>9843701437</span>
+              <span>{CALL_PHONE_DISPLAY}</span>
             </a>
 
             {/* Mobile Menu Toggle Button */}
@@ -244,14 +245,14 @@ export const Header: React.FC<HeaderProps> = ({
 
             <div className="pt-2 flex flex-col gap-2">
               <a
-                href="https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20want%20to%20book%20a%20cab%20in%20Coimbatore."
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-conversion-intent="whatsapp"
                 className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-xs font-bold shadow-md"
               >
                 <MessageSquare className="w-4 h-4" />
-                WhatsApp: 9843701437
+                WhatsApp: {WHATSAPP_PHONE_DISPLAY}
               </a>
             </div>
           </div>

@@ -135,7 +135,7 @@ export function generateTermsPage() {
       <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-slate-800">
         <h2 class="text-base font-black text-amber-950 mb-1">Standard Transportation Contract</h2>
         <p class="text-xs sm:text-sm text-slate-700">
-          By booking a ride through <strong>https://gettaxikovai.in</strong>, our call center hotline (+91 9843701437), or official WhatsApp channel, you agree to the following terms and operational guidelines governing cab rental and chauffeur services.
+          By booking a ride through <strong>https://gettaxikovai.in</strong>, our call center hotline (+91 ${PHONE_DISPLAY}), or official WhatsApp channel, you agree to the following terms and operational guidelines governing cab rental and chauffeur services.
         </p>
       </div>
 
@@ -254,7 +254,7 @@ export function generateCancellationRefundPage() {
         <p class="mb-3">We understand that flights get rescheduled, meetings shift, and emergency family matters arise. Our cancellation terms are straightforward:</p>
         <ul class="list-disc pl-6 space-y-2 text-slate-700">
           <li><strong>Prior to Driver Departure:</strong> You may cancel your booking at any time without any cancellation penalty or fee.</li>
-          <li><strong>After Driver Dispatched / At Doorstep:</strong> If the vehicle has already arrived at your doorstep or traveled significant distance specifically for your pickup, we kindly request informing the dispatch desk immediately at <a href="${PHONE_HREF}" data-conversion-intent="call" class="text-amber-600 font-bold hover:underline">+91 9843701437</a>. A nominal fuel compensation of ₹150–₹250 may be requested by the driver for dead mileage if cancelled after arrival.</li>
+          <li><strong>After Driver Dispatched / At Doorstep:</strong> If the vehicle has already arrived at your doorstep or traveled significant distance specifically for your pickup, we kindly request informing the dispatch desk immediately at <a href="${PHONE_HREF}" data-conversion-intent="call" class="text-amber-600 font-bold hover:underline">+91 ${PHONE_DISPLAY}</a>. A nominal fuel compensation of ₹150–₹250 may be requested by the driver for dead mileage if cancelled after arrival.</li>
           <li><strong>Outstation Multi-Day Tour Cancellations:</strong> Free cancellation up to 4 hours prior to scheduled departure. No penalties apply.</li>
         </ul>
       </div>
@@ -293,7 +293,7 @@ export function generateCancellationRefundPage() {
         <p class="text-slate-700 mb-3">Our Coimbatore support team is available 24 hours a day, 7 days a week:</p>
         <div class="flex flex-wrap gap-3">
           <a href="${PHONE_HREF}" data-conversion-intent="call" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition shadow-sm">
-            <span>Call 24/7 Support: +91 9843701437</span>
+            <span>Call 24/7 Support: +91 ${PHONE_DISPLAY}</span>
           </a>
           <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition shadow-sm">
             <span>WhatsApp Support Desk</span>

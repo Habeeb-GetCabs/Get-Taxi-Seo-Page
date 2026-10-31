@@ -383,7 +383,7 @@ export function generateExploreTamilNaduPage() {
         <a href="contact.html" class="p-5 rounded-2xl bg-emerald-50 border border-emerald-300 hover:border-emerald-500 transition group">
           <span class="text-xs font-bold text-emerald-800">16 · 24/7 Dispatch</span>
           <h3 class="text-lg font-extrabold text-slate-950 mt-1 group-hover:text-emerald-700">Book a Taxi</h3>
-          <p class="text-xs text-slate-700 mt-1.5">Local rides, airport transfers, one-way drops & multi-day tours (9843701437).</p>
+          <p class="text-xs text-slate-700 mt-1.5">Local rides, airport transfers, one-way drops & multi-day tours (+91 ${PHONE_DISPLAY}).</p>
         </a>
       </div>
     </div>
@@ -2361,7 +2361,7 @@ export function generateMakeMyTripPage(options = {}) {
           }
           const resolvedId = data.enquiryId || ('GTK-' + Date.now().toString(36).toUpperCase().slice(-6));
           refBadge.textContent = 'Ref: ' + resolvedId;
-          statusDisclaimer.textContent = data.disclaimer || data.disclosure || 'IMPORTANT: Your enquiry is NOT saved on our server or dispatched automatically. Please click the WhatsApp button below and press Send in WhatsApp to transmit your trip details to our 24/7 dispatch desk (+91 9843701437), or call us directly.';
+          statusDisclaimer.textContent = data.disclaimer || data.disclosure || 'IMPORTANT: Your enquiry is NOT saved on our server or dispatched automatically. Please click the WhatsApp button below and press Send in WhatsApp to transmit your trip details to our 24/7 dispatch desk (+91 ${PHONE_DISPLAY}), or call us directly.';
           statusWaLink.href = data.whatsappUrl;
           statusBanner.classList.remove('hidden');
         } catch (err) {
@@ -2379,7 +2379,7 @@ export function generateMakeMyTripPage(options = {}) {
             (notesEl.value ? '\\n• Notes: ' + notesEl.value : '')
           );
           refBadge.textContent = 'Ref: ' + fallbackId;
-          statusDisclaimer.textContent = 'IMPORTANT: Your enquiry is NOT saved on our server or dispatched automatically. Please click the WhatsApp button below and press Send in WhatsApp to transmit your trip details to our 24/7 dispatch desk (+91 9843701437), or call us directly.';
+          statusDisclaimer.textContent = 'IMPORTANT: Your enquiry is NOT saved on our server or dispatched automatically. Please click the WhatsApp button below and press Send in WhatsApp to transmit your trip details to our 24/7 dispatch desk (+91 ${PHONE_DISPLAY}), or call us directly.';
           statusWaLink.href = 'https://wa.me/91${PHONE_NUMBER}?text=' + fallbackMsg;
           statusBanner.classList.remove('hidden');
         }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Sparkles, Send, Bot, User, Loader2 } from 'lucide-react';
+import { CALL_PHONE_DISPLAY } from '../data/contact';
 
 interface AiAssistantModalProps {
   isOpen: boolean;
@@ -15,7 +16,7 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({ isOpen, onCl
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'ai',
-      text: 'Hello! I am your Get Taxi Kovai AI Trip Assistant. Ask me anything about Coimbatore cabs, rates to Ooty/Kodaikanal/Isha Yoga, local rides at ₹80 base & ₹28/km, or call 9843701437 for instant bookings!',
+      text: `Hello! I am your Get Taxi Kovai AI Trip Assistant. Ask me anything about Coimbatore cabs, rates to Ooty/Kodaikanal/Isha Yoga, local rides at ₹80 base & ₹28/km, or call ${CALL_PHONE_DISPLAY} for instant bookings!`,
     },
   ]);
   const [input, setInput] = useState('');
@@ -51,7 +52,7 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({ isOpen, onCl
       const lower = userMsg.toLowerCase();
 
       if (lower.includes('ooty') || lower.includes('nilgiri')) {
-        reply += `The distance from Coimbatore to Ooty is 86 km (~3 hours drive via Mettupalayam & Coonoor). One-way drop is charged at flat ₹26/km + ₹300 driver batta. Outstation round trips are ₹15/km + ₹400 driver batta per day. Call or WhatsApp 9843701437 to book!`;
+        reply += `The distance from Coimbatore to Ooty is 86 km (~3 hours drive via Mettupalayam & Coonoor). One-way drop is charged at flat ₹26/km + ₹300 driver batta. Outstation round trips are ₹15/km + ₹400 driver batta per day. Call or WhatsApp ${CALL_PHONE_DISPLAY} to book!`;
       } else if (lower.includes('isha') || lower.includes('adiyogi') || lower.includes('dhyanalinga')) {
         reply += `Isha Yoga Center (Adiyogi 112ft statue) is located 30 km from Coimbatore Junction/Airport (~1 hour drive). Local ride fare starts at Base ₹80 + ₹28/km, or book a flat round-trip drop with driver waiting time.`;
       } else if (lower.includes('valparai') || lower.includes('hairpin')) {
@@ -59,7 +60,7 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({ isOpen, onCl
       } else if (lower.includes('kodai') || lower.includes('kodaikanal')) {
         reply += `Coimbatore to Kodaikanal is 175 km (~4.5 hours drive). One-way drop is flat ₹26/km + ₹300 batta, or ₹15/km + ₹400 batta per day for multi-day tours.`;
       } else {
-        reply += `Get Taxi Kovai provides Local Rides (Base ₹80 | ₹28/km), One-Way Drops (Flat ₹26/km + ₹300 batta), Round Trips (₹15/km + ₹400 batta), and Airport Drops (Base ₹100 | ₹30/km). Call 9843701437 for 24/7 instant dispatch!`;
+        reply += `Get Taxi Kovai provides Local Rides (Base ₹80 | ₹28/km), One-Way Drops (Flat ₹26/km + ₹300 batta), Round Trips (₹15/km + ₹400 batta), and Airport Drops (Base ₹100 | ₹30/km). Call ${CALL_PHONE_DISPLAY} for 24/7 instant dispatch!`;
       }
 
       setMessages((prev) => [...prev, { sender: 'ai', text: reply }]);

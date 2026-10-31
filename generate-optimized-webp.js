@@ -22,7 +22,7 @@ const ASSETS_TO_GENERATE = [
     height: 512,
     badge: 'GET TAXI KOVAI',
     title: 'GET TAXI',
-    subtitle: 'KOVAI • 9843701437',
+    subtitle: 'KOVAI • +91 90437 00334',
     bgGradient: ['#0f172a', '#1e293b'],
     accentColor: '#f59e0b',
     icon: '🚖'
@@ -526,7 +526,7 @@ function createSvgGraphic(item) {
     <!-- Footer Security & Trust Badge -->
     <g transform="translate(75, ${h - 75})">
       <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#94a3b8">
-        GET TAXI KOVAI • 24/7 BOOKING: <tspan fill="${accent}" font-weight="700">+91 90437 43777</tspan> • gettaxikovai.com
+        GET TAXI KOVAI • 24/7 BOOKING: <tspan fill="${accent}" font-weight="700">+91 90437 00334</tspan> • gettaxikovai.in
       </text>
     </g>
   </svg>

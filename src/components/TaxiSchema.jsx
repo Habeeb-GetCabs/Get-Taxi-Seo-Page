@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { CALL_PHONE_E164 } from '../data/contact';
+
 /**
  * TaxiSchema Component
  * Injects Google-compliant JSON-LD structured data for TaxiService & LocalBusiness rich snippets.
@@ -7,7 +9,7 @@ import React from 'react';
 export const TaxiSchema = ({
   businessName = 'Get Taxi Kovai',
   url = 'https://gettaxikovai.in',
-  telephone = '+91-9843701437',
+  telephone = CALL_PHONE_E164,
   priceRange = '₹13 - ₹15 per km',
   currenciesAccepted = 'INR',
   ratingValue = '4.9',

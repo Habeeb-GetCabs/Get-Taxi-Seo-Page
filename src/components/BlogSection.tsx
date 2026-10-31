@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BLOG_POSTS, BlogPost } from '../data/blogs';
+import { CALL_PHONE_DISPLAY, CALL_PHONE_TEL, WHATSAPP_BASE_URL, WHATSAPP_PHONE_DISPLAY } from '../data/contact';
 import { BookOpen, Calendar, Clock, Tag, X, ChevronRight, Phone, MessageSquare, Search, Sparkles } from 'lucide-react';
 
 export const BlogSection: React.FC = () => {
@@ -205,18 +206,18 @@ export const BlogSection: React.FC = () => {
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 pt-2">
                   <a
-                    href="tel:+919843701437"
+                    href={CALL_PHONE_TEL}
                     className="taxi-yellow-btn text-slate-950 font-black px-5 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm border border-amber-400 font-syne uppercase tracking-wider"
                   >
-                    <Phone className="w-4 h-4 fill-slate-950" /> Call 9843701437
+                    <Phone className="w-4 h-4 fill-slate-950" /> Call {CALL_PHONE_DISPLAY}
                   </a>
                   <a
-                    href="https://wa.me/919843701437?text=Hi%20Get%20Taxi%20Kovai,%20I%20read%20your%20blog%20and%20want%20to%20book%20a%20cab."
+                    href={`${WHATSAPP_BASE_URL}?text=Hi%20Get%20Taxi%20Kovai,%20I%20read%20your%20blog%20and%20want%20to%20book%20a%20cab.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs flex items-center gap-1.5 transition shadow-sm"
                   >
-                    <MessageSquare className="w-4 h-4" /> WhatsApp 9843701437
+                    <MessageSquare className="w-4 h-4" /> WhatsApp {WHATSAPP_PHONE_DISPLAY}
                   </a>
                 </div>
               </div>

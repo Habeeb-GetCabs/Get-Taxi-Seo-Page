@@ -12,7 +12,12 @@ import {
   READY_TRIP_SUGGESTIONS,
 } from "./src/data/discovery.ts";
 
-const PHONE_NUMBER = "9843701437";
+import {
+  PHONE_NUMBER,
+  CALL_PHONE_DISPLAY,
+  CALL_PHONE_E164,
+  WHATSAPP_BASE_URL,
+} from "./src/data/contact.ts";
 
 function sanitizeField(val: unknown, maxLen = 240): string {
   if (typeof val !== "string") return "";
@@ -38,8 +43,9 @@ async function startServer() {
         readyItineraries: READY_TRIP_SUGGESTIONS.length,
       },
       contact: {
-        phone: `+91${PHONE_NUMBER}`,
-        whatsapp: `https://wa.me/91${PHONE_NUMBER}`,
+        phone: CALL_PHONE_E164,
+        phoneDisplay: CALL_PHONE_DISPLAY,
+        whatsapp: WHATSAPP_BASE_URL,
       },
     });
   });
@@ -112,7 +118,7 @@ async function startServer() {
 
       const whatsappUrl = `https://wa.me/91${PHONE_NUMBER}?text=${encodeURIComponent(messageLines.join("\n"))}`;
       const disclaimer =
-        "IMPORTANT: Your enquiry is NOT saved on our server or dispatched automatically. Please click the WhatsApp button below and press Send in WhatsApp to transmit your trip details to our 24/7 dispatch desk (+91 9843701437), or call us directly.";
+        `IMPORTANT: Your enquiry is NOT saved on our server or dispatched automatically. Please click the WhatsApp button below and press Send in WhatsApp to transmit your trip details to our 24/7 dispatch desk (${CALL_PHONE_DISPLAY}), or call us directly.`;
 
       return res.status(200).json({
         ok: true,
@@ -142,7 +148,7 @@ async function startServer() {
     } catch {
       return res.status(500).json({
         ok: false,
-        error: "Unable to process enquiry right now. Please call +91 9843701437 or WhatsApp directly.",
+        error: `Unable to process enquiry right now. Please call ${CALL_PHONE_DISPLAY} or WhatsApp directly.`,
       });
     }
   });

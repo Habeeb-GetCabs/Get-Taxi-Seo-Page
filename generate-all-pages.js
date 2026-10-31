@@ -104,7 +104,7 @@ function generateHomePage() {
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
             <a href="${PHONE_HREF}" data-conversion-intent="call" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg shadow-amber-400/20 hover:scale-[1.02] transition">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
-              Call 9843701437
+              Call +91 90437 00334
             </a>
             <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" data-conversion-intent="whatsapp" class="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base shadow-lg shadow-emerald-600/20 hover:scale-[1.02] transition">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -844,10 +844,10 @@ function generateHomePage() {
   <section class="py-16 bg-slate-950 text-white text-center relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
       <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to Ride? Book Your Cab in 60 Seconds</h2>
-      <p class="text-slate-300 text-base max-w-2xl mx-auto">Call or WhatsApp our 24/7 booking desk at <strong>9843701437</strong> for prompt 24/7 doorstep dispatch anywhere in Coimbatore.</p>
+      <p class="text-slate-300 text-base max-w-2xl mx-auto">Call or WhatsApp our 24/7 booking desk at <strong>+91 90437 00334</strong> for prompt 24/7 doorstep dispatch anywhere in Coimbatore.</p>
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
         <a href="${PHONE_HREF}" class="px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base shadow-lg transition">
-          📞 Call 9843701437
+          📞 Call +91 90437 00334
         </a>
         <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" class="px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base shadow-lg transition">
           💬 WhatsApp Booking
@@ -1184,7 +1184,7 @@ function generateHomePage() {
               '• Vehicle: ' + vehName + '\\n\\n' +
               'Please confirm booking & doorstep pickup.'
             );
-            whatsappBtn.href = 'https://wa.me/919843701437?text=' + msg;
+            whatsappBtn.href = 'https://wa.me/919043700334?text=' + msg;
             return;
           }
 
@@ -1208,7 +1208,7 @@ function generateHomePage() {
           if (!currentDrivingKm) {
             distDisp.textContent = 'Location Not Recognized';
             fareDisp.textContent = '—';
-            breakdownDisp.textContent = '*Please enter a recognized Coimbatore area (e.g. Gandhipuram, RS Puram, Peelamedu, CJB Airport) or contact +91 9843701437.';
+            breakdownDisp.textContent = '*Please enter a recognized Coimbatore area (e.g. Gandhipuram, RS Puram, Peelamedu, CJB Airport) or contact +91 90437 00334.';
             return;
           }
 
@@ -1240,7 +1240,7 @@ function generateHomePage() {
               '• Vehicle: ' + vehName + '\\n\\n' +
               'Please share fare quote and confirm driver availability.'
             );
-            whatsappBtn.href = 'https://wa.me/919843701437?text=' + msg;
+            whatsappBtn.href = 'https://wa.me/919043700334?text=' + msg;
             return;
           }
 
@@ -1254,7 +1254,7 @@ function generateHomePage() {
           if (!currentDrivingKm) {
             distDisp.textContent = 'Route Distance Required';
             fareDisp.textContent = '—';
-            breakdownDisp.textContent = '*Please enter a recognized pickup and destination (e.g. Gandhipuram to Tiruppur, Ooty, Madurai) or contact +91 9843701437.';
+            breakdownDisp.textContent = '*Please enter a recognized pickup and destination (e.g. Gandhipuram to Tiruppur, Ooty, Madurai) or contact +91 90437 00334.';
             return;
           }
 
@@ -1311,7 +1311,7 @@ function generateHomePage() {
             '• Estimated Fare: ₹' + estimatedFare.toLocaleString('en-IN') + '\\n\\n' +
             'Please confirm driver availability and prompt doorstep pickup.';
 
-        whatsappBtn.href = 'https://wa.me/919843701437?text=' + encodeURIComponent(msgText);
+        whatsappBtn.href = 'https://wa.me/919043700334?text=' + encodeURIComponent(msgText);
       }
 
       tabs.forEach(tab => {
@@ -1393,9 +1393,9 @@ function generateHomePage() {
   `;
 
   return generateHtmlPage({
-    title: 'Call Taxi In Coimbatore | Get Taxi Kovai 9843701437 | Fast Pickup',
-    description: 'Book Call Taxi In Coimbatore with Get Taxi Kovai. Prompt doorstep pickup across Coimbatore, instant local city rides, Hourly rentals from ₹375, and One-Way drops from ₹16/km. Call 9843701437!',
-    keywords: 'Call Taxi In Coimbatore, Get Taxi Kovai, taxi in Coimbatore, Coimbatore airport cab, Ooty drop taxi, outstation cabs Coimbatore, hourly rental cab Coimbatore, Kovai call taxi 9843701437',
+    title: 'Call Taxi In Coimbatore | Get Taxi Kovai +91 90437 00334 | Fast Pickup',
+    description: 'Book Call Taxi In Coimbatore with Get Taxi Kovai. Prompt doorstep pickup across Coimbatore, instant local city rides, Hourly rentals from ₹375, and One-Way drops from ₹16/km. Call +91 90437 00334!',
+    keywords: 'Call Taxi In Coimbatore, Get Taxi Kovai, taxi in Coimbatore, Coimbatore airport cab, Ooty drop taxi, outstation cabs Coimbatore, hourly rental cab Coimbatore, Kovai call taxi +91 90437 00334',
     canonicalUrl: `${SITE_URL}/`,
     activeNav: 'home',
     bodyContent,
@@ -1469,7 +1469,7 @@ function generateTariffsPage() {
             Book on WhatsApp
           </a>
           <a href="${PHONE_HREF}" class="py-4 px-6 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-sm text-center shadow-sm transition">
-            Call 9843701437
+            Call +91 90437 00334
           </a>
         </div>
       </div>
@@ -1577,7 +1577,7 @@ function generateTariffsPage() {
       <h3 class="text-2xl font-bold">Have custom travel requirements or bulk fleet needs?</h3>
       <p class="text-sm text-slate-400">Speak directly with our Call Taxi In Coimbatore dispatch desk for instant customized quotes.</p>
       <div class="flex justify-center gap-3 pt-2">
-        <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call 9843701437</a>
+        <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call +91 90437 00334</a>
         <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition">WhatsApp Us</a>
       </div>
     </div>
@@ -1585,9 +1585,9 @@ function generateTariffsPage() {
   `;
 
   return generateHtmlPage({
-    title: 'Call Taxi In Coimbatore Tariffs & Rate Card | Get Taxi Kovai 9843701437',
+    title: 'Call Taxi In Coimbatore Tariffs & Rate Card | Get Taxi Kovai +91 90437 00334',
     description: 'One-Way Drop taxi tariff: Sedan ₹16/km, SUV ₹20/km, Premium SUV / Creta ₹25/km + ₹500 driver batta (minimum 130 km billable distance; tolls and permits extra). Hourly rentals from ₹375.',
-    keywords: 'Call Taxi In Coimbatore tariff, Coimbatore taxi rate card, Ooty drop taxi price, one way taxi Coimbatore rate card, outstation cab tariff Coimbatore, Kovai call taxi 9843701437',
+    keywords: 'Call Taxi In Coimbatore tariff, Coimbatore taxi rate card, Ooty drop taxi price, one way taxi Coimbatore rate card, outstation cab tariff Coimbatore, Kovai call taxi +91 90437 00334',
     canonicalUrl: `${SITE_URL}/tariffs.html`,
     activeNav: 'tariffs',
     bodyContent,
@@ -1783,7 +1783,7 @@ function generateIshaYogaTourPage() {
           </a>
           <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm flex items-center gap-2 border border-slate-700 shadow-md transition">
             <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
-            <span>Call 9843701437</span>
+            <span>Call +91 90437 00334</span>
           </a>
         </div>
       </div>
@@ -2365,7 +2365,7 @@ function generateIshaYogaTourPage() {
 
   return generateHtmlPage({
     title: 'Isha Yoga & Adiyogi Tour Packages from Coimbatore | Get Taxi Kovai',
-    description: 'Book private full-day Isha Yoga cab tours from Coimbatore. Option 1: Spiritual & Heritage Tour (₹3,000 / 10 Hrs / 100 KM). Option 2: Adiyogi + Light Show Tour (₹3,500 / 12 Hrs / 120 KM). Doorstep Coimbatore pickup & drop. Call 9843701437.',
+    description: 'Book private full-day Isha Yoga cab tours from Coimbatore. Option 1: Spiritual & Heritage Tour (₹3,000 / 10 Hrs / 100 KM). Option 2: Adiyogi + Light Show Tour (₹3,500 / 12 Hrs / 120 KM). Doorstep Coimbatore pickup & drop. Call +91 90437 00334.',
     keywords: 'Isha Yoga Center Tour from Coimbatore, Adiyogi Tour from Coimbatore, Isha Light Show Tour, Marudhamalai and Isha Tour, Coimbatore Private Cab Tour, Isha Yoga Tour Package',
     canonicalUrl,
     activeNav: 'tours',
@@ -2431,7 +2431,7 @@ function generateIndividualTourPage(tour) {
             <span>Book Tour on WhatsApp</span>
           </a>
           <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm flex items-center gap-2 shadow-lg transition">
-            <span>Call 9843701437</span>
+            <span>Call +91 90437 00334</span>
           </a>
         </div>
       </div>
@@ -2534,7 +2534,7 @@ function generateIndividualTourPage(tour) {
                 Reserve on WhatsApp
               </a>
               <a href="${PHONE_HREF}" class="block w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-center text-sm transition">
-                Call 9843701437
+                Call +91 90437 00334
               </a>
             </div>
 
@@ -2548,7 +2548,7 @@ function generateIndividualTourPage(tour) {
 
   return generateHtmlPage({
     title: `${tour.title} | Get Taxi Kovai`,
-    description: `${tour.title} from Coimbatore. ${tour.subtitle}. All-inclusive private AC cab package starting from ₹${tour.startingPrice}. Call 9843701437.`,
+    description: `${tour.title} from Coimbatore. ${tour.subtitle}. All-inclusive private AC cab package starting from ₹${tour.startingPrice}. Call +91 90437 00334.`,
     keywords: `${tour.title}, Coimbatore to ${tour.destinationsCovered[0]} taxi, ${tour.category} tour Kovai, outstation cab Coimbatore`,
     canonicalUrl,
     activeNav: 'tours',
@@ -2710,9 +2710,9 @@ function generateIndividualBlogPostPage(post) {
       <!-- Booking CTA Box -->
       <div class="mt-12 bg-slate-900 text-white rounded-2xl p-8 text-center space-y-4">
         <h3 class="text-2xl font-bold tracking-tight">Need a Reliable Cab in Coimbatore?</h3>
-        <p class="text-sm text-slate-300 max-w-xl mx-auto">Get Taxi Kovai provides 24/7 doorstep pickup across Coimbatore with zero surge pricing. Call or WhatsApp 9843701437 now!</p>
+        <p class="text-sm text-slate-300 max-w-xl mx-auto">Get Taxi Kovai provides 24/7 doorstep pickup across Coimbatore with zero surge pricing. Call or WhatsApp +91 90437 00334 now!</p>
         <div class="flex flex-wrap justify-center gap-3 pt-2">
-          <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call 9843701437</a>
+          <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call +91 90437 00334</a>
           <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition">Book on WhatsApp</a>
         </div>
       </div>
@@ -2820,7 +2820,7 @@ function generateContactPage() {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact & 24/7 Booking - Get Taxi Kovai",
-    "description": "Contact Get Taxi Kovai for 24/7 cab booking in Coimbatore. Call 9843701437 or visit Cross Cut Road, Gandhipuram.",
+    "description": "Contact Get Taxi Kovai for 24/7 cab booking in Coimbatore. Call +91 90437 00334 or visit Cross Cut Road, Gandhipuram.",
     "url": `${SITE_URL}/contact.html`
   };
 
@@ -2978,7 +2978,7 @@ function generateContactPage() {
             '• Trip Type: ' + trip
           );
 
-          if (waLink) waLink.href = 'https://wa.me/919843701437?text=' + text;
+          if (waLink) waLink.href = 'https://wa.me/919043700334?text=' + text;
           if (handoff) handoff.classList.remove('hidden');
         });
       }
@@ -2987,9 +2987,9 @@ function generateContactPage() {
   `;
 
   return generateHtmlPage({
-    title: 'Contact & 24/7 Cab Booking | Get Taxi Kovai 9843701437',
-    description: 'Contact Get Taxi Kovai for 24/7 taxi booking in Coimbatore. Call 9843701437 or message on WhatsApp for 15-minute doorstep dispatch.',
-    keywords: 'Contact Get Taxi Kovai, Coimbatore taxi phone number, call taxi 9843701437, book taxi Gandhipuram',
+    title: 'Contact & 24/7 Cab Booking | Get Taxi Kovai +91 90437 00334',
+    description: 'Contact Get Taxi Kovai for 24/7 taxi booking in Coimbatore. Call +91 90437 00334 or message on WhatsApp for 15-minute doorstep dispatch.',
+    keywords: 'Contact Get Taxi Kovai, Coimbatore taxi phone number, call taxi +91 90437 00334, book taxi Gandhipuram',
     canonicalUrl: `${SITE_URL}/contact.html`,
     activeNav: 'contact',
     bodyContent,

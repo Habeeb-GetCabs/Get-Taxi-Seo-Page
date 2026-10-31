@@ -53,7 +53,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Impressed by the lush eucalyptus forests, crisp mountain air, and rolling green meadows, Sullivan recognized the immense potential of the region as a sanatorium for soldiers suffering from tropical heat illnesses.',
       'In 1822, Sullivan purchased land from the Toda tribe and built the very first European residence in Ooty, named "Stone House" (known locally as Kal Bangala). He also commissioned the construction of a road from Mettupalayam up through the steep mountain passes, connecting Coimbatore directly to the hill kingdom.',
       'Sullivan went on to develop the iconic Ooty Lake between 1823 and 1825 by damming mountain streams, turning Ooty into the summer capital of the Madras Presidency.',
-      'Today, driving from Coimbatore to Ooty via Mettupalayam and Coonoor remains one of South India’s most scenic road trips. Book Get Taxi Kovai (9843701437) for a comfortable one-way drop from ₹16/km (Sedan, min 130 km + ₹500 batta) or round-trip at ₹15/km with expert Nilgiri mountain drivers!'
+      'Today, driving from Coimbatore to Ooty via Mettupalayam and Coonoor remains one of South India’s most scenic road trips. Book Get Taxi Kovai (+91 90437 00334) for a comfortable one-way drop from ₹16/km (Sedan, min 130 km + ₹500 batta) or round-trip at ₹15/km with expert Nilgiri mountain drivers!'
     ]
   },
   {
@@ -73,7 +73,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'The center features the awe-inspiring 112-foot Adiyogi Shiva statue, recognized by the Guinness World Records as the world’s largest bust sculpture. Visitors can also experience the consecrated Dhyanalinga, Suryakund, Nadiyakar, and Linga Bhairavi temples.',
       'How to reach Isha Yoga Center: The road trip from Coimbatore Junction Railway Station or Gandhipuram takes approximately 45–60 minutes via Thondamuthur. From Coimbatore International Airport (CJB), the distance is roughly 42 km.',
       'Get Taxi Kovai Fare Breakdown: Local cab base fare starts at ₹80 with ₹28/km, or book a hassle-free round-trip/drop package. Our drivers wait patiently during your evening Divya Darshanam laser light show at Adiyogi!',
-      'Call or WhatsApp 9843701437 to reserve your clean AC Sedan or SUV for your Isha Yoga visit.'
+      'Call or WhatsApp +91 90437 00334 to reserve your clean AC Sedan or SUV for your Isha Yoga visit.'
     ]
   },
   {
@@ -93,7 +93,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'The highlight of the drive from Coimbatore to Valparai (105 km) is ascending the legendary 40 Hairpin Bends starting after the Aliyar Dam checkpoint. Each hairpin bend presents breathtaking panoramic views of the Aliyar reservoir below.',
       'Valparai is famous for wildlife sightings including Nilgiri Tahr, Lion-tailed Macaques, Asian Elephants, and Great Indian Hornbills.',
       'Why book Get Taxi Kovai for Valparai? Navigating 40 continuous hairpin bends requires skilled, calm driver reflexes. Get Taxi Kovai provides top-maintained SUVs (Ertiga & Innova Crysta) with seasoned hill drivers at just ₹15/km for outstation round trips (+ ₹400 driver batta).',
-      'Reserve your Valparai cab today by calling 9843701437!'
+      'Reserve your Valparai cab today by calling +91 90437 00334!'
     ]
   },
   {
@@ -113,7 +113,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Get Taxi Kovai revolutionized outstation taxi booking in Coimbatore by introducing One-Way Drop Taxi services at transparent rates: Sedan ₹16 per km, SUV ₹20 per km, and Premium SUV / Creta ₹25 per km + ₹500 driver batta (minimum 130 km billable distance; toll and permit charges extra).',
       'Example Savings Calculation: If you travel one-way from Coimbatore to Chennai (approx 500 km), traditional taxis charge for 1,000 km (round trip). With Get Taxi Kovai, you pay strictly for the one-way distance traveled, saving up to 50% of your total travel expense!',
       'Whether heading to Bangalore, Salem, Madurai, or Trichy, Get Taxi Kovai offers zero return kilometer charges.',
-      'Call or WhatsApp 9843701437 to get your instant one-way quote!'
+      'Call or WhatsApp +91 90437 00334 to get your instant one-way quote!'
     ]
   },
   {
@@ -133,7 +133,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Get Taxi Kovai offers dedicated 24/7 airport taxi transfers with zero surge pricing during peak flight arrivals or late-night departures.',
       'Our Airport Rates: Base fare ₹100 + ₹30 per kilometer (airport toll charges extra as applicable).',
       'We track flight arrival times live to ensure your driver is waiting at the arrival terminal gate with a name badge, ready to assist with luggage.',
-      'Book your airport cab in seconds by calling 9843701437!'
+      'Book your airport cab in seconds by calling +91 90437 00334!'
     ]
   },
   {
@@ -153,7 +153,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Day 1: Scenic ascent via Palani or Batlagundu, check-in, evening boat ride on star-shaped Kodai Lake and walking along Coaker’s Walk.',
       'Day 2: Full-day sightseeing including Bryant Park, Pillar Rocks, Guna Caves (Devil’s Kitchen), Pine Forest, and Silver Cascade Waterfalls.',
       'Day 3: Visit Mannavanur Sheep Farm and Lake before a comfortable return drive to Coimbatore.',
-      'Book Get Taxi Kovai for outstation round trip at ₹15 per km + ₹400 driver batta per day. Call 9843701437 now!'
+      'Book Get Taxi Kovai for outstation round trip at ₹15 per km + ₹400 driver batta per day. Call +91 90437 00334 now!'
     ]
   },
   {
@@ -173,7 +173,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'The drive takes approximately 2.5 hours via Pollachi and Udumalpet along smooth highways.',
       'Pilgrims prefer early morning departures to attend the Winch or Rope Car ascension and avoid long darshan queues.',
       'Get Taxi Kovai provides spacious 6-seater Ertiga and Innova Crysta cabs for families, ensuring elderly passengers travel in supreme air-conditioned comfort.',
-      'Call 9843701437 to book your Palani temple taxi today!'
+      'Call +91 90437 00334 to book your Palani temple taxi today!'
     ]
   },
   {
@@ -193,7 +193,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Famous for elephant safaris, jungle trekking, and bird watching, Topslip offers an immersive dip into Western Ghats biodiversity.',
       'Visitors can combine Topslip with Kozhikamuthi Elephant Camp and Karianshola national park.',
       'Book Get Taxi Kovai outstation cabs (₹15/km round-trip + ₹400 batta) for a relaxing wilderness trip.',
-      'Call or WhatsApp 9843701437 for weekend nature getaways!'
+      'Call or WhatsApp +91 90437 00334 for weekend nature getaways!'
     ]
   },
   {
@@ -213,7 +213,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Get Taxi Kovai offers unbeatable local city fares: Base fare ₹80 + ₹28 per kilometer.',
       'We also provide flexible hourly rental packages (4 Hours/40 KM, 8 Hours/80 KM, 12 Hours/120 KM) allowing you to retain the same cab and driver for multiple meetings or shopping stops.',
       'Enjoy clean AC rides, polite drivers, and instant doorstep pickup.',
-      'For immediate local cab bookings, call 9843701437!'
+      'For immediate local cab bookings, call +91 90437 00334!'
     ]
   },
   {
@@ -233,7 +233,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Key destinations in Tiruppur include Texvalley International Textile Market at Gangapuram, Netaji Apparel Park, Avinashi Road industrial units, and Tiruppur Junction Railway Station.',
       'Why Choose Get Taxi Kovai for Tiruppur Commutes? We offer dedicated AC Executive Sedans (Dzire, Etios) and 6-Seater SUVs with punctual drivers familiar with all industrial bypasses.',
       'Pricing & Tariff: Travel one-way drop from ₹16/km for Sedan (minimum 130 km billable distance + ₹500 driver batta) with ZERO return kilometer charges, or choose an outstation trip at Base ₹300 + ₹30/km + ₹300 driver batta (₹2,100 from Gandhipuram to Tiruppur).',
-      'Reserve your executive business cab by calling or messaging 9843701437.'
+      'Reserve your executive business cab by calling or messaging +91 90437 00334.'
     ]
   },
   {
@@ -253,7 +253,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Because the NMR train departs early in the morning, travelers arriving at Coimbatore Junction Railway Station or Airport need a bulletproof, 100% reliable 5:30 AM taxi pickup to ensure they never miss their train.',
       'Additionally, Mettupalayam houses popular attractions like Black Thunder Water Theme Park and the scenic Vanabhadrakali Amman Temple along the Bhavani River.',
       'Get Taxi Kovai Fare Transparency: Point-to-point transfers from Kovai to Mettupalayam take under 50 minutes (Fixed Route Fare ₹1,400, or One-Way Drop from ₹16/km Sedan with 130 km minimum billable distance + ₹500 batta).',
-      'Book your prompt early morning Mettupalayam cab by calling 9843701437!'
+      'Book your prompt early morning Mettupalayam cab by calling +91 90437 00334!'
     ]
   },
   {
@@ -273,7 +273,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Distance & Travel Time: Coimbatore to Erode is ~100 km (2 hours drive via Avinashi & Perundurai), while Salem is ~165 km (3 hours drive).',
       'One-Way Drop vs. Bus Commute: Taking a private Get Taxi Kovai cab offers luggage space, doorstep pickup from your hotel or home in Kovai, direct drop at Erode Railway Station or Salem Steel Plant, and zero stress.',
       'Transparent Fare Breakdown: One-way drop at Sedan ₹16/km, SUV ₹20/km, or Premium SUV / Creta ₹25/km + ₹500 driver batta (minimum 130 km billable distance; tolls & permits extra). Round trip at ₹15/km + ₹400 driver batta.',
-      'Call 9843701437 for instant 24/7 Erode and Salem cab reservations.'
+      'Call +91 90437 00334 for instant 24/7 Erode and Salem cab reservations.'
     ]
   },
   {
@@ -293,7 +293,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'The water of Siruvani is globally famous for its incredible taste and mineral purity, scientifically recognized as the world’s second tastiest water after Switzerland’s Nile river source.',
       'The drive leads through lush forest checkposts managed by the Tamil Nadu Forest Department, surrounded by bamboo groves and cool mountain breezes.',
       'Day Trip Recommendations: Combine Siruvani with Sadivayal forest checkpost and Karunya Nagar. Forest department buses carry tourists from the gate to the waterfalls.',
-      'Get Taxi Kovai provides comfortable hourly rental packages (1 Hr ₹375, 2 Hrs ₹750, + ₹350/hr thereafter; 4 Hrs ₹1,450, 8 Hrs ₹2,850) or customized round-trip taxi drops. Book now at 9843701437!'
+      'Get Taxi Kovai provides comfortable hourly rental packages (1 Hr ₹375, 2 Hrs ₹750, + ₹350/hr thereafter; 4 Hrs ₹1,450, 8 Hrs ₹2,850) or customized round-trip taxi drops. Book now at +91 90437 00334!'
     ]
   },
   {
@@ -313,7 +313,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Route Highlights: Driving through Chinnar Wildlife Sanctuary offers chances to spot wild elephants, spotted deer, and star tortoises along the highway.',
       'Munnar Attractions: Eravikulam National Park (home to Nilgiri Tahr), Tea Museum, Mattupetty Dam, Kundala Lake, and Top Station.',
       'Why Book Get Taxi Kovai for Munnar? Interstate permits (Tamil Nadu to Kerala), expert mountain drivers, clean AC Ertiga/Innova Crysta, and transparent billing at ₹15/km + ₹400 driver batta per day.',
-      'Call 9843701437 to reserve your Coimbatore-Munnar holiday cab!'
+      'Call +91 90437 00334 to reserve your Coimbatore-Munnar holiday cab!'
     ]
   },
   {
@@ -333,7 +333,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'For IT professionals, client delegates, and corporate teams, reliable doorstep transit is vital during peak morning shifts and late-night office drops.',
       'Get Taxi Kovai Corporate Offerings: Flexible daily rides starting at base ₹80 + ₹28/km, or custom monthly corporate accounts with itemized GST invoices.',
       'Clean sanitized cars, GPS tracking, and polite professional drivers who arrive 5 minutes before scheduled pickup.',
-      'Contact Get Taxi Kovai Corporate Desk at 9843701437 to set up your hassle-free IT commute!'
+      'Contact Get Taxi Kovai Corporate Desk at +91 90437 00334 to set up your hassle-free IT commute!'
     ]
   },
   {
@@ -353,7 +353,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Get Taxi Kovai provides 24/7 365-day midnight taxi availability across Coimbatore Junction, Peelamedu Airport, Singanallur, Ukkadam, and Gandhipuram.',
       'Zero Surge Pricing: Unlike ride-hailing apps, Get Taxi Kovai charges fixed, transparent rates regardless of weather, flight delays, or peak midnight hours.',
       'Safety First: All Get Taxi Kovai vehicles are equipped with active GPS tracking and verified local drivers who undergo background checks.',
-      'Save our 24/7 emergency hotline on your phone: 9843701437!'
+      'Save our 24/7 emergency hotline on your phone: +91 90437 00334!'
     ]
   },
   {
@@ -373,7 +373,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Perur Pateeswarar Temple: Situated on the banks of the Noyyal River, 7 km west of Coimbatore, this temple built by Chola kings features the sublime Kanaka Sabha (Golden Hall) with intricate stone carved pillars depicting 36 manifestations of Lord Shiva.',
       'Marudhamalai Murugan Temple: Perched atop a verdant hill 12 km west of Coimbatore, Marudhamalai is dedicated to Lord Murugan (Subramanya Swamy) and is surrounded by medicinal herbs.',
       'Heritage Day Tour Package: Book Get Taxi Kovai hourly rental package (1 Hr ₹375, 2 Hrs ₹750, + ₹350/hr thereafter; 4 Hrs ₹1,450, 8 Hrs ₹2,850) or our Full-Day Isha & Heritage Tour (₹3,000 for 10 Hrs / 100 KM) to conveniently visit Perur, Marudhamalai, and Isha Yoga in a single relaxing trip.',
-      'Call 9843701437 to book your spiritual Kovai cab tour!'
+      'Call +91 90437 00334 to book your spiritual Kovai cab tour!'
     ]
   },
   {
@@ -393,7 +393,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Whether heading to Kempegowda International Airport (BLR), Electronic City, Whitefield, or Koramangala, private taxi drops eliminate bus transfer hassles.',
       'Cost Advantage: Traditional taxis charge for 720 km (round trip). With Get Taxi Kovai One-Way Drop Taxi, you pay strictly for the 360 km traveled at Sedan ₹16/km, SUV ₹20/km, or Premium SUV / Creta ₹25/km + ₹500 driver batta (toll and permit charges extra).',
       'Vehicles Available: Comfortable Hatchbacks, Sedan (Swift Dzire, Etios), 6-Seater Ertiga, and Luxury 7-Seater Innova Crysta with experienced highway captains.',
-      'Book your Bangalore drop taxi by calling 9843701437!'
+      'Book your Bangalore drop taxi by calling +91 90437 00334!'
     ]
   },
   {
@@ -413,7 +413,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Route Options: Travelers can take the smooth route via Palladam, Dharapuram, and Oddanchatram, or travel via Karur and Dindigul.',
       'Sightseeing Highlights: Meenakshi Amman Temple, Thirumalai Nayakkar Mahal, Gandhi Memorial Museum, and tasting authentic Madurai Jigarthanda.',
       'Fare Tariff: Outstation round-trip package at ₹15 per km + ₹400 driver batta per day, or one-way drop at Sedan ₹16/km (SUV ₹20/km, Premium SUV / Creta ₹25/km) + ₹500 batta (min 130 km; tolls & permits extra).',
-      'Call 9843701437 to plan your Madurai temple cab trip today!'
+      'Call +91 90437 00334 to plan your Madurai temple cab trip today!'
     ]
   },
   {
@@ -433,7 +433,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Residents often struggle with auto-rickshaws refusing rides or overcharging for suburban trips.',
       'Get Taxi Kovai extends full 24/7 suburban coverage with zero extra pickup location fees.',
       'Whether visiting the famous 6-foot Eachanari Vinayagar Temple or catching a train from Podanur Junction, enjoy transparent base fare ₹80 + ₹28/km rides.',
-      'Call 9843701437 for quick suburban cab pickup within 10-15 minutes!'
+      'Call +91 90437 00334 for quick suburban cab pickup within 10-15 minutes!'
     ]
   },
   {
@@ -453,7 +453,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Why Choose a One-Way Taxi over Flights or Trains? When traveling with family or heavy luggage, last-minute flight tickets can cost over ₹15,000. Trains are frequently sold out weeks in advance.',
       'Get Taxi Kovai One-Way Drop Rates: Sedan ₹16/km, SUV ₹20/km, and Premium SUV / Creta ₹25/km + ₹500 driver batta (minimum 130 km billable distance; toll and permit charges extra) for the ENTIRE vehicle.',
       'Doorstep pickup from your home in Kovai directly to Chennai Central, Airport, OMR, or ECR without changing transport.',
-      'Book your Chennai highway cab by calling 9843701437!'
+      'Book your Chennai highway cab by calling +91 90437 00334!'
     ]
   },
   {
@@ -473,7 +473,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Unlike bustling Ooty, Coonoor offers a serene, unhurried atmosphere amidst sprawling green tea estates.',
       'Must-Visit Attractions: Sim’s Park (12-hectare botanical garden with rare plant species), Lamb’s Rock (panoramic views of Coimbatore plains), Dolphin’s Nose viewpoint, and tea tasting at Highfield Tea Factory.',
       'Get Taxi Kovai Offer: Hire an outstation round-trip cab at ₹15/km (+ ₹400 batta) with expert mountain drivers experienced in navigating Coonoor’s winding roads.',
-      'Call 9843701437 to reserve your Coonoor day tour!'
+      'Call +91 90437 00334 to reserve your Coonoor day tour!'
     ]
   },
   {
@@ -493,7 +493,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Managing guest logistics between Coimbatore Airport, Railway Station, marriage halls, and luxury hotels requires a coordinated fleet.',
       'Get Taxi Kovai Event Solutions: Dedicated fleet of Toyota Innova Crysta (7-seater), Maruti Ertiga (6-seater), Swift Dzire, and 14-Seater Tempo Travellers.',
       'Uniformed drivers, clean pristine vehicles, floral decoration options for bridal cars, and dedicated event transport managers.',
-      'Call 9843701437 to discuss your wedding or event fleet requirements!'
+      'Call +91 90437 00334 to discuss your wedding or event fleet requirements!'
     ]
   },
   {
@@ -506,20 +506,20 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Get Taxi Kovai Editorial',
     image: '/images/blog/why-get-taxi-kovai-top-rated.webp',
     fallbackImage: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80',
-    tags: ['Top Taxi Coimbatore', 'Top Rated Taxi', 'Get Taxi Kovai 9843701437', 'No Hidden Fees'],
+    tags: ['Top Taxi Coimbatore', 'Top Rated Taxi', 'Get Taxi Kovai +91 90437 00334', 'No Hidden Fees'],
     excerpt: 'Discover why over 50,000 passengers trust Get Taxi Kovai as the most transparent, affordable, and reliable taxi service in Coimbatore.',
     content: [
       '1. Unbeatable Transparent Pricing: Local Sedan rides start at Base ₹80 + ₹28/km; One-Way Outstation drops at Sedan ₹16/km, SUV ₹20/km, Premium SUV / Creta ₹25/km (+ ₹500 driver batta, min 130 km); Round Trips at ₹15/km; Airport transfers at Base ₹100 + ₹30/km.',
       '2. Zero Return Kilometer Fee: Save up to 50% on outstation drop journeys across Tamil Nadu, Karnataka, and Kerala.',
       '3. Hourly Rental Tariff Rule: ₹375 for 1 hour, ₹750 for 2 hours, and ₹350/hr for each additional hour (4 hrs: ₹1,450, 8 hrs: ₹2,850, 12 hrs: ₹4,250).',
       '4. Flat ₹3,500 Ooty One-Way Rate: Transparent flat fare to Ooty with zero hidden bill surprises.',
-      '5. 24/7 Hotline 9843701437: Speak directly with friendly local dispatchers anytime day or night.',
+      '5. 24/7 Hotline +91 90437 00334: Speak directly with friendly local dispatchers anytime day or night.',
       '6. Instant Doorstep Pickup in 5-15 Minutes across Gandhipuram, Peelamedu, RS Puram, Saravanampatti, and Kovai suburbs.',
       '7. Expert Nilgiri Mountain Drivers: Seasoned captains skilled in handling 40 hairpin bends to Valparai and steep ghat roads to Ooty/Kodaikanal.',
       '8. Clean, Sanitized AC Fleet: Well-maintained Hatchbacks, Executive Sedans, 6-Seater Ertigas, Premium Innova Crystas, and 14-Seater Tempo Travellers.',
       '9. Flight & Train Tracking: Automated flight monitoring for seamless airport pickups.',
       '10. Trusted by 50,000+ Happy Riders with a 4.9-star rating!',
-      'Experience the difference today by calling or messaging 9843701437.'
+      'Experience the difference today by calling or messaging +91 90437 00334.'
     ]
   },
   {
@@ -540,7 +540,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Other Tanjore Attractions: Combine your temple visit with the Thanjavur Maratha Palace, Saraswathi Mahal Library (one of Asia’s oldest manuscript libraries), and the Tanjore Art Gallery featuring ancient Chola bronze sculptures.',
       'Distance & Route: The drive from Coimbatore to Thanjavur takes ~4.5 hours via Karur and Trichy. You can also visit Srirangam Ranganathaswamy Temple en-route near Trichy.',
       'Get Taxi Kovai Taxi Tariff: Travel in supreme comfort with one-way drop at Sedan ₹16/km (SUV ₹20/km, Premium SUV / Creta ₹25/km) + ₹500 batta (min 130 km) or round-trip at ₹15/km (+ ₹400 batta) with courteous drivers who wait until your darshan is complete.',
-      'Book your Tanjore Big Temple cab today by calling 9843701437!'
+      'Book your Tanjore Big Temple cab today by calling +91 90437 00334!'
     ]
   }
 ];
