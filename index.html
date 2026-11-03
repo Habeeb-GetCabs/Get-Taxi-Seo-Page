@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17918498714"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-387L71HHYR"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
+      gtag('config', 'G-387L71HHYR');
       gtag('config', 'AW-17918498714');
       gtag('config', 'GT-5NR4LTD2');
     </script>
@@ -214,32 +216,7 @@
         color: #0f172a !important;
       }
     </style>
-    <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        function loadGmaps() {
-          if (document.getElementById('gmaps-script')) return;
-          var s = document.createElement('script');
-          s.id = 'gmaps-script';
-          s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyASup0KDFTmah7YA-NF8e9Xm0u-95Qpg3w&libraries=places';
-          s.async = true;
-          s.defer = true;
-          document.head.appendChild(s);
-        }
-        var pickup = document.getElementById('calc-pickup') || document.getElementById('calc-pickup-input');
-        var drop = document.getElementById('calc-drop') || document.getElementById('calc-drop-input');
-        if (pickup || drop) {
-          ['focus', 'pointerdown', 'touchstart'].forEach(function(evt) {
-            if (pickup) pickup.addEventListener(evt, loadGmaps, { once: true, passive: true });
-            if (drop) drop.addEventListener(evt, loadGmaps, { once: true, passive: true });
-          });
-          if ('requestIdleCallback' in window) {
-            window.requestIdleCallback(loadGmaps, { timeout: 2500 });
-          } else {
-            setTimeout(loadGmaps, 2000);
-          }
-        }
-      });
-    </script>
+    
     
   </head>
   <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950">

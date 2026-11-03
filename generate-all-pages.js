@@ -1622,6 +1622,10 @@ function generateToursDirectoryPage() {
 
   <section class="py-14 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">All-Inclusive Outstation & Hill Station Tour Packages</h2>
+        <p class="text-sm text-slate-600 mt-1">Explore our most popular private round-trip cab packages from Coimbatore.</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         ${TOUR_PACKAGES.map(tour => {
           const pageUrl = TOUR_PAGE_MAP[tour.id] || 'tours.html';
@@ -2580,6 +2584,10 @@ function generateBlogDirectoryPage() {
 
   <section class="py-14 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Browse Travel Guides, Route Tips & Kongu Heritage</h2>
+        <p class="text-sm text-slate-600 mt-1">Expert articles covering Nilgiris, spiritual tours, airport taxi guides, and highway routes.</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         ${BLOG_POSTS.map(post => {
           const pageUrl = getBlogFilename(post);
@@ -2693,6 +2701,7 @@ function generateIndividualBlogPostPage(post) {
 
       <!-- Lead Excerpt Box -->
       <div class="bg-amber-50 border-l-4 border-amber-400 p-5 rounded-r-xl mb-8 text-base text-slate-800 leading-relaxed font-medium">
+        <h2 class="text-lg font-bold text-slate-900 mb-2">Key Highlights & Travel Overview</h2>
         ${post.excerpt}
       </div>
 
@@ -2709,7 +2718,7 @@ function generateIndividualBlogPostPage(post) {
 
       <!-- Booking CTA Box -->
       <div class="mt-12 bg-slate-900 text-white rounded-2xl p-8 text-center space-y-4">
-        <h3 class="text-2xl font-bold tracking-tight">Need a Reliable Cab in Coimbatore?</h3>
+        <h2 class="text-2xl font-bold tracking-tight">Need a Reliable Cab in Coimbatore?</h2>
         <p class="text-sm text-slate-300 max-w-xl mx-auto">Get Taxi Kovai provides 24/7 doorstep pickup across Coimbatore with zero surge pricing. Call or WhatsApp +91 90437 00334 now!</p>
         <div class="flex flex-wrap justify-center gap-3 pt-2">
           <a href="${PHONE_HREF}" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition">Call +91 90437 00334</a>
