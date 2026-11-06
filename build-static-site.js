@@ -510,6 +510,8 @@ function generateHtmlPage({
       gtag('config', 'AW-17918498714');
       gtag('config', 'GT-5NR4LTD2');
     </script>
+    <!-- Google Ads Click Fraud & IP Telemetry Radar -->
+    <script src="/js/fraud-radar.js" defer></script>
     <title>${safeTitle}</title>
     <meta name="description" content="${safeDesc}" />
     <meta name="keywords" content="${safeKeywords}" />

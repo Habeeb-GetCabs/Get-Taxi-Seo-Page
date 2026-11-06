@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Ads Click Fraud & IP Radar — Get Taxi Kovai</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #090e17; color: #f1f5f9; }
+      h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Top Header -->
+    <header class="bg-slate-950/90 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-black shadow-md shadow-amber-400/20">
+            🛡️
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-lg text-white">Get Taxi Kovai</span>
+              <span class="bg-rose-500/20 text-rose-300 text-[10px] font-black px-2 py-0.5 rounded-full border border-rose-500/30 uppercase tracking-wider">
+                Click Fraud Radar
+              </span>
+            </div>
+            <p class="text-xs text-slate-400 font-medium">Real-time competitor click detection & precise area telemetry</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="/" class="text-xs font-bold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 transition">
+            ← View Main Website
+          </a>
+          <button id="refresh-btn" class="text-xs font-extrabold px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 transition cursor-pointer shadow-sm flex items-center gap-1.5">
+            <span>🔄 Refresh Radar</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+      
+      <!-- Live Status Banner -->
+      <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-amber-950/30 border border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-xl">
+        <div class="space-y-2 max-w-2xl">
+          <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>24/7 Google Ads Telemetry Active Across All 132 Pages</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Competitor Click Shield & IP Locator
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+            Every paid Google Ad visit is analyzed for suspicious bounce speed, rapid repeat visits from the same device, and location coordinates. Export high-threat IPs directly to your Google Ads exclusion list.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+          <button id="copy-ips-btn" class="px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-rose-600/20 transition flex items-center justify-center gap-2 cursor-pointer border border-rose-500">
+            <span>📋 Copy Suspicious IPs for Google Ads</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-Time Metrics Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl shadow-sm">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Monitored Clicks</span>
+          <span id="metric-total-clicks" class="text-2xl sm:text-4xl font-black text-white block">--</span>
+          <span class="text-[11px] text-slate-500 mt-1 block">Google Search & Direct visits</span>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl shadow-sm">
+          <span class="text-xs font-bold text-rose-400 uppercase tracking-wider block mb-1">Suspicious / Repeat Clicks</span>
+          <span id="metric-suspicious-clicks" class="text-2xl sm:text-4xl font-black text-rose-400 block">--</span>
+          <span class="text-[11px] text-slate-500 mt-1 block">Rapid bounces & repeat devices</span>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl shadow-sm">
+          <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block mb-1">Estimated Threat Rate</span>
+          <span id="metric-fraud-rate" class="text-2xl sm:text-4xl font-black text-amber-400 block">--%</span>
+          <span class="text-[11px] text-slate-500 mt-1 block">% of paid ad traffic flagged</span>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl shadow-sm">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block mb-1">Unique Suspicious IPs</span>
+          <span id="metric-unique-ips" class="text-2xl sm:text-4xl font-black text-emerald-400 block">--</span>
+          <span class="text-[11px] text-slate-500 mt-1 block">Ready for IP exclusion block</span>
+        </div>
+      </div>
+
+      <!-- Live Click Log Table Card -->
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
+        <div class="p-5 sm:p-6 border-b border-slate-800 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg font-black text-white">Live Visitor & Click Telemetry Log</h2>
+            <p class="text-xs text-slate-400">Captured in real-time with Google Click ID (gclid) & detected area</p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <label class="text-xs text-slate-400 font-semibold">Filter:</label>
+            <select id="threat-filter" class="bg-slate-950 border border-slate-700 text-xs text-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:border-amber-400">
+              <option value="all">All Clicks (Safe & Suspicious)</option>
+              <option value="suspicious" selected>Suspicious & High Threat Only (≥75%)</option>
+              <option value="gclid">Google Ads Only (With gclid)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Table View -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-950 text-slate-400 font-bold uppercase tracking-wider text-[11px] border-b border-slate-800">
+              <tr>
+                <th class="p-4">Threat Level</th>
+                <th class="p-4">IP Address</th>
+                <th class="p-4">Detected Area</th>
+                <th class="p-4">Time</th>
+                <th class="p-4">Visits Today</th>
+                <th class="p-4">Dwell Time</th>
+                <th class="p-4">Page / GCLID</th>
+                <th class="p-4">Analysis & Reasons</th>
+              </tr>
+            </thead>
+            <tbody id="clicks-table-body" class="divide-y divide-slate-800/80 font-medium">
+              <tr>
+                <td colspan="8" class="p-8 text-center text-slate-500">Loading live telemetry logs...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Actionable Google Ads Protection Guide (The 4 Crucial Steps) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 font-bold">
+            💡
+          </div>
+          <div>
+            <h3 class="text-lg font-black text-white">How to Stop Competitor Click Waste in Google Ads (Guaranteed Steps)</h3>
+            <p class="text-xs text-slate-400">Apply these 4 campaign configurations immediately in your Google Ads account</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+          <!-- Step 1 -->
+          <div class="bg-slate-950/80 border border-slate-800 p-5 rounded-2xl space-y-2">
+            <div class="flex items-center gap-2 text-amber-400 font-extrabold text-xs uppercase tracking-wider">
+              <span>Step 1 • The #1 Budget Drain Fix</span>
+            </div>
+            <h4 class="font-bold text-white text-base">Change Location Targeting to "Presence Only"</h4>
+            <p class="text-slate-300 leading-relaxed font-normal">
+              By default, Google Ads sets location targeting to: <em>"Presence or interest: People in, or who have shown interest in your location"</em>. This causes competitors and users outside Coimbatore to see your ads and click them.
+            </p>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs text-amber-300 font-mono">
+              Campaign Settings ➔ Locations ➔ Location Options ➔ Select: "Presence: People in or regularly in your targeted location"
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-slate-950/80 border border-slate-800 p-5 rounded-2xl space-y-2">
+            <div class="flex items-center gap-2 text-rose-400 font-extrabold text-xs uppercase tracking-wider">
+              <span>Step 2 • Add IP Exclusions</span>
+            </div>
+            <h4 class="font-bold text-white text-base">Paste Suspicious IPs into Google Ads Exclusions</h4>
+            <p class="text-slate-300 leading-relaxed font-normal">
+              Once an IP is added to your Campaign Exclusions list, Google will never serve your ads to that person again, saving your click budget.
+            </p>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 font-mono">
+              Campaign Settings ➔ Additional Settings ➔ IP Exclusions ➔ Click 'Edit' and paste the IPs copied from this dashboard.
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-slate-950/80 border border-slate-800 p-5 rounded-2xl space-y-2">
+            <div class="flex items-center gap-2 text-blue-400 font-extrabold text-xs uppercase tracking-wider">
+              <span>Step 3 • Check Automated Refunds</span>
+            </div>
+            <h4 class="font-bold text-white text-base">Verify Google's "Invalid Clicks" Credit Column</h4>
+            <p class="text-slate-300 leading-relaxed font-normal">
+              Google Ads has an automated multi-stage fraud filter that automatically credits back clicks it deems fraudulent (e.g. rapid repeat clicks from same competitor).
+            </p>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 font-mono">
+              In Google Ads: Columns ➔ Modify Columns ➔ Performance ➔ Check 'Invalid Clicks' & 'Invalid Click Rate'. You will see refunded amounts!
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="bg-slate-950/80 border border-slate-800 p-5 rounded-2xl space-y-2">
+            <div class="flex items-center gap-2 text-emerald-400 font-extrabold text-xs uppercase tracking-wider">
+              <span>Step 4 • Negative Keywords</span>
+            </div>
+            <h4 class="font-bold text-white text-base">Block Non-Customer Intent Searches</h4>
+            <p class="text-slate-300 leading-relaxed font-normal">
+              Rival cab drivers searching for taxi attachments, driver jobs, and vehicle permits click ads thinking it is a fleet portal.
+            </p>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 font-mono">
+              Add Negative Keywords: [driver job], [taxi attachment], [cab driver vacancy], [uber driver], [ola driver], [rto permit].
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+      Get Taxi Kovai Click Fraud Shield • Monitored 24/7 on gettaxikovai.in
+    </footer>
+
+    <script>
+      let currentLogs = [];
+
+      function fetchLogs() {
+        const refreshBtn = document.getElementById('refresh-btn');
+        refreshBtn.innerHTML = '<span>⏳ Refreshing...</span>';
+        
+        fetch('/api/security/fraud-logs')
+          .then(r => r.json())
+          .then(data => {
+            currentLogs = data.recentLogs || [];
+            document.getElementById('metric-total-clicks').textContent = data.totalLogs;
+            document.getElementById('metric-suspicious-clicks').textContent = data.suspiciousCount;
+            document.getElementById('metric-fraud-rate').textContent = data.fraudRatePercent + '%';
+            document.getElementById('metric-unique-ips').textContent = (data.uniqueSuspiciousIps || []).length;
+            renderTable();
+          })
+          .catch(err => {
+            console.error('Error fetching security logs:', err);
+          })
+          .finally(() => {
+            refreshBtn.innerHTML = '<span>🔄 Refresh Radar</span>';
+          });
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById('clicks-table-body');
+        const filterVal = document.getElementById('threat-filter').value;
+
+        let filtered = currentLogs;
+        if (filterVal === 'suspicious') {
+          filtered = currentLogs.filter(l => l.suspiciousScore >= 75);
+        } else if (filterVal === 'gclid') {
+          filtered = currentLogs.filter(l => l.gclid || l.isGoogleAd);
+        }
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="8" class="p-8 text-center text-slate-500">No clicks matching this filter criteria.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = filtered.map(item => {
+          const isHigh = item.suspiciousScore >= 75;
+          const isMed = item.suspiciousScore >= 50 && item.suspiciousScore < 75;
+          
+          const badgeClass = isHigh
+            ? 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+            : isMed
+            ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
+            : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+
+          const timeFormatted = new Date(item.timestamp).toLocaleTimeString('en-IN', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          });
+
+          return `
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="p-4">
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black ${badgeClass}">
+                  ${item.suspiciousScore}% ${isHigh ? 'HIGH THREAT' : isMed ? 'MEDIUM' : 'NORMAL'}
+                </span>
+              </td>
+              <td class="p-4 font-mono font-bold text-white flex items-center gap-2">
+                <span>${item.ip}</span>
+                <button onclick="navigator.clipboard.writeText('${item.ip}'); alert('IP Copied: ${item.ip}');" class="text-slate-500 hover:text-amber-400 cursor-pointer p-0.5" title="Copy IP">
+                  📋
+                </button>
+              </td>
+              <td class="p-4 font-bold text-amber-300">
+                ${item.area || 'Coimbatore Region'}
+              </td>
+              <td class="p-4 text-slate-400">${timeFormatted}</td>
+              <td class="p-4 text-center">
+                <span class="font-extrabold ${item.sessionVisitsToday > 1 ? 'text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded' : 'text-slate-300'}">
+                  ${item.sessionVisitsToday}
+                </span>
+              </td>
+              <td class="p-4 text-slate-300 font-bold">
+                ${item.dwellSeconds > 0 ? item.dwellSeconds + 's' : '< 1s'}
+              </td>
+              <td class="p-4 max-w-xs truncate text-slate-400">
+                <span class="block text-slate-200 font-semibold truncate">${item.landingPage}</span>
+                ${item.gclid ? `<span class="block font-mono text-[10px] text-amber-400/80 truncate">gclid: ${item.gclid}</span>` : '<span class="text-[10px] text-slate-500">Non-Ad Visit</span>'}
+              </td>
+              <td class="p-4 max-w-xs text-xs">
+                ${(item.threatReasons || []).map(r => `<span class="block text-[11px] text-slate-400">• ${r}</span>`).join('')}
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('threat-filter').addEventListener('change', renderTable);
+      document.getElementById('refresh-btn').addEventListener('click', fetchLogs);
+
+      document.getElementById('copy-ips-btn').addEventListener('click', () => {
+        fetch('/api/security/fraud-logs')
+          .then(r => r.json())
+          .then(data => {
+            const ips = data.uniqueSuspiciousIps || [];
+            if (ips.length === 0) {
+              alert('No suspicious IPs logged yet.');
+              return;
+            }
+            const textToCopy = ips.join('\n');
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              alert('Copied ' + ips.length + ' suspicious IP(s) to clipboard!\n\nYou can now paste them directly into:\nGoogle Ads > Campaign Settings > Additional Settings > IP Exclusions.');
+            });
+          });
+      });
+
+      // Initial load
+      fetchLogs();
+    </script>
+  </body>
+</html>

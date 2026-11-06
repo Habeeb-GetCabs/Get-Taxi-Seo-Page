@@ -19,6 +19,31 @@ import {
   WHATSAPP_BASE_URL,
 } from "./src/data/contact.ts";
 
+import {
+  logClickEvent,
+  updateClickEvent,
+  getFraudRadarSummary,
+  clearFraudLogs,
+} from "./src/data/fraudRadar.ts";
+
+function extractClientIp(req: express.Request): string {
+  const forwarded = req.headers["x-forwarded-for"];
+  if (typeof forwarded === "string") {
+    const first = forwarded.split(",")[0].trim();
+    if (first) return first.replace(/^::ffff:/, "");
+  }
+  const cfIp = req.headers["cf-connecting-ip"];
+  if (typeof cfIp === "string" && cfIp) {
+    return cfIp.trim();
+  }
+  const realIp = req.headers["x-real-ip"];
+  if (typeof realIp === "string" && realIp) {
+    return realIp.trim();
+  }
+  const remote = req.socket?.remoteAddress || req.ip || "127.0.0.1";
+  return remote.replace(/^::ffff:/, "");
+}
+
 function sanitizeField(val: unknown, maxLen = 240): string {
   if (typeof val !== "string") return "";
   return val.replace(/[\r\n<>]/g, " ").trim().slice(0, maxLen);
@@ -26,7 +51,8 @@ function sanitizeField(val: unknown, maxLen = 240): string {
 
 async function startServer() {
   const app = express();
-  app.use(express.json({ limit: "32kb" }));
+  app.use(express.json({ limit: "64kb" }));
+  app.use(express.text({ type: ["text/plain", "application/x-www-form-urlencoded"] }));
   const PORT = 3000;
 
   // Directory Health & Metadata Status Endpoint
@@ -172,6 +198,81 @@ async function startServer() {
       return res.json({ reply: response.text });
     } catch {
       return res.status(500).json({ error: "Failed to generate AI advice" });
+    }
+  });
+
+  // Google Ads Click Fraud & IP Security Telemetry Endpoints
+  app.post("/api/security/log-click", (req: express.Request, res: express.Response) => {
+    try {
+      let body = req.body;
+      if (typeof body === "string") {
+        try { body = JSON.parse(body); } catch { body = {}; }
+      }
+      body = body || {};
+
+      const clientIp = extractClientIp(req);
+      const entry = logClickEvent({
+        ip: clientIp,
+        isGoogleAd: Boolean(body.isGoogleAd),
+        gclid: typeof body.gclid === "string" ? sanitizeField(body.gclid, 150) : undefined,
+        source: sanitizeField(body.source || "Direct", 80),
+        landingPage: sanitizeField(body.landingPage || "/", 200),
+        userAgent: sanitizeField(body.userAgent || req.headers["user-agent"] || "unknown", 300),
+        deviceType: body.deviceType === "mobile" || body.deviceType === "tablet" ? body.deviceType : "desktop",
+        sessionVisitsToday: Number(body.sessionVisitsToday) || 1,
+        dwellSeconds: Number(body.dwellSeconds) || 0,
+        area: typeof body.area === "string" ? sanitizeField(body.area, 100) : "",
+        coordinates: body.coordinates && typeof body.coordinates.lat === "number" && typeof body.coordinates.lng === "number"
+          ? { lat: body.coordinates.lat, lng: body.coordinates.lng }
+          : undefined,
+        interacted: Boolean(body.interacted),
+      });
+
+      return res.json({ ok: true, entry });
+    } catch (err) {
+      console.error("Security log-click error:", err);
+      return res.status(500).json({ ok: false, error: "Failed to record telemetry" });
+    }
+  });
+
+  app.post("/api/security/update-dwell", (req: express.Request, res: express.Response) => {
+    try {
+      let body = req.body;
+      if (typeof body === "string") {
+        try { body = JSON.parse(body); } catch { body = {}; }
+      }
+      body = body || {};
+
+      const id = typeof body.id === "string" ? body.id : "";
+      const dwellSeconds = Number(body.dwellSeconds) || 0;
+      const interacted = Boolean(body.interacted);
+      const coordinates = body.coordinates && typeof body.coordinates.lat === "number" && typeof body.coordinates.lng === "number"
+        ? { lat: body.coordinates.lat, lng: body.coordinates.lng }
+        : undefined;
+
+      updateClickEvent(id, { dwellSeconds, coordinates, interacted });
+      return res.json({ ok: true });
+    } catch {
+      return res.json({ ok: false });
+    }
+  });
+
+  app.get("/api/security/fraud-logs", (_req: express.Request, res: express.Response) => {
+    try {
+      const summary = getFraudRadarSummary();
+      return res.json(summary);
+    } catch (err) {
+      console.error("Failed to retrieve fraud radar logs:", err);
+      return res.status(500).json({ error: "Failed to fetch security logs" });
+    }
+  });
+
+  app.post("/api/security/clear-logs", (_req: express.Request, res: express.Response) => {
+    try {
+      clearFraudLogs();
+      return res.json({ ok: true, message: "Fraud logs cleared successfully" });
+    } catch {
+      return res.status(500).json({ error: "Failed to clear logs" });
     }
   });
 
